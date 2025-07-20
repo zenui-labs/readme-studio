@@ -4,46 +4,56 @@ import {useStore} from "@stores/useStore";
 
 const store = useStore()
 
+const handleReadmeTypeSelection = (type: string) => {
+  store.handleTypeSelection(type)
+  store.currentStep = 2
+}
+
 </script>
 
 <template>
   <div v-if="store.currentStep === 1" class="grid md:grid-cols-2 gap-6">
-    <div @click="store.handleTypeSelection('profile')"
+    <div @click="handleReadmeTypeSelection('profile')"
          :class="['relative p-6 rounded-2xl backdrop-blur-3xl bg-white/50 border-2 cursor-pointer',
                store.selectedType === 'profile'
-                 ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-pink-50 shadow-xl'
-                 : 'border-gray-200 hover:border-purple-300 hover:shadow-lg']">
-      <div class="flex items-center justify-between mb-4">
-        <div class="p-3 bg-gradient-to-r from-blue-500 to-purple-500 rounded-xl">
+                 ? 'border-brandColor'
+                 : 'border-gray-200 hover:bg-gray-50']">
+      <div class="flex items-center gap-4 mb-4">
+        <div class="p-3 bg-brandColor rounded-xl">
           <User class="w-6 h-6 text-white"/>
         </div>
-        <CheckCircle v-if="store.selectedType === 'profile'" class="w-6 h-6 text-purple-500"/>
+        <h3 class="text-xl font-semibold text-gray-900">Profile README</h3>
+        <CheckCircle v-if="store.selectedType === 'profile'" class="w-6 h-6 absolute top-4 right-4 text-brandColor"/>
       </div>
-      <h3 class="text-xl font-semibold text-gray-900 mb-2">Profile README</h3>
-      <p class="text-gray-600 mb-4">Create a personalized README for your GitHub profile</p>
-      <div class="flex items-center text-purple-600 font-medium">
+      <p class="text-gray-600 text-left max-w-[400px] mb-4">Create a personalized README for your GitHub profile.
+        Introduce yourself, highlight your skills, and make your profile stand out with a custom README.</p>
+      <button
+          class="flex cursor-pointer group items-center text-brandColor/80 hover:text-brandColor w-max font-medium">
         Get Started
-        <ChevronRight class="w-4 h-4 ml-1"/>
-      </div>
+        <ChevronRight class="w-4 h-4 ml-1 group-hover:ml-2 transition-all duration-300"/>
+      </button>
     </div>
 
-    <div @click="store.handleTypeSelection('repository')"
-         :class="['relative p-6 rounded-2xl border-2 cursor-pointer transition-all duration-300 hover:scale-105',
+    <div @click="handleReadmeTypeSelection('repository')"
+         :class="['relative p-6 rounded-2xl backdrop-blur-3xl bg-white/50 border-2 cursor-pointer',
                store.selectedType === 'repository'
-                 ? 'border-purple-500 bg-gradient-to-br from-purple-50 to-pink-50 shadow-xl'
-                 : 'border-gray-200 bg-white hover:border-purple-300 hover:shadow-lg']">
-      <div class="flex items-center justify-between mb-4">
-        <div class="p-3 bg-gradient-to-r from-green-500 to-blue-500 rounded-xl">
+                 ? 'border-brandColor'
+                 : 'border-gray-200 hover:bg-gray-50']">
+      <div class="flex items-center gap-4 mb-4">
+        <div class="p-3 bg-brandColor rounded-xl">
           <GitBranch class="w-6 h-6 text-white"/>
         </div>
-        <CheckCircle v-if="store.selectedType === 'repository'" class="w-6 h-6 text-purple-500"/>
+        <h3 class="text-xl font-semibold text-gray-900">Repository README</h3>
+        <CheckCircle v-if="store.selectedType === 'repository'" class="w-6 h-6 absolute top-4 right-4 text-brandColor"/>
       </div>
-      <h3 class="text-xl font-semibold text-gray-900 mb-2">Repository README</h3>
-      <p class="text-gray-600 mb-4">Generate README for your GitHub repository</p>
-      <div class="flex items-center text-purple-600 font-medium">
+      <p class="text-gray-600 text-left max-w-[400px] mb-4">Generate a README for your GitHub repository.
+        Quickly create a professional README to describe your project, features, installation steps, usage, and
+        more..</p>
+      <button
+          class="flex cursor-pointer group items-center text-brandColor/80 hover:text-brandColor w-max font-medium">
         Get Started
-        <ChevronRight class="w-4 h-4 ml-1"/>
-      </div>
+        <ChevronRight class="w-4 h-4 ml-1 group-hover:ml-2 transition-all duration-300"/>
+      </button>
     </div>
   </div>
 </template>

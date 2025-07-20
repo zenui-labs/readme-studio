@@ -10,3 +10,5 @@
 @theme {
     --color-brandColor: #00AD95;
 }
+
+@custom-variant dark (&:where(.dark, .dark *));

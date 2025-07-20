@@ -51,7 +51,7 @@ const steps = [
       "
       ></div>
 
-      <div class='z-10 max-w-[1200px] mx-auto'>
+      <div :class="`${store.currentStep === 3 && 'my-[100px]'} z-10 max-w-[1200px] min-w-[900px] mx-auto`">
 
         <div class="flex items-center gap-4 justify-center w-full mb-16">
           <div

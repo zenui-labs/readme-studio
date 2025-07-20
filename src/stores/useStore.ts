@@ -3,7 +3,7 @@ import {ref} from "vue";
 
 export const useStore = defineStore('useStore', () => {
     const currentStep = ref<number>(1);
-    const selectedType = ref<string>('');
+    const selectedType = ref<string>('profile');
     const isGenerating = ref<boolean>(false);
     const generatedContent = ref<string>('');
 
