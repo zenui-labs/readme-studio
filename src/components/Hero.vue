@@ -23,7 +23,7 @@ import AiIcon from "@/svg-icons/ai-icon.vue";
       "
     ></div>
 
-    <div class='z-50 max-w-4xl mx-auto'>
+    <div class='z-0 max-w-4xl mx-auto'>
       <h1 class="text-[4.5rem] leading-[90px] font-bold capitalize z-20">Your <span class='text-brandColor uppercase'>Projects</span>
         Deserve Better <span
             class='text-brandColor uppercase'>docs</span>
@@ -34,12 +34,12 @@ import AiIcon from "@/svg-icons/ai-icon.vue";
         files with the help of
         AI.</p>
 
-      <button
-          class='py-2.5 mt-10 cursor-pointer bg-brandColor/80 hover:bg-brandColor transition-all duration-300 px-6 text-white rounded-lg text-[1.1rem] flex items-center gap-3 justify-center w-max mx-auto'>
+      <router-link to="/generate"
+                   class='py-2.5 mt-10 cursor-pointer bg-brandColor/80 hover:bg-brandColor transition-all duration-300 px-6 text-white rounded-lg text-[1.1rem] flex items-center gap-3 justify-center w-max mx-auto'>
         <AiIcon/>
         Create
         Readme
-      </button>
+      </router-link>
     </div>
 
     <p class='text-[0.8rem] absolute bottom-5 opacity-80 left-1/2 -translate-x-1/2'>A product of <a
