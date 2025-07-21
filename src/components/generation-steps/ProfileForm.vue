@@ -12,82 +12,116 @@ const error = ref('')
 const store = useStore()
 
 async function handleGenerating() {
-  const userData = await fetchUserProfile(input.value)
   store.currentStep = 3
+  const userData = await fetchUserProfile(input.value)
   const prompt = `
-You are a leading GitHub profile consultant and technical writer. Generate a **world-class, visually attractive, and professional Profile README** in GitHub-flavored Markdown using the user data below.
+You are a leading GitHub profile consultant, open-source advocate, and technical writer specialized in developer portfolios.
 
-## Instructions
+Your task is to generate a **world-class, visually appealing, and highly professional GitHub Profile README** in GitHub-flavored Markdown, using the user data below.
 
-- **Audience:** Potential employers, open-source collaborators, and the GitHub community.
-- **Depth:** Include all sections and elements recommended for a top-tier GitHub profile README.
-- **Personalization:** Infer and summarize the user's key skills, interests, and projects from the data.
-- **Completeness:** If any info is missing, insert a clearly marked TODO or friendly placeholder.
-- **Formatting:** Use headings, emojis, badges, shields.io, and images for maximum visual impact.
-- **Minimal placeholders:** Use example URLs and badge links.
-- **Social Proof:** Highlight GitHub stats, top repos, and contribution streaks.
-- **Call to Action:** Invite visitors to connect, follow, or collaborate.
+---
 
-### Sections to Include
+## Objectives
 
-# Name & Tagline
+- Target audience: potential employers, collaborators, open-source community, and recruiters.
+- Create a compelling narrative highlighting the user's technical skills, contributions, and personality.
+- Emphasize measurable social proof: GitHub stats, top projects, contribution streaks, and popular repositories.
+- Use rich formatting: badges (shields.io), emojis, icons, images, and clear sections.
+- Keep it developer-friendly with concise yet meaningful content.
+- Include a call-to-action to engage visitors (follow, star, connect).
+- Provide placeholders or TODOs where data is missing, with friendly explanations.
+- Use professional but approachable language that reflects a passionate developer’s profile.
+- Structure the README with appropriate sections and an optional table of contents if needed.
 
-![Profile Picture](https://example.com/profile.jpg)
+---
 
-> **Short, catchy personal tagline or bio.**
+## Recommended Sections (include all relevant):
+
+# {{Name}} 👋
+
+![Profile Image](https://example.com/profile.jpg).........the image should me full size with some border radius applied
+
+> A brief, catchy personal tagline or summary about the user.
 
 ---
 
 ## 🚀 About Me
 
-A concise, engaging bio (background, interests, what you're looking for).
-
-## 🛠️ Skills & Tools
-
-Badges or icons for main languages, frameworks, tools (use shields.io).
-
-## 📈 GitHub Stats
-
-- ![Stats](https://github-readme-stats.vercel.app/api?username=USERNAME&show_icons=true)
-- ![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=USERNAME)
-- ![Trophy](https://github-profile-trophy.vercel.app/?username=USERNAME)
-- ![Contribution Graph](https://github-readme-activity-graph.vercel.app/graph?username=USERNAME)
-
-## 📂 Top Projects
-
-- List top 3-6 repositories, each with a short summary and link, plus repo badges.
-
-## 🌐 Social Links
-
-- Shields.io badges for GitHub, LinkedIn, Twitter, Blog, etc.
-
-## 📝 Blog Posts
-
-- List or link to latest blog posts (if available).
-
-## 📬 Contact
-
-- Email, website, or other contact methods.
-
-## 🤝 Let's Connect!
-
-- Invite to follow, star, or reach out.
+Write a short bio: background, key expertise, programming languages, interests, and current goals.
 
 ---
 
-## Markdown Only
+## 🛠️ Skills & Technologies
 
-- Output only the final Markdown.
-- Use best practices for formatting, accessibility, and modern profile README style.
-- If info is missing, insert \`TODO\`s or example placeholders.
+Use badges or icons to display main programming languages, frameworks, tools, and technologies. get the technologies from his most used languages or frameworks which have in his profile data. also add some demo tech stack (which user will replaced with his own)
+
+---
+
+## 📊 GitHub Stats & Social Proof
+
+Include the following with the user's actual GitHub username:
+
+- ![GitHub stats](https://github-readme-stats.vercel.app/api?username=USERNAME&show_icons=true&theme=radical)
+- ![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=USERNAME&layout=compact&theme=radical)
+- ![GitHub Trophy](https://github-profile-trophy.vercel.app/?username=USERNAME&theme=radical)
+- ![Contribution Graph](https://github-readme-activity-graph.vercel.app/graph?username=USERNAME&theme=radical)
+
+---
+
+## 📂 Featured Projects
+
+List 3-6 of the user's most popular or relevant repositories with:
+
+- Project name linked to the repo.
+- Short description summarizing the project’s purpose or technology stack.
+- Badges for stars, forks, last commit date, and license.
+
+---
+
+## 🌐 Connect with Me
+
+Provide links (badges) for social profiles like GitHub, LinkedIn, Twitter, personal website/blog, and others if available.
+
+---
+
+## 📝 Latest Blog Posts
+
+Link to the most recent blog posts or articles written by the user (if applicable).
+
+---
+
+## 📫 Contact
+
+Provide professional contact info such as email or preferred communication channels.
+
+---
+
+## 🤝 Let’s Collaborate!
+
+Encourage visitors to follow, star repositories, open issues, or contact the user.
+
+---
+
+## Notes
+
+- Use GitHub-flavored Markdown syntax.
+- Insert clear TODO placeholders for any missing information.
+- Keep the tone professional, enthusiastic, and approachable.
+- Include emojis to enhance readability but do not overuse.
+- Use placeholder URLs/badges if actual data is missing.
+- Only output the final markdown without any explanations or extra commentary.
+
+---
 
 ## User Data
 
 ${JSON.stringify(userData, null, 2)}
 
 ---
-Now, generate the **best possible, production-ready Profile README** for this user.
+
+Now, generate the **best possible, developer-focused, production-ready GitHub Profile README** for this user.
 `
+
   const result = await generateReadmeWithClaude(prompt)
   store.setGeneratedReadme(result)
 }

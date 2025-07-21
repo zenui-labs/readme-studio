@@ -22,137 +22,118 @@ const handleGenerating = async () => {
   const repoData = await fetchRepoInfo(owner, repo)
   const contents = await fetchRepoContents(owner, repo)
   const prompt = `
-You are an expert open-source technical writer and developer advocate. Your task is to generate a comprehensive, professional, and production-ready README.md for a GitHub repository.
-
-## Instructions
-
-- **Audience:** The README should be understandable to both new users and experienced developers.
-- **Goal:** Make the project easy to understand, use, contribute to, and maintain.
-- **Be exhaustive:** Include every section and detail that a high-quality open-source project README should have.
-- **Infer details:** Use the provided repository data and contents to extract key features, usage, configuration, and contribution info.
-- **If any info is missing, add a clearly marked TODO or a placeholder.**
-- **Use copy-paste-ready Markdown, minimal placeholders.**
-- **Use badges (shields.io), images, and markdown formatting to create a visually appealing result.**
-- **Structure the README as follows:**
-
-### Structure & Sections
-
-# Project Title ![Stars](https://img.shields.io/github/stars/OWNER/REPO) ![Forks](https://img.shields.io/github/forks/OWNER/REPO) ![License](https://img.shields.io/github/license/OWNER/REPO)
-
-> **Short, punchy tagline.**
-
-## Table of Contents
-
-- [Overview](#overview)
-- [Screenshots](#screenshots)
-- [Features](#features)
-- [Getting Started](#getting-started)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Configuration](#configuration)
-- [API Reference](#api-reference)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [Testing](#testing)
-- [FAQ](#faq)
-- [License](#license)
-- [Contact](#contact)
-- [Acknowledgements](#acknowledgements)
-
-## Overview
-
-Describe the project, its purpose, and target audience.
-
-## Screenshots
-
-Insert images/GIFs of the project in action.
-![Screenshot](https://example.com/screenshot.png)
-
-## Features
-
-- List all major and minor features.
-- Highlight unique selling points.
-
-## Getting Started
-
-- Prerequisites (software, versions, etc.)
-- Quickstart guide.
-
-## Installation
-
-\`\`\`sh
-# Example install commands
-npm install ...
-\`\`\`
-
-## Usage
-
-\`\`\`sh
-# Example usage
-npm run start
-\`\`\`
-Explain all main use cases.
-
-## Configuration
-
-- List all config options, environment variables, and secrets.
-- Provide sample config files.
-
-## API Reference
-
-- List public APIs, endpoints, or exports.
-- Add code examples.
-
-## Roadmap
-
-- Planned features and improvements.
-
-## Contributing
-
-- Guidelines and code of conduct.
-- How to open issues and pull requests.
-
-## Testing
-
-\`\`\`sh
-# How to run tests
-npm test
-\`\`\`
-
-## FAQ
-
-- Common questions and answers.
-
-## License
-
-State the license, with a badge and link.
-
-## Contact
-
-- Author(s), maintainer(s), email, and social links.
-
-## Acknowledgements
-
-- Credits, third-party libraries, and inspirations.
+You are an expert open-source technical writer and developer advocate tasked with generating a professional, comprehensive, and production-ready README.md for a GitHub repository.
 
 ---
 
-## Markdown Only
+## Your mission
 
-- Output **only** the final README in GitHub-flavored Markdown.
-- Use best practices for formatting, accessibility, and clarity.
-- If information is missing, insert clearly marked \`TODO\`s or sample placeholders.
+- Analyze the repository metadata, structure, and code contents thoroughly.
+- Extract meaningful insights such as project purpose, features, usage, configuration, APIs, tests, and contribution guidelines.
+- Dynamically decide **which sections to include** based on the repo's contents and complexity.
+- If the project is sufficiently complex or lengthy, include a **Table of Contents**; otherwise, omit it.
+- Use a clear, well-structured layout optimized for readability and easy navigation.
+- Add badges (stars, forks, license, etc.) using shields.io dynamically based on repo info.
+- Add screenshots or images if present in the repo or use placeholders with notes to update.
+- Insert TODO placeholders clearly where data or documentation is missing.
+- Provide code examples, install commands, usage instructions, and configuration details where detectable.
+- Use professional, concise language accessible to both new users and experienced developers.
+- Make the README copy-paste-ready with GitHub Flavored Markdown.
+- Include sections like Overview, Features, Installation, Usage, Configuration, API Reference, Roadmap, Contributing, Testing, FAQ, License, Contact, and Acknowledgements — but only if relevant.
+- At the end, add contact info, license details, and acknowledgements.
 
-## Repository Details
+---
 
-Repository Info:
+## Repository Info
+
+Use the following data to guide your content decisions:
+
+Repository Metadata:
 ${JSON.stringify(repoData, null, 2)}
 
-Repository File Tree (top-level, with README, LICENSE, etc. noted):
+Top-Level Repository File Tree and Contents:
 ${JSON.stringify(contents, null, 2)}
 
 ---
-Now, generate the **best possible production-ready README** for this repository.
+
+## README structure example (adapt dynamically):
+
+# Project Title ![Stars](https://img.shields.io/github/stars/OWNER/REPO) ![Forks](https://img.shields.io/github/forks/OWNER/REPO) ![License](https://img.shields.io/github/license/OWNER/REPO)
+
+> Short, punchy tagline or project description.
+
+${'{{TABLE_OF_CONTENTS}}'}  <!-- Include this only if README is long enough -->
+
+## Overview
+
+Describe the project purpose, goals, and target audience.
+
+## Screenshots
+
+Include screenshots or GIFs showcasing the project, or placeholders if none found.
+
+## Features
+
+List key features and unique selling points detected from the repo code.
+
+## Getting Started
+
+Prerequisites and quickstart instructions.
+
+## Installation
+
+Provide install commands and steps.
+
+## Usage
+
+Example usage commands and code snippets.
+
+## Configuration
+
+Document environment variables, config files, or options if present.
+
+## API Reference
+
+Detail public APIs, endpoints, or exports with examples.
+
+## Roadmap
+
+Planned future improvements if detectable.
+
+## Contributing
+
+Contribution guidelines and code of conduct.
+
+## Testing
+
+How to run tests and verify correctness.
+
+## FAQ
+
+Common questions and answers, if relevant.
+
+## License
+
+License name and badge, linked to LICENSE file.
+
+## Contact
+
+Author and maintainer contacts, social links.
+
+## Acknowledgements
+
+Credits, libraries, and inspirations.
+
+---
+
+Remember:
+
+- Use markdown formatting, including headings, lists, code blocks, and badges.
+- Insert TODO placeholders where information is missing.
+- Adjust the structure dynamically to fit the repository's scale and content.
+- Output **only** the README markdown.
+
+Now, generate the best possible README.md for the repository based on the above instructions.
 `
   const result = await generateReadmeWithClaude(prompt)
   store.setGeneratedReadme(result)
