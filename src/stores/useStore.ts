@@ -6,6 +6,12 @@ export const useStore = defineStore('useStore', () => {
     const selectedType = ref<string>('profile');
     const isGenerating = ref<boolean>(false);
     const generatedContent = ref<string>('');
+    const generatedReadme = ref('')
+
+    function setGeneratedReadme(text) {
+        generatedReadme.value = text
+    }
+
 
     const handleTypeSelection = (type: string) => {
         selectedType.value = type;
@@ -16,6 +22,8 @@ export const useStore = defineStore('useStore', () => {
         selectedType,
         isGenerating,
         generatedContent,
+        setGeneratedReadme,
+        generatedReadme,
         handleTypeSelection
     }
 })

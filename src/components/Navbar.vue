@@ -4,12 +4,28 @@ import Moon from "@/svg-icons/moon.vue";
 import Facebook from "@/svg-icons/facebook.vue";
 import {ChevronDown, Linkedin} from 'lucide-vue-next';
 import {onBeforeUnmount, onMounted, ref} from "vue";
+import Sun from "@/svg-icons/sun.vue";
 
-const isActiveDropdown = ref(false)
+const isActiveDropdown = ref(false);
+const isDarkMode = ref(false);
 
 const toggleDropdown = () => {
   isActiveDropdown.value = !isActiveDropdown.value;
 };
+
+const toggleDarkMode = () => {
+  isDarkMode.value = !isDarkMode.value;
+  if (isDarkMode.value) {
+    document.body.classList.add('dark');
+  } else {
+    document.body.classList.remove('dark');
+  }
+};
+
+// Initialize dark mode based on current body class on mount
+onMounted(() => {
+  isDarkMode.value = document.body.classList.contains('dark');
+});
 
 let handleClickOutside: (event: MouseEvent) => void;
 
@@ -39,15 +55,23 @@ onBeforeUnmount(() => {
     </router-link>
 
     <div class='flex items-center gap-10 text-gray-700'>
-      <p class='text-[1rem] font-medium hover:text-brandColor cursor-pointer transition-all duration-200'>Features</p>
-      <p class='text-[1rem] font-medium hover:text-brandColor cursor-pointer transition-all duration-200'>FAQ</p>
-      <p class='text-[1rem] font-medium hover:text-brandColor cursor-pointer transition-all duration-200'>Changelog
-      </p>
-      <p class='text-[1rem] font-medium hover:text-brandColor cursor-pointer transition-all duration-200'>Contact Us
-      </p>
+      <router-link to="/features"
+                   class='text-[1rem] dark:text-white font-medium hover:text-brandColor cursor-pointer transition-all duration-200'>
+        Features
+      </router-link>
+      <router-link to="/faqs"
+                   class='text-[1rem] dark:text-white font-medium hover:text-brandColor cursor-pointer transition-all duration-200'>
+        FAQ
+      </router-link>
+      <router-link to="changelog"
+                   class='text-[1rem] dark:text-white font-medium hover:text-brandColor cursor-pointer transition-all duration-200'>
+        Changelog
+      </router-link>
+      <!--      <p class='text-[1rem] font-medium hover:text-brandColor cursor-pointer transition-all duration-200'>Contact Us-->
+      <!--      </p>-->
       <div class='relative'>
         <p @click="toggleDropdown"
-           class='text-[1rem] dropdown_btn font-medium hover:text-brandColor flex items-center gap-2 cursor-pointer transition-all duration-200'>
+           class='text-[1rem] dropdown_btn font-medium dark:text-white hover:text-brandColor flex items-center gap-2 cursor-pointer transition-all duration-200'>
           Communities
           <ChevronDown :class="`${isActiveDropdown ? 'rotate-180' : ''} transition-all duration-200`"/>
         </p>
@@ -93,8 +117,10 @@ onBeforeUnmount(() => {
       </div>
     </div>
 
-    <div class='flex items-center'>
-      <Moon/>
+    <div class='flex items-center cursor-pointer' @click="toggleDarkMode" title="Toggle Dark Mode">
+      <component :is="isDarkMode ? Sun : Moon"
+                 class="text-gray-700 dark:text-gray-300 transition-colors duration-300"/>
     </div>
+
   </nav>
 </template>

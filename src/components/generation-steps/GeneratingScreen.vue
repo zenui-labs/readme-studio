@@ -1,12 +1,19 @@
 <script setup lang="ts">
 import {CheckCircle, RefreshCw} from 'lucide-vue-next'
 import {useStore} from "@stores/useStore";
-import {onMounted, ref, watch} from "vue";
+import {computed, onMounted, ref, watch} from "vue";
 
 const currentStep = ref(0);
 const store = useStore()
 
-const steps = [
+const profileSteps = [
+  'Analyzing profile structure...',
+  'Loading GitHub data...',
+  'Creating README content...',
+  'Finalizing output...'
+]
+
+const repoSteps = [
   'Analyzing repository structure...',
   'Processing code files...',
   'Generating documentation...',
@@ -14,9 +21,13 @@ const steps = [
   'Finalizing output...'
 ]
 
+const steps = computed(() => {
+  return store.selectedType === 'profile' ? profileSteps : repoSteps
+})
+
 onMounted(() => {
   const interval = setInterval(() => {
-    if (currentStep.value < steps.length) {
+    if (currentStep.value < steps.value.length) {
       currentStep.value++;
     } else {
       clearInterval(interval);
@@ -25,9 +36,16 @@ onMounted(() => {
 });
 
 watch(() => currentStep.value, (newValue) => {
-  if (newValue === 5) {
-    store.currentStep = 4
-    currentStep.value = 0
+  if (store.selectedType === 'profile') {
+    if (newValue === 4) {
+      store.currentStep = 4
+      currentStep.value = 0
+    }
+  } else {
+    if (newValue === 5) {
+      store.currentStep = 4
+      currentStep.value = 0
+    }
   }
 }, {
   immediate: true,
@@ -36,7 +54,7 @@ watch(() => currentStep.value, (newValue) => {
 </script>
 
 <template>
-  <div v-if="store.currentStep === 3" class="space-y-4 inline-block mx-auto">
+  <div class="space-y-4 inline-block mx-auto">
     <div v-for="(step, index) in steps" :key="step" class="flex items-center gap-4">
       <div :class="['flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500',
             index <= currentStep ? 'bg-brandColor text-white' : 'bg-gray-200 text-gray-400']">

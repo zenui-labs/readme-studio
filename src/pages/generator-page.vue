@@ -6,6 +6,7 @@ import ProfileForm from "@components/generation-steps/ProfileForm.vue";
 import RepositoryForm from "@components/generation-steps/RepositoryForm.vue";
 import ReadmePreview from "@components/generation-steps/ReadmePreview.vue";
 import GeneratingScreen from "@components/generation-steps/GeneratingScreen.vue";
+import {onMounted} from "vue";
 
 const store = useStore()
 
@@ -27,6 +28,10 @@ const steps = [
     slug: 'preview',
   }
 ]
+
+onMounted(() => {
+  store.currentStep = 1
+})
 
 </script>
 
@@ -94,11 +99,11 @@ const steps = [
         </div>
 
 
-        <SelectType/>
-        <ProfileForm/>
-        <RepositoryForm/>
-        <ReadmePreview/>
-        <GeneratingScreen/>
+        <SelectType v-if="store.currentStep === 1"/>
+        <ProfileForm v-if="store.currentStep === 2 && store.selectedType === 'profile'"/>
+        <RepositoryForm v-if="store.currentStep === 2 && store.selectedType === 'repository'"/>
+        <ReadmePreview v-if="store.currentStep === 4"/>
+        <GeneratingScreen v-if="store.currentStep === 3"/>
       </div>
 
       <p class='text-[0.8rem] absolute bottom-5 opacity-80 left-1/2 -translate-x-1/2'>A product of <a
