@@ -100,23 +100,24 @@ const getIconClass = (type: string): string => {
 <template>
   <div class='my-[150px] max-w-[900px] mx-auto'>
     <div class="text-center">
-      <h1 class="text-[2.5rem] text-gray-800 font-bold">
+      <h1 class="text-[2.5rem] dark:text-darkText text-gray-800 font-bold">
         Changes and updates
       </h1>
-      <p class="text-gray-500 mt-2 text-[1rem] max-w-[700px] mx-auto mb-7">
+      <p class="text-gray-500 mt-2 dark:text-darkSubtext text-[1rem] max-w-[700px] mx-auto mb-7">
         Lorem ipsum dolor consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et, nullam sit
         amet magna sit amet risus accumsan sagittis et vitae.
       </p>
 
       <div class="relative max-w-md mx-auto">
-        <div class="absolute inset-y-0 left-0 pl-3 flex items-center text-gray-300 pointer-events-none">
+        <div
+            class="absolute inset-y-0 left-0 pl-3 flex items-center dark:text-darkSubtext text-gray-300 pointer-events-none">
           <Search/>
         </div>
         <input
             v-model="searchQuery"
             type="text"
             placeholder="Bug fixed, stability, improvement..."
-            class="w-full pl-12 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-brandColor focus:border-transparent outline-none"
+            class="w-full pl-12 pr-4 py-3 dark:text-darkSubtext dark:border-darkBorder border border-gray-200 rounded-lg focus:ring-2 focus:ring-brandColor focus:border-transparent outline-none"
         />
         <button
             class="absolute right-1.5 top-1/2 transform -translate-y-1/2 bg-brandColor text-white px-4 py-2 rounded-md hover:bg-brandColor/90 cursor-pointer transition-colors">
@@ -138,11 +139,11 @@ const getIconClass = (type: string): string => {
         <div class='text-left w-[80%] border-l-[3px] pl-6 relative border-brandColor'>
           <div class='bg-brandColor w-3 h-3 rounded-full absolute top-0 -left-[7px]'></div>
 
-          <h3 class="text-[1.5rem] font-semibold text-gray-800">
+          <h3 class="text-[1.5rem] dark:text-darkText font-semibold text-gray-800">
             {{ change.title }}
           </h3>
 
-          <p class="text-gray-500 mb-4 mt-2">
+          <p class="text-gray-500 dark:text-darkSubtext mb-4 mt-2">
             {{ change.description }}
           </p>
 
@@ -151,18 +152,18 @@ const getIconClass = (type: string): string => {
               <div class="w-2 h-2 bg-green-500 rounded-full"></div>
               <span class="text-green-700 font-medium text-sm">New</span>
             </div>
-            <div class="bg-gray-50 p-4 rounded-lg">
+            <div class="bg-gray-50 dark:bg-darkCardBgColor p-4 rounded-lg">
               <ul class="space-y-2">
                 <li
                     v-for="item in change.new"
                     :key="item.id"
-                    class="flex items-center gap-3 py-2 px-4 bg-white rounded-lg"
+                    class="flex items-center gap-3 py-2 px-4 bg-white dark:bg-darkBg rounded-lg"
                 >
                   <div
                       :class="getIconClass(item.type)"
                       class="w-2 h-2 rounded-full flex-shrink-0"
                   ></div>
-                  <span class="text-gray-700 text-[0.9rem]">
+                  <span class="text-gray-700 dark:text-darkSubtext text-[0.9rem]">
                   {{ item.text }}
                 </span>
                 </li>
@@ -175,18 +176,18 @@ const getIconClass = (type: string): string => {
               <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
               <span class="text-blue-700 font-medium text-sm">Updates</span>
             </div>
-            <div class="bg-gray-50 p-4 rounded-lg">
+            <div class="bg-gray-50 dark:bg-darkCardBgColor p-4 rounded-lg">
               <ul class="space-y-2">
                 <li
                     v-for="item in change.updates"
                     :key="item.id"
-                    class="flex items-center gap-3 py-2 px-4 bg-white rounded-lg"
+                    class="flex items-center gap-3 py-2 px-4 bg-white dark:bg-darkBg rounded-lg"
                 >
                   <div
                       :class="getIconClass(item.type)"
                       class="w-2 h-2 rounded-full flex-shrink-0"
                   ></div>
-                  <span class="text-gray-700 text-[0.9rem]">
+                  <span class="text-gray-700 dark:text-darkSubtext text-[0.9rem]">
                   {{ item.text }}
                 </span>
                 </li>
@@ -199,18 +200,18 @@ const getIconClass = (type: string): string => {
               <div class="w-2 h-2 bg-orange-500 rounded-full"></div>
               <span class="text-orange-700 font-medium text-sm">Fixed</span>
             </div>
-            <div class="bg-gray-50 p-4 rounded-lg">
+            <div class="bg-gray-50 dark:bg-darkCardBgColor p-4 rounded-lg">
               <ul class="space-y-2">
                 <li
                     v-for="item in change.fixed"
                     :key="item.id"
-                    class="flex items-center gap-3 py-2 px-4 bg-white rounded-lg"
+                    class="flex items-center gap-3 py-2 px-4 bg-white dark:bg-darkBg rounded-lg"
                 >
                   <div
                       :class="getIconClass(item.type)"
                       class="w-2 h-2 rounded-full flex-shrink-0"
                   ></div>
-                  <span class="text-gray-700 text-[0.9rem]">
+                  <span class="text-gray-700 dark:text-darkSubtext text-[0.9rem]">
                   {{ item.text }}
                 </span>
                 </li>

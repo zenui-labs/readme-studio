@@ -9,6 +9,11 @@
 
 @theme {
     --color-brandColor: #00AD95;
+    --color-darkBg: #0f0f11;
+    --color-darkText: #f1f1f1;
+    --color-darkCardBgColor: #1a1b1f;
+    --color-darkSubtext: #c4c8cd;
+    --color-darkBorder: #2c2f36;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));

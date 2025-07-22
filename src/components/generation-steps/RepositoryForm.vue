@@ -144,7 +144,7 @@ Now, generate the best possible README.md for the repository based on the above 
 <template>
   <div class="space-y-6">
     <div>
-      <label class="block text-[1rem] text-left font-medium text-gray-700 mb-2">
+      <label class="block text-[1rem] text-left dark:text-darkText font-medium text-gray-700 mb-2">
         GitHub Public Repository URL
       </label>
       <div class="relative">
@@ -155,8 +155,8 @@ Now, generate the best possible README.md for the repository based on the above 
             type="text"
             v-model="input"
             :placeholder="selectedType === 'profile' ? 'your-username' : 'https://github.com/username/repository'"
-            :class="['block w-full pl-10 pr-3 py-4 border-2 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandColor focus:border-transparent transition-all duration-200',
-                error ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-white']"
+            :class="['block w-full pl-10 pr-3 py-4 dark:text-darkText border-2 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandColor focus:border-transparent transition-all duration-200',
+                error ? 'border-red-300 bg-red-50' : 'border-gray-200 dark:bg-darkCardBgColor dark:border-darkBorder bg-white']"
         />
       </div>
       <div v-if="error" class="mt-2 flex items-center text-red-600 text-sm">
@@ -168,7 +168,7 @@ Now, generate the best possible README.md for the repository based on the above 
     <button
         :disabled="!validateGithubUrl(input)"
         @click="handleGenerating"
-        class="w-full bg-brandColor cursor-pointer gap-3 text-white py-4 px-6 rounded-xl font-medium text-lg shadow-lg hover:shadow-xl disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center space-x-2"
+        class="w-full bg-brandColor cursor-pointer gap-3 text-white py-4 px-6 rounded-xl font-medium text-lg shadow-lg hover:shadow-xl disabled:opacity-40 dark:disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center space-x-2"
     >
       <AiIcon/>
       Generate Repository Readme

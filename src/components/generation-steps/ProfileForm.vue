@@ -39,7 +39,7 @@ Your task is to generate a **world-class, visually appealing, and highly profess
 
 # {{Name}} 👋
 
-![Profile Image](https://example.com/profile.jpg).........the image should me full size with some border radius applied
+![Profile Image](https://example.com/profile.jpg)
 
 > A brief, catchy personal tagline or summary about the user.
 
@@ -131,7 +131,7 @@ Now, generate the **best possible, developer-focused, production-ready GitHub Pr
 <template>
   <div class="space-y-6">
     <div>
-      <label class="block text-[1rem] text-left font-medium text-gray-700 mb-2">
+      <label class="block text-[1rem] text-left font-medium dark:text-darkText text-gray-700 mb-2">
         GitHub Username
       </label>
       <div class="relative">
@@ -142,8 +142,8 @@ Now, generate the **best possible, developer-focused, production-ready GitHub Pr
             type="text"
             v-model="input"
             placeholder="your-username"
-            :class="['block w-full pl-10 pr-3 py-4 border-2 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandColor focus:border-transparent transition-all duration-200',
-                error ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-white']"
+            :class="['block w-full pl-10 pr-3 py-4 border-2 rounded-xl dark:text-darkText dark:bg-darkCardBgColor placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandColor focus:border-transparent transition-all duration-200',
+                error ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-white dark:border-darkBorder']"
         />
       </div>
       <div v-if="error" class="mt-2 flex items-center text-red-600 text-sm">
@@ -155,7 +155,7 @@ Now, generate the **best possible, developer-focused, production-ready GitHub Pr
     <button
         :disabled="!input"
         @click="handleGenerating"
-        class="w-full bg-brandColor cursor-pointer text-white gap-3 py-4 px-6 rounded-xl font-medium text-lg shadow-lg hover:shadow-xl disabled:opacity-40 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center space-x-2"
+        class="w-full bg-brandColor cursor-pointer text-white gap-3 py-4 px-6 rounded-xl font-medium text-lg shadow-lg hover:shadow-xl disabled:opacity-40 dark:disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center space-x-2"
     >
       <AiIcon/>
       Generate Profile Readme

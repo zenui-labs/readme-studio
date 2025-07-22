@@ -57,13 +57,13 @@ watch(() => currentStep.value, (newValue) => {
   <div class="space-y-4 inline-block mx-auto">
     <div v-for="(step, index) in steps" :key="step" class="flex items-center gap-4">
       <div :class="['flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500',
-            index <= currentStep ? 'bg-brandColor text-white' : 'bg-gray-200 text-gray-400']">
+            index <= currentStep ? 'bg-brandColor text-white' : 'bg-gray-200 text-gray-400 dark:text-gray-700 dark:bg-gray-400']">
         <CheckCircle v-if="index < currentStep" class="w-5 h-5"/>
         <RefreshCw v-else-if="index === currentStep" class="w-5 h-5 animate-spin"/>
         <div v-else class="w-2 h-2 bg-current rounded-full"/>
       </div>
       <span
-          :class="['text-lg transition-all duration-500', index <= currentStep ? 'text-gray-800 font-medium' : 'text-gray-400']">{{
+          :class="['text-lg transition-all duration-500', index <= currentStep ? 'text-gray-800 dark:text-darkText font-medium' : 'text-gray-400 dark:text-gray-500']">{{
           step
         }}</span>
     </div>
