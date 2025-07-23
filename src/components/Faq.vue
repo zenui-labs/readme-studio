@@ -62,7 +62,7 @@ const toggle = (index: number) => {
 </script>
 
 <template>
-  <section class="py-16 px-4 max-w-6xl mx-auto">
+  <section class="py-[130px] md:py-16 px-6 md:px-4 max-w-6xl mx-auto">
     <div class="text-center mb-12">
       <h2 class="text-[2.2rem] dark:text-darkText font-bold text-gray-800">Frequently Asked Questions</h2>
       <p class="text-gray-500 dark:text-darkSubtext mt-2 text-[1rem]">Everything you need to know about Readme

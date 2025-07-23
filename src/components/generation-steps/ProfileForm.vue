@@ -122,6 +122,7 @@ ${JSON.stringify(userData, null, 2)}
 Now, generate the **best possible, developer-focused, production-ready GitHub Profile README** for this user.
 `
 
+  if (store.hasError) return
   const result = await generateReadmeWithClaude(prompt)
   store.setGeneratedReadme(result)
 }

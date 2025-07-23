@@ -1,0 +1,287 @@
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
+var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
+    if (pack || arguments.length === 2) for (var i = 0, l = from.length, ar; i < l; i++) {
+        if (ar || !(i in from)) {
+            if (!ar) ar = Array.prototype.slice.call(from, 0, i);
+            ar[i] = from[i];
+        }
+    }
+    return to.concat(ar || Array.prototype.slice.call(from));
+};
+import { Award, Eye, Github, Zap } from 'lucide-vue-next';
+debugger; /* PartiallyEnd: #3632/scriptSetup.vue */
+var __VLS_ctx = {};
+var __VLS_components;
+var __VLS_directives;
+__VLS_asFunctionalElement(__VLS_intrinsicElements.section, __VLS_intrinsicElements.section)(__assign({ class: "max-w-7xl mx-auto py-20 px-6 md:px-4 mt-16" }));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(__assign({ class: "text-center mb-16" }));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.h2, __VLS_intrinsicElements.h2)(__assign({ class: "text-[2.5rem] dark:text-darkText text-gray-800 font-bold" }));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)(__assign({ class: "text-gray-500 dark:text-darkSubtext mt-2 text-[1rem]" }));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(__assign({ class: "grid grid-cols-1 md:grid-cols-6 gap-4" }));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(__assign({ class: "group relative overflow-hidden bg-white/50 min-h-[270px] backdrop-blue-2xl rounded-3xl p-8 border border-gray-100 bg-gradient-to-br from-white dark:from-darkBg dark:border-darkBorder dark:to-brandColor to-brandColor/50 md:col-span-4" }));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(__assign({ class: "relative z-10 h-full flex text-left flex-col" }));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(__assign({ class: "flex-1" }));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.h3, __VLS_intrinsicElements.h3)(__assign({ class: "text-[1.5rem] dark:text-darkText font-medium mb-4 leading-tight" }));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)(__assign({ class: "text-gray-700 dark:text-darkSubtext text-base leading-relaxed max-w-[400px]" }));
+var __VLS_0 = {}.Zap;
+/** @type {[typeof __VLS_components.Zap, ]} */ ;
+// @ts-ignore
+var __VLS_1 = __VLS_asFunctionalComponent(__VLS_0, new __VLS_0(__assign({ class: "w-[300px] h-[300px] text-gray-200 dark:opacity-30 opacity-50 absolute -bottom-20 -right-16" }, { strokeWidth: "1" })));
+var __VLS_2 = __VLS_1.apply(void 0, __spreadArray([__assign({ class: "w-[300px] h-[300px] text-gray-200 dark:opacity-30 opacity-50 absolute -bottom-20 -right-16" }, { strokeWidth: "1" })], __VLS_functionalComponentArgsRest(__VLS_1), false));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(__assign({ class: "\u0067\u0072\u006f\u0075\u0070\u0020\u0072\u0065\u006c\u0061\u0074\u0069\u0076\u0065\u0020\u006f\u0076\u0065\u0072\u0066\u006c\u006f\u0077\u002d\u0068\u0069\u0064\u0064\u0065\u006e\u0020\u0062\u0067\u002d\u0077\u0068\u0069\u0074\u0065\u002f\u0035\u0030\u0020\u006d\u0069\u006e\u002d\u0068\u002d\u005b\u0032\u0037\u0030\u0070\u0078\u005d\u0020\u0062\u006f\u0072\u0064\u0065\u0072\u0020\u0062\u006f\u0072\u0064\u0065\u0072\u002d\u0067\u0072\u0061\u0079\u002d\u0031\u0030\u0030\u0020\u0062\u0061\u0063\u006b\u0064\u0072\u006f\u0070\u002d\u0062\u006c\u0075\u0065\u002d\u0032\u0078\u006c\u0020\u0072\u006f\u0075\u006e\u0064\u0065\u0064\u002d\u0033\u0078\u006c\u0020\u0070\u002d\u0038\u000d\u000a\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0062\u0067\u002d\u0067\u0072\u0061\u0064\u0069\u0065\u006e\u0074\u002d\u0074\u006f\u002d\u0074\u0072\u0020\u0066\u0072\u006f\u006d\u002d\u0062\u0072\u0061\u006e\u0064\u0043\u006f\u006c\u006f\u0072\u002f\u0035\u0030\u0020\u0064\u0061\u0072\u006b\u003a\u0062\u006f\u0072\u0064\u0065\u0072\u002d\u0064\u0061\u0072\u006b\u0042\u006f\u0072\u0064\u0065\u0072\u0020\u0064\u0061\u0072\u006b\u003a\u0066\u0072\u006f\u006d\u002d\u0062\u0072\u0061\u006e\u0064\u0043\u006f\u006c\u006f\u0072\u0020\u0074\u006f\u002d\u0077\u0068\u0069\u0074\u0065\u0020\u0064\u0061\u0072\u006b\u003a\u0074\u006f\u002d\u0064\u0061\u0072\u006b\u0042\u0067\u0020\u006d\u0064\u003a\u0063\u006f\u006c\u002d\u0073\u0070\u0061\u006e\u002d\u0032" }));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(__assign({ class: "relative z-10 h-full text-left flex flex-col" }));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(__assign({ class: "flex-1" }));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.h3, __VLS_intrinsicElements.h3)(__assign({ class: "text-[1.5rem] dark:text-darkText font-medium mb-4 leading-tight" }));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)(__assign({ class: "text-gray-700 dark:text-darkSubtext text-base leading-relaxed" }));
+var __VLS_4 = {}.Award;
+/** @type {[typeof __VLS_components.Award, ]} */ ;
+// @ts-ignore
+var __VLS_5 = __VLS_asFunctionalComponent(__VLS_4, new __VLS_4(__assign({ class: "w-[200px] h-[200px] text-gray-100 dark:opacity-30 opacity-50 rotate-[-30deg] absolute -bottom-20 -right-16" }, { strokeWidth: "1" })));
+var __VLS_6 = __VLS_5.apply(void 0, __spreadArray([__assign({ class: "w-[200px] h-[200px] text-gray-100 dark:opacity-30 opacity-50 rotate-[-30deg] absolute -bottom-20 -right-16" }, { strokeWidth: "1" })], __VLS_functionalComponentArgsRest(__VLS_5), false));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(__assign({ class: "\u0067\u0072\u006f\u0075\u0070\u0020\u0072\u0065\u006c\u0061\u0074\u0069\u0076\u0065\u0020\u006f\u0076\u0065\u0072\u0066\u006c\u006f\u0077\u002d\u0068\u0069\u0064\u0064\u0065\u006e\u0020\u0062\u0067\u002d\u0077\u0068\u0069\u0074\u0065\u002f\u0035\u0030\u0020\u006d\u0069\u006e\u002d\u0068\u002d\u005b\u0032\u0037\u0030\u0070\u0078\u005d\u0020\u0064\u0061\u0072\u006b\u003a\u0062\u006f\u0072\u0064\u0065\u0072\u002d\u0064\u0061\u0072\u006b\u0042\u006f\u0072\u0064\u0065\u0072\u0020\u0062\u006f\u0072\u0064\u0065\u0072\u0020\u0062\u006f\u0072\u0064\u0065\u0072\u002d\u0067\u0072\u0061\u0079\u002d\u0031\u0030\u0030\u0020\u0062\u0061\u0063\u006b\u0064\u0072\u006f\u0070\u002d\u0062\u006c\u0075\u0065\u002d\u0032\u0078\u006c\u0020\u0072\u006f\u0075\u006e\u0064\u0065\u0064\u002d\u0033\u0078\u006c\u0020\u0070\u002d\u0038\u000d\u000a\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0062\u0067\u002d\u0067\u0072\u0061\u0064\u0069\u0065\u006e\u0074\u002d\u0074\u006f\u002d\u0074\u0072\u0020\u0066\u0072\u006f\u006d\u002d\u0077\u0068\u0069\u0074\u0065\u0020\u0074\u006f\u002d\u0062\u0072\u0061\u006e\u0064\u0043\u006f\u006c\u006f\u0072\u002f\u0035\u0030\u0020\u0064\u0061\u0072\u006b\u003a\u0074\u006f\u002d\u0062\u0072\u0061\u006e\u0064\u0043\u006f\u006c\u006f\u0072\u0020\u0064\u0061\u0072\u006b\u003a\u0066\u0072\u006f\u006d\u002d\u0064\u0061\u0072\u006b\u0042\u0067\u0020\u006d\u0064\u003a\u0063\u006f\u006c\u002d\u0073\u0070\u0061\u006e\u002d\u0032" }));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(__assign({ class: "relative z-10 h-full flex text-left flex-col" }));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(__assign({ class: "flex-1" }));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.h3, __VLS_intrinsicElements.h3)(__assign({ class: "text-[1.5rem] dark:text-darkText font-medium mb-4 leading-tight" }));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)(__assign({ class: "text-gray-700 dark:text-darkSubtext text-base leading-relaxed" }));
+var __VLS_8 = {}.Eye;
+/** @type {[typeof __VLS_components.Eye, ]} */ ;
+// @ts-ignore
+var __VLS_9 = __VLS_asFunctionalComponent(__VLS_8, new __VLS_8(__assign({ class: "w-[200px] h-[200px] text-gray-100 dark:opacity-30 opacity-40 rotate-[-30deg] absolute -bottom-20 -right-16" }, { strokeWidth: "1" })));
+var __VLS_10 = __VLS_9.apply(void 0, __spreadArray([__assign({ class: "w-[200px] h-[200px] text-gray-100 dark:opacity-30 opacity-40 rotate-[-30deg] absolute -bottom-20 -right-16" }, { strokeWidth: "1" })], __VLS_functionalComponentArgsRest(__VLS_9), false));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(__assign({ class: "\u0067\u0072\u006f\u0075\u0070\u0020\u0072\u0065\u006c\u0061\u0074\u0069\u0076\u0065\u0020\u006f\u0076\u0065\u0072\u0066\u006c\u006f\u0077\u002d\u0068\u0069\u0064\u0064\u0065\u006e\u0020\u0062\u0067\u002d\u0077\u0068\u0069\u0074\u0065\u002f\u0035\u0030\u0020\u006d\u0069\u006e\u002d\u0068\u002d\u005b\u0032\u0037\u0030\u0070\u0078\u005d\u0020\u0064\u0061\u0072\u006b\u003a\u0062\u006f\u0072\u0064\u0065\u0072\u002d\u0064\u0061\u0072\u006b\u0042\u006f\u0072\u0064\u0065\u0072\u0020\u0062\u006f\u0072\u0064\u0065\u0072\u0020\u0062\u006f\u0072\u0064\u0065\u0072\u002d\u0067\u0072\u0061\u0079\u002d\u0031\u0030\u0030\u0020\u0062\u0061\u0063\u006b\u0064\u0072\u006f\u0070\u002d\u0062\u006c\u0075\u0065\u002d\u0032\u0078\u006c\u0020\u0072\u006f\u0075\u006e\u0064\u0065\u0064\u002d\u0033\u0078\u006c\u0020\u0070\u002d\u0038\u000d\u000a\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0020\u0062\u0067\u002d\u0067\u0072\u0061\u0064\u0069\u0065\u006e\u0074\u002d\u0074\u006f\u002d\u0062\u0072\u0020\u0066\u0072\u006f\u006d\u002d\u0062\u0072\u0061\u006e\u0064\u0043\u006f\u006c\u006f\u0072\u002f\u0035\u0030\u0020\u0064\u0061\u0072\u006b\u003a\u0066\u0072\u006f\u006d\u002d\u0062\u0072\u0061\u006e\u0064\u0043\u006f\u006c\u006f\u0072\u0020\u0064\u0061\u0072\u006b\u003a\u0074\u006f\u002d\u0064\u0061\u0072\u006b\u0042\u0067\u0020\u0074\u006f\u002d\u0077\u0068\u0069\u0074\u0065\u0020\u006d\u0064\u003a\u0063\u006f\u006c\u002d\u0073\u0070\u0061\u006e\u002d\u0034" }));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(__assign({ class: "relative z-10 h-full text-left flex flex-col" }));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(__assign({ class: "flex-1" }));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.h3, __VLS_intrinsicElements.h3)(__assign({ class: "text-[1.5rem] dark:text-darkText font-medium mb-4 leading-tight" }));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.p, __VLS_intrinsicElements.p)(__assign({ class: "text-gray-700 dark:text-darkSubtext text-base leading-relaxed max-w-[400px]" }));
+var __VLS_12 = {}.Github;
+/** @type {[typeof __VLS_components.Github, ]} */ ;
+// @ts-ignore
+var __VLS_13 = __VLS_asFunctionalComponent(__VLS_12, new __VLS_12(__assign({ class: "w-[280px] h-[280px] text-gray-100 dark:opacity-20 opacity-50 rotate-[-30deg] absolute -bottom-20 -right-20" }, { strokeWidth: "1" })));
+var __VLS_14 = __VLS_13.apply(void 0, __spreadArray([__assign({ class: "w-[280px] h-[280px] text-gray-100 dark:opacity-20 opacity-50 rotate-[-30deg] absolute -bottom-20 -right-20" }, { strokeWidth: "1" })], __VLS_functionalComponentArgsRest(__VLS_13), false));
+__VLS_asFunctionalElement(__VLS_intrinsicElements.div, __VLS_intrinsicElements.div)(__assign({ class: "absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300" }));
+/** @type {__VLS_StyleScopedClasses['max-w-7xl']} */ ;
+/** @type {__VLS_StyleScopedClasses['mx-auto']} */ ;
+/** @type {__VLS_StyleScopedClasses['py-20']} */ ;
+/** @type {__VLS_StyleScopedClasses['px-6']} */ ;
+/** @type {__VLS_StyleScopedClasses['md:px-4']} */ ;
+/** @type {__VLS_StyleScopedClasses['mt-16']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-center']} */ ;
+/** @type {__VLS_StyleScopedClasses['mb-16']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-[2.5rem]']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:text-darkText']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-gray-800']} */ ;
+/** @type {__VLS_StyleScopedClasses['font-bold']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-gray-500']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:text-darkSubtext']} */ ;
+/** @type {__VLS_StyleScopedClasses['mt-2']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-[1rem]']} */ ;
+/** @type {__VLS_StyleScopedClasses['grid']} */ ;
+/** @type {__VLS_StyleScopedClasses['grid-cols-1']} */ ;
+/** @type {__VLS_StyleScopedClasses['md:grid-cols-6']} */ ;
+/** @type {__VLS_StyleScopedClasses['gap-4']} */ ;
+/** @type {__VLS_StyleScopedClasses['group']} */ ;
+/** @type {__VLS_StyleScopedClasses['relative']} */ ;
+/** @type {__VLS_StyleScopedClasses['overflow-hidden']} */ ;
+/** @type {__VLS_StyleScopedClasses['bg-white/50']} */ ;
+/** @type {__VLS_StyleScopedClasses['min-h-[270px]']} */ ;
+/** @type {__VLS_StyleScopedClasses['backdrop-blue-2xl']} */ ;
+/** @type {__VLS_StyleScopedClasses['rounded-3xl']} */ ;
+/** @type {__VLS_StyleScopedClasses['p-8']} */ ;
+/** @type {__VLS_StyleScopedClasses['border']} */ ;
+/** @type {__VLS_StyleScopedClasses['border-gray-100']} */ ;
+/** @type {__VLS_StyleScopedClasses['bg-gradient-to-br']} */ ;
+/** @type {__VLS_StyleScopedClasses['from-white']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:from-darkBg']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:border-darkBorder']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:to-brandColor']} */ ;
+/** @type {__VLS_StyleScopedClasses['to-brandColor/50']} */ ;
+/** @type {__VLS_StyleScopedClasses['md:col-span-4']} */ ;
+/** @type {__VLS_StyleScopedClasses['relative']} */ ;
+/** @type {__VLS_StyleScopedClasses['z-10']} */ ;
+/** @type {__VLS_StyleScopedClasses['h-full']} */ ;
+/** @type {__VLS_StyleScopedClasses['flex']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-left']} */ ;
+/** @type {__VLS_StyleScopedClasses['flex-col']} */ ;
+/** @type {__VLS_StyleScopedClasses['flex-1']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-[1.5rem]']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:text-darkText']} */ ;
+/** @type {__VLS_StyleScopedClasses['font-medium']} */ ;
+/** @type {__VLS_StyleScopedClasses['mb-4']} */ ;
+/** @type {__VLS_StyleScopedClasses['leading-tight']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-gray-700']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:text-darkSubtext']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-base']} */ ;
+/** @type {__VLS_StyleScopedClasses['leading-relaxed']} */ ;
+/** @type {__VLS_StyleScopedClasses['max-w-[400px]']} */ ;
+/** @type {__VLS_StyleScopedClasses['w-[300px]']} */ ;
+/** @type {__VLS_StyleScopedClasses['h-[300px]']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-gray-200']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:opacity-30']} */ ;
+/** @type {__VLS_StyleScopedClasses['opacity-50']} */ ;
+/** @type {__VLS_StyleScopedClasses['absolute']} */ ;
+/** @type {__VLS_StyleScopedClasses['-bottom-20']} */ ;
+/** @type {__VLS_StyleScopedClasses['-right-16']} */ ;
+/** @type {__VLS_StyleScopedClasses['group']} */ ;
+/** @type {__VLS_StyleScopedClasses['relative']} */ ;
+/** @type {__VLS_StyleScopedClasses['overflow-hidden']} */ ;
+/** @type {__VLS_StyleScopedClasses['bg-white/50']} */ ;
+/** @type {__VLS_StyleScopedClasses['min-h-[270px]']} */ ;
+/** @type {__VLS_StyleScopedClasses['border']} */ ;
+/** @type {__VLS_StyleScopedClasses['border-gray-100']} */ ;
+/** @type {__VLS_StyleScopedClasses['backdrop-blue-2xl']} */ ;
+/** @type {__VLS_StyleScopedClasses['rounded-3xl']} */ ;
+/** @type {__VLS_StyleScopedClasses['p-8']} */ ;
+/** @type {__VLS_StyleScopedClasses['bg-gradient-to-tr']} */ ;
+/** @type {__VLS_StyleScopedClasses['from-brandColor/50']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:border-darkBorder']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:from-brandColor']} */ ;
+/** @type {__VLS_StyleScopedClasses['to-white']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:to-darkBg']} */ ;
+/** @type {__VLS_StyleScopedClasses['md:col-span-2']} */ ;
+/** @type {__VLS_StyleScopedClasses['relative']} */ ;
+/** @type {__VLS_StyleScopedClasses['z-10']} */ ;
+/** @type {__VLS_StyleScopedClasses['h-full']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-left']} */ ;
+/** @type {__VLS_StyleScopedClasses['flex']} */ ;
+/** @type {__VLS_StyleScopedClasses['flex-col']} */ ;
+/** @type {__VLS_StyleScopedClasses['flex-1']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-[1.5rem]']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:text-darkText']} */ ;
+/** @type {__VLS_StyleScopedClasses['font-medium']} */ ;
+/** @type {__VLS_StyleScopedClasses['mb-4']} */ ;
+/** @type {__VLS_StyleScopedClasses['leading-tight']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-gray-700']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:text-darkSubtext']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-base']} */ ;
+/** @type {__VLS_StyleScopedClasses['leading-relaxed']} */ ;
+/** @type {__VLS_StyleScopedClasses['w-[200px]']} */ ;
+/** @type {__VLS_StyleScopedClasses['h-[200px]']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-gray-100']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:opacity-30']} */ ;
+/** @type {__VLS_StyleScopedClasses['opacity-50']} */ ;
+/** @type {__VLS_StyleScopedClasses['rotate-[-30deg]']} */ ;
+/** @type {__VLS_StyleScopedClasses['absolute']} */ ;
+/** @type {__VLS_StyleScopedClasses['-bottom-20']} */ ;
+/** @type {__VLS_StyleScopedClasses['-right-16']} */ ;
+/** @type {__VLS_StyleScopedClasses['group']} */ ;
+/** @type {__VLS_StyleScopedClasses['relative']} */ ;
+/** @type {__VLS_StyleScopedClasses['overflow-hidden']} */ ;
+/** @type {__VLS_StyleScopedClasses['bg-white/50']} */ ;
+/** @type {__VLS_StyleScopedClasses['min-h-[270px]']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:border-darkBorder']} */ ;
+/** @type {__VLS_StyleScopedClasses['border']} */ ;
+/** @type {__VLS_StyleScopedClasses['border-gray-100']} */ ;
+/** @type {__VLS_StyleScopedClasses['backdrop-blue-2xl']} */ ;
+/** @type {__VLS_StyleScopedClasses['rounded-3xl']} */ ;
+/** @type {__VLS_StyleScopedClasses['p-8']} */ ;
+/** @type {__VLS_StyleScopedClasses['bg-gradient-to-tr']} */ ;
+/** @type {__VLS_StyleScopedClasses['from-white']} */ ;
+/** @type {__VLS_StyleScopedClasses['to-brandColor/50']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:to-brandColor']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:from-darkBg']} */ ;
+/** @type {__VLS_StyleScopedClasses['md:col-span-2']} */ ;
+/** @type {__VLS_StyleScopedClasses['relative']} */ ;
+/** @type {__VLS_StyleScopedClasses['z-10']} */ ;
+/** @type {__VLS_StyleScopedClasses['h-full']} */ ;
+/** @type {__VLS_StyleScopedClasses['flex']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-left']} */ ;
+/** @type {__VLS_StyleScopedClasses['flex-col']} */ ;
+/** @type {__VLS_StyleScopedClasses['flex-1']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-[1.5rem]']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:text-darkText']} */ ;
+/** @type {__VLS_StyleScopedClasses['font-medium']} */ ;
+/** @type {__VLS_StyleScopedClasses['mb-4']} */ ;
+/** @type {__VLS_StyleScopedClasses['leading-tight']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-gray-700']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:text-darkSubtext']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-base']} */ ;
+/** @type {__VLS_StyleScopedClasses['leading-relaxed']} */ ;
+/** @type {__VLS_StyleScopedClasses['w-[200px]']} */ ;
+/** @type {__VLS_StyleScopedClasses['h-[200px]']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-gray-100']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:opacity-30']} */ ;
+/** @type {__VLS_StyleScopedClasses['opacity-40']} */ ;
+/** @type {__VLS_StyleScopedClasses['rotate-[-30deg]']} */ ;
+/** @type {__VLS_StyleScopedClasses['absolute']} */ ;
+/** @type {__VLS_StyleScopedClasses['-bottom-20']} */ ;
+/** @type {__VLS_StyleScopedClasses['-right-16']} */ ;
+/** @type {__VLS_StyleScopedClasses['group']} */ ;
+/** @type {__VLS_StyleScopedClasses['relative']} */ ;
+/** @type {__VLS_StyleScopedClasses['overflow-hidden']} */ ;
+/** @type {__VLS_StyleScopedClasses['bg-white/50']} */ ;
+/** @type {__VLS_StyleScopedClasses['min-h-[270px]']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:border-darkBorder']} */ ;
+/** @type {__VLS_StyleScopedClasses['border']} */ ;
+/** @type {__VLS_StyleScopedClasses['border-gray-100']} */ ;
+/** @type {__VLS_StyleScopedClasses['backdrop-blue-2xl']} */ ;
+/** @type {__VLS_StyleScopedClasses['rounded-3xl']} */ ;
+/** @type {__VLS_StyleScopedClasses['p-8']} */ ;
+/** @type {__VLS_StyleScopedClasses['bg-gradient-to-br']} */ ;
+/** @type {__VLS_StyleScopedClasses['from-brandColor/50']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:from-brandColor']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:to-darkBg']} */ ;
+/** @type {__VLS_StyleScopedClasses['to-white']} */ ;
+/** @type {__VLS_StyleScopedClasses['md:col-span-4']} */ ;
+/** @type {__VLS_StyleScopedClasses['relative']} */ ;
+/** @type {__VLS_StyleScopedClasses['z-10']} */ ;
+/** @type {__VLS_StyleScopedClasses['h-full']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-left']} */ ;
+/** @type {__VLS_StyleScopedClasses['flex']} */ ;
+/** @type {__VLS_StyleScopedClasses['flex-col']} */ ;
+/** @type {__VLS_StyleScopedClasses['flex-1']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-[1.5rem]']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:text-darkText']} */ ;
+/** @type {__VLS_StyleScopedClasses['font-medium']} */ ;
+/** @type {__VLS_StyleScopedClasses['mb-4']} */ ;
+/** @type {__VLS_StyleScopedClasses['leading-tight']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-gray-700']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:text-darkSubtext']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-base']} */ ;
+/** @type {__VLS_StyleScopedClasses['leading-relaxed']} */ ;
+/** @type {__VLS_StyleScopedClasses['max-w-[400px]']} */ ;
+/** @type {__VLS_StyleScopedClasses['w-[280px]']} */ ;
+/** @type {__VLS_StyleScopedClasses['h-[280px]']} */ ;
+/** @type {__VLS_StyleScopedClasses['text-gray-100']} */ ;
+/** @type {__VLS_StyleScopedClasses['dark:opacity-20']} */ ;
+/** @type {__VLS_StyleScopedClasses['opacity-50']} */ ;
+/** @type {__VLS_StyleScopedClasses['rotate-[-30deg]']} */ ;
+/** @type {__VLS_StyleScopedClasses['absolute']} */ ;
+/** @type {__VLS_StyleScopedClasses['-bottom-20']} */ ;
+/** @type {__VLS_StyleScopedClasses['-right-20']} */ ;
+/** @type {__VLS_StyleScopedClasses['absolute']} */ ;
+/** @type {__VLS_StyleScopedClasses['inset-0']} */ ;
+/** @type {__VLS_StyleScopedClasses['bg-gradient-to-r']} */ ;
+/** @type {__VLS_StyleScopedClasses['from-white/0']} */ ;
+/** @type {__VLS_StyleScopedClasses['via-white/10']} */ ;
+/** @type {__VLS_StyleScopedClasses['to-white/0']} */ ;
+/** @type {__VLS_StyleScopedClasses['opacity-0']} */ ;
+/** @type {__VLS_StyleScopedClasses['group-hover:opacity-100']} */ ;
+/** @type {__VLS_StyleScopedClasses['transition-opacity']} */ ;
+/** @type {__VLS_StyleScopedClasses['duration-300']} */ ;
+var __VLS_dollars;
+var __VLS_self = (await import('vue')).defineComponent({
+    setup: function () {
+        return {
+            Award: Award,
+            Eye: Eye,
+            Github: Github,
+            Zap: Zap,
+        };
+    },
+});
+export default (await import('vue')).defineComponent({
+    setup: function () {
+        return {};
+    },
+});
+; /* PartiallyEnd: #4569/main.vue */

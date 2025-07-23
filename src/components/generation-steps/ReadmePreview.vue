@@ -14,6 +14,7 @@ const isDownloading = ref(false)
 
 const handleModalClose = () => {
   store.currentStep = 1
+  store.generatedReadme = ''
   router.push('/')
 }
 
@@ -46,16 +47,15 @@ const downloadReadme = () => {
 }
 </script>
 
-
 <template>
   <Transition name="fade" appear>
     <div
         v-if="store.currentStep === 4"
-        class="fixed top-0 left-0 z-[20000000000] w-full h-screen flex justify-center items-center flex-col backdrop-blur-3xl dark:backdrop-blur-2xl bg-black/10 dark:bg-transparent"
+        class="fixed top-0 left-0 z-[50000000000000000000000000] w-full h-screen flex justify-center items-center flex-col backdrop-blur-3xl dark:backdrop-blur-2xl bg-black/10 dark:bg-transparent"
     >
       <Transition name="slide-up" appear>
         <div
-            class="w-[80%] mt-36"
+            class="w-[95%] md:w-[80%] mt-36"
         >
 
           <div class='flex items-center justify-end gap-3 mb-3'>

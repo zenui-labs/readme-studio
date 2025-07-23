@@ -5,9 +5,12 @@ import Facebook from "@/svg-icons/facebook.vue";
 import {ChevronDown, Linkedin} from 'lucide-vue-next';
 import {onBeforeUnmount, onMounted, ref} from "vue";
 import Sun from "@/svg-icons/sun.vue";
+import {useStore} from "@stores/useStore";
 
 const isActiveDropdown = ref(false);
 const isDarkMode = ref(false);
+
+const store = useStore()
 
 const toggleDropdown = () => {
   isActiveDropdown.value = !isActiveDropdown.value;
@@ -44,7 +47,9 @@ let handleClickOutside: (event: MouseEvent) => void;
 onMounted(() => {
   handleClickOutside = (event: MouseEvent) => {
     if (
+        // @ts-ignore
         !event.target.closest('.dropdown_btn') &&
+        // @ts-ignore
         !event.target.closest('.dropdown')
     ) {
       isActiveDropdown.value = false;
@@ -61,10 +66,15 @@ onBeforeUnmount(() => {
 
 <template>
   <nav
-      class='absolute top-5 left-1/2 -translate-x-1/2 z-10 backdrop-blur-5xl items-center justify-between w-full max-w-[1200px] mx-auto py-2.5 hidden md:flex rounded-full px-6'>
-    <router-link to="/">
-      <img src="/logo.svg" alt="logo" class="w-[40px]"/>
-    </router-link>
+      :class="store.generatedReadme ? 'z-10' : 'z-20'"
+      class='fixed top-5 left-1/2 -translate-x-1/2 backdrop-blur-2xl items-center justify-between w-full max-w-[1200px] mx-auto py-2.5 hidden md:flex rounded-full px-6'>
+    <div class='flex items-start gap-2'>
+      <router-link to="/">
+        <img src="/logo.svg" alt="logo" class="w-[40px]"/>
+      </router-link>
+      <span
+          class='bg-gray-50 rounded-full dark:border-darkBorder dark:text-darkSubtext dark:bg-darkCardBgColor border border-gray-100 px-2 py-0 text-[0.8rem] font-medium text-gray-700'>Beta</span>
+    </div>
 
     <div class='flex items-center gap-10 text-gray-700'>
       <router-link to="/features"

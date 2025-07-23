@@ -135,6 +135,7 @@ Remember:
 
 Now, generate the best possible README.md for the repository based on the above instructions.
 `
+  if (store.hasError) return
   const result = await generateReadmeWithClaude(prompt)
   store.setGeneratedReadme(result)
 }

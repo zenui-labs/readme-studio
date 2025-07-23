@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import Moon from "@/svg-icons/moon.vue";
-import {onBeforeUnmount, onMounted, ref, watch} from "vue";
+import {onBeforeUnmount, onMounted, ref} from "vue";
 import Sun from "@/svg-icons/sun.vue";
-import {Menu} from "lucide-vue-next"
+import {ChevronDown, Linkedin, Menu, X} from "lucide-vue-next"
+import Facebook from "@/svg-icons/facebook.vue";
+import Discord from "@/svg-icons/discord.vue";
+import {useStore} from "@stores/useStore";
 
 const isActiveDropdown = ref(false);
 const isDarkMode = ref(false);
 const isSidebarOpen = ref(false);
+
+const store = useStore()
 
 const toggleDropdown = () => {
   isActiveDropdown.value = !isActiveDropdown.value;
@@ -48,7 +53,9 @@ let handleClickOutside: (event: MouseEvent) => void;
 onMounted(() => {
   handleClickOutside = (event: MouseEvent) => {
     if (
+        // @ts-ignore
         !event.target.closest('.dropdown_btn') &&
+        // @ts-ignore
         !event.target.closest('.dropdown')
     ) {
       isActiveDropdown.value = false;
@@ -60,27 +67,26 @@ onMounted(() => {
 onBeforeUnmount(() => {
   document.removeEventListener('click', handleClickOutside);
 });
-
-watch(isSidebarOpen, (val) => {
-  document.body.style.overflow = val ? 'hidden' : '';
-});
-
-
 </script>
 
 <template>
   <nav
-      class='absolute top-5 left-1/2 -translate-x-1/2 z-20 backdrop-blur-5xl flex md:hidden items-center justify-between w-full max-w-[1200px] mx-auto py-2.5 rounded-full px-6'>
-    <router-link to="/">
-      <img src="/logo.svg" alt="logo" class="w-[33px]"/>
-    </router-link>
+      :class="store.generatedReadme ? 'z-10' : 'z-20'"
+      class='fixed top-5 left-1/2 -translate-x-1/2 backdrop-blur-2xl flex md:hidden items-center justify-between w-full max-w-[1200px] mx-auto py-2.5 rounded-full px-6'>
+    <div class='flex items-start gap-2'>
+      <router-link to="/">
+        <img src="/logo.svg" alt="logo" class="w-[33px]"/>
+      </router-link>
+      <span
+          class='bg-gray-50 rounded-full dark:border-darkBorder dark:text-darkSubtext dark:bg-darkCardBgColor border border-gray-100 px-2 py-0 text-[0.8rem] font-medium text-gray-700'>Beta</span>
+    </div>
 
     <div class='flex items-center gap-3'>
       <div class='flex items-center cursor-pointer' @click="toggleDarkMode" title="Toggle Dark Mode">
         <component :is="isDarkMode ? Sun : Moon"
                    class="text-gray-700 dark:text-gray-300 transition-colors duration-300"/>
       </div>
-      <Menu :size="28" @click="toggleSidebar" class="cursor-pointer"/>
+      <Menu :size="28" @click="toggleSidebar" class="cursor-pointer dark:text-darkText"/>
     </div>
   </nav>
 
@@ -95,11 +101,10 @@ watch(isSidebarOpen, (val) => {
       leave-to-class="translate-x-full"
   >
     <aside v-if="isSidebarOpen"
-           class="fixed top-0 right-0 h-full w-[85%] max-w-xs z-50 bg-white dark:bg-darkCardBgColor shadow-xl p-6 flex flex-col gap-4">
+           class="fixed top-0 right-0 h-full w-[85%] max-w-xs z-50 bg-white dark:bg-darkCardBgColor shadow-xl px-8 py-6 flex flex-col gap-4">
 
-      <div class="flex justify-between items-center mb-6">
-        <router-link to="/" class="text-lg font-bold">Readme Studio</router-link>
-        <X @click="toggleSidebar" class="cursor-pointer"/>
+      <div class="flex justify-end items-center mb-3">
+        <X @click="toggleSidebar" strokeWidth="1.5" :size="22" class="cursor-pointer dark:text-darkSubtext"/>
       </div>
 
       <router-link to="/features"
@@ -115,23 +120,28 @@ watch(isSidebarOpen, (val) => {
         Changelog
       </router-link>
 
-      <div class='pt-4 border-t border-gray-300 dark:border-gray-700'>
-        <p class='font-semibold mb-2'>Communities</p>
-        <a href="https://www.linkedin.com/company/readme-studio" target="_blank"
-           class='text-sm flex items-center gap-2 hover:text-brandColor transition'>
-          <Facebook class="w-5 h-5"/>
-          Facebook Group
-        </a>
-        <a href="https://discord.gg/E99jWHVMca" target="_blank"
-           class='text-sm flex items-center gap-2 hover:text-brandColor transition'>
-          <Discord class="w-5 h-5"/>
-          Discord Channel
-        </a>
-        <a href="https://web.facebook.com/share/g/1ARs1rHQat/" target="_blank"
-           class='text-sm flex items-center gap-2 hover:text-brandColor transition'>
-          <Linkedin class="w-5 h-5"/>
-          LinkedIn Page
-        </a>
+      <div>
+        <p @click="toggleDropdown" class='font-semibold dropdown_btn mb-2 flex dark:text-darkText items-center gap-2'>
+          Communities
+          <ChevronDown :size="22" :class="`${isActiveDropdown ? 'rotate-180' : ''} transition-all duration-200`"/>
+        </p>
+        <div v-if="isActiveDropdown" class='dropdown'>
+          <a href="https://www.linkedin.com/company/readme-studio" target="_blank"
+             class='text-sm flex items-center mt-2 dark:text-darkText hover:text-brandColor transition'>
+            <Facebook class="!text-[2rem]"/>
+            Facebook Group
+          </a>
+          <a href="https://discord.gg/E99jWHVMca" target="_blank"
+             class='text-sm flex items-center mt-1 dark:text-darkText hover:text-brandColor transition'>
+            <Discord class="!text-[2rem]"/>
+            Discord Channel
+          </a>
+          <a href="https://web.facebook.com/share/g/1ARs1rHQat/" target="_blank"
+             class='text-sm flex items-center gap-2 dark:text-darkText mt-2 ml-2 hover:text-brandColor transition'>
+            <Linkedin strokeWidth="1" :size="17"/>
+            LinkedIn Page
+          </a>
+        </div>
       </div>
     </aside>
   </transition>

@@ -37,43 +37,53 @@ onMounted(() => {
 
 <template>
   <RootLayout>
-    <div :class="`${store.currentStep === 3 && 'my-[100px]'} z-10 max-w-[1200px] min-w-[900px] mx-auto`">
+    <div
+        :class="`${store.currentStep === 3 && 'md:my-[100px]'} py-[150px] px-6 md:px-0 md:py-0 z-10 max-w-[900px] w-full md:min-w-[900px] mx-auto`">
 
-      <div class="flex items-center gap-4 justify-center w-full mb-16">
+      <div class="flex items-center flex-col md:flex-row gap-4 justify-center w-full mb-16">
         <div
             v-for="(step, index) in steps"
             :key="index"
-            class="flex items-center gap-4"
+            class="flex items-center justify-center gap-4"
             :class="index !== steps.length - 1 ? 'w-full' : 'w-auto'"
         >
           <!-- Step Circle -->
-          <div
-              :class="`flex items-center justify-center w-12 h-12 rounded-full font-bold transition-all duration-500 ${
+          <div :class="index === 0 && 'ml-3'">
+            <div
+                :class="`flex items-center justify-center w-12 h-12 rounded-full font-bold transition-all duration-500 ${
         store.currentStep >= index + 1
           ? 'bg-gradient-to-r from-teal-300 to-brandColor text-white shadow-lg transform scale-110'
           : 'bg-gray-200 dark:bg-gray-700 text-gray-400'
       }`"
-          >
-            {{ index + 1 }}
-          </div>
-
-          <div
-              class="flex items-center gap-4"
-              :class="index !== steps.length - 1 ? 'flex-grow' : ''"
-          >
-      <span
-          :class="`text-[1rem] font-medium ${
-          store.currentStep >= index + 1 ? 'text-brandColor' : 'text-gray-500'
-        }`"
-      >
-        {{ step.label }}
-      </span>
+            >
+              {{ index + 1 }}
+            </div>
 
             <div
                 v-if="index !== steps.length - 1"
                 :class="`${
           store.currentStep >= index + 1 ? 'bg-brandColor' : 'bg-gray-300 dark:bg-gray-700'
-        } flex-1 h-1.5 rounded-full`"
+        } flex-1 h-[30px] mx-auto mt-2 md:hidden w-1.5 rounded-full`"
+            ></div>
+          </div>
+
+          <div
+              class="flex flex-col md:flex-row items-center gap-4"
+              :class="index !== steps.length - 1 ? 'md:flex-grow pb-9 md:pb-0' : ''"
+          >
+            <span
+                :class="`text-[1rem] font-medium ${
+                store.currentStep >= index + 1 ? 'text-brandColor' : 'text-gray-500'
+              }`"
+            >
+              {{ step.label }}
+            </span>
+
+            <div
+                v-if="index !== steps.length - 1"
+                :class="`${
+          store.currentStep >= index + 1 ? 'bg-brandColor' : 'bg-gray-300 dark:bg-gray-700'
+        } flex-1 h-1.5 rounded-full hidden md:block`"
             ></div>
           </div>
         </div>

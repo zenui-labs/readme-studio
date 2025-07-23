@@ -3,7 +3,7 @@ import {Award, Eye, Github, Zap} from 'lucide-vue-next'
 </script>
 
 <template>
-  <section class="max-w-7xl mx-auto py-20 px-4 mt-16">
+  <section class="max-w-7xl mx-auto py-20 px-6 md:px-4 mt-16">
     <!-- Header -->
     <div class="text-center mb-16">
       <h2 class="text-[2.5rem] dark:text-darkText text-gray-800 font-bold">
@@ -15,11 +15,11 @@ import {Award, Eye, Github, Zap} from 'lucide-vue-next'
     </div>
 
     <!-- Modern Bento Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4">
+    <div class="grid grid-cols-1 md:grid-cols-6 gap-4">
 
       <!-- Card 1 -->
       <div
-          class="group relative overflow-hidden bg-white/50 min-h-[270px] backdrop-blue-2xl rounded-3xl p-8 border border-gray-100 bg-gradient-to-br from-white dark:from-darkBg dark:border-darkBorder dark:to-brandColor to-brandColor/50 col-span-4"
+          class="group relative overflow-hidden bg-white/50 min-h-[270px] backdrop-blue-2xl rounded-3xl p-8 border border-gray-100 bg-gradient-to-br from-white dark:from-darkBg dark:border-darkBorder dark:to-brandColor to-brandColor/50 md:col-span-4"
       >
         <div class="relative z-10 h-full flex text-left flex-col">
           <div class="flex-1">
@@ -43,7 +43,7 @@ import {Award, Eye, Github, Zap} from 'lucide-vue-next'
       <!-- Card 2 -->
       <div
           class="group relative overflow-hidden bg-white/50 min-h-[270px] border border-gray-100 backdrop-blue-2xl rounded-3xl p-8
-               bg-gradient-to-tr from-brandColor/50 dark:border-darkBorder dark:from-brandColor to-white dark:to-darkBg col-span-2"
+               bg-gradient-to-tr from-brandColor/50 dark:border-darkBorder dark:from-brandColor to-white dark:to-darkBg md:col-span-2"
       >
         <div class="relative z-10 h-full text-left flex flex-col">
           <div class="flex-1">
@@ -66,7 +66,7 @@ import {Award, Eye, Github, Zap} from 'lucide-vue-next'
       <!-- Card 3 -->
       <div
           class="group relative overflow-hidden bg-white/50 min-h-[270px] dark:border-darkBorder border border-gray-100 backdrop-blue-2xl rounded-3xl p-8
-               bg-gradient-to-tr from-white to-brandColor/50 dark:to-brandColor dark:from-darkBg col-span-2"
+               bg-gradient-to-tr from-white to-brandColor/50 dark:to-brandColor dark:from-darkBg md:col-span-2"
       >
         <div class="relative z-10 h-full flex text-left flex-col">
           <div class="flex-1">
@@ -89,7 +89,7 @@ import {Award, Eye, Github, Zap} from 'lucide-vue-next'
       <!-- Card 4 -->
       <div
           class="group relative overflow-hidden bg-white/50 min-h-[270px] dark:border-darkBorder border border-gray-100 backdrop-blue-2xl rounded-3xl p-8
-               bg-gradient-to-br from-brandColor/50 dark:from-brandColor dark:to-darkBg to-white col-span-4"
+               bg-gradient-to-br from-brandColor/50 dark:from-brandColor dark:to-darkBg to-white md:col-span-4"
       >
         <div class="relative z-10 h-full text-left flex flex-col">
           <div class="flex-1">

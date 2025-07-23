@@ -98,7 +98,7 @@ const getIconClass = (type: string): string => {
 </script>
 
 <template>
-  <div class='my-[150px] max-w-[900px] mx-auto'>
+  <div class='my-[130px] md:my-[150px] max-w-[900px] px-6 md:px-0 mx-auto'>
     <div class="text-center">
       <h1 class="text-[2.5rem] dark:text-darkText text-gray-800 font-bold">
         Changes and updates
@@ -131,13 +131,14 @@ const getIconClass = (type: string): string => {
         :key="change.id"
         class='mt-16'
     >
-      <div class="flex items-start justify-between gap-12">
-        <p class="text-brandColor font-medium w-[20%] text-right text-sm">
+      <div class="flex flex-col md:flex-row items-start justify-between gap-6 md:gap-12">
+        <p class="text-brandColor font-medium w-full md:w-[20%] text-left md:text-right text-sm">
           {{ formatDate(change.date) }}
         </p>
 
-        <div class='text-left w-[80%] border-l-[3px] pl-6 relative border-brandColor'>
-          <div class='bg-brandColor w-3 h-3 rounded-full absolute top-0 -left-[7px]'></div>
+        <div
+            class='text-left w-full md:w-[80%] border-t-[3px] md:border-t-0 md:border-l-[3px] pt-6 md:pt-0 md:pl-6 relative border-brandColor'>
+          <div class='bg-brandColor w-3 h-3 rounded-full absolute top-[-7px] md:top-0 left-0 md:-left-[7px]'></div>
 
           <h3 class="text-[1.5rem] dark:text-darkText font-semibold text-gray-800">
             {{ change.title }}
