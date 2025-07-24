@@ -23,34 +23,33 @@ interface Change {
   newFeatures?: NewFeature[]
 }
 
-// Sample data matching the design
 const changes = ref<Change[]>([
   {
     id: '1',
-    date: '2023-05-18',
-    title: 'General Update',
-    description: 'Lorem ipsum dolor consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et, nullam sit amet magna sit amet risus accumsan sagittis. Nullam sit amet magna elit nec accumsan sagittis et vitae.',
-    updates: [
+    date: '2025-07-26',
+    title: 'Beta Launch (v0.1.0)',
+    description: 'We’re excited to announce the first beta release of Readme Studio — your new favorite tool for generating stunning GitHub READMEs using AI.',
+    new: [
       {
         id: '1-1',
         type: 'feature',
-        text: 'Added new real-time data synchronization'
+        text: 'AI-powered README Generator'
       },
       {
-        id: '1-2',
+        id: '1-1',
         type: 'feature',
-        text: 'Track your progress on boards with real-time collaboration'
+        text: 'Support for Both Personal & Project READMEs'
       },
       {
-        id: '1-3',
-        type: 'improvement',
-        text: 'Stability and performance improvement'
+        id: '1-1',
+        type: 'feature',
+        text: 'One-click Copy or Download'
       },
       {
-        id: '1-4',
-        type: 'bug',
-        text: 'Fixed minor bugs'
-      }
+        id: '1-1',
+        type: 'feature',
+        text: 'Modern, Fast UI'
+      },
     ],
   }
 ])
@@ -116,8 +115,9 @@ const getIconClass = (type: string): string => {
         <input
             v-model="searchQuery"
             type="text"
+            :maxlength="150"
             placeholder="Bug fixed, stability, improvement..."
-            class="w-full pl-12 pr-4 py-3 dark:text-darkSubtext dark:border-darkBorder border border-gray-200 rounded-lg focus:ring-2 focus:ring-brandColor focus:border-transparent outline-none"
+            class="w-full pl-12 pr-24 py-3 dark:text-darkSubtext dark:border-darkBorder border border-gray-200 rounded-lg focus:ring-2 focus:ring-brandColor focus:border-transparent outline-none"
         />
         <button
             class="absolute right-1.5 top-1/2 transform -translate-y-1/2 bg-brandColor text-white px-4 py-2 rounded-md hover:bg-brandColor/90 cursor-pointer transition-colors">
@@ -223,5 +223,8 @@ const getIconClass = (type: string): string => {
         </div>
       </div>
     </div>
+
+    <div class='max-w-[500px] dark:text-gray-400 mx-auto text-center pt-20 text-gray-500'>No <b class='text-black dark:text-darkText'>{{ searchQuery }}</b> found!</div>
+
   </div>
 </template>

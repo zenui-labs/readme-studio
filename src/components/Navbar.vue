@@ -81,6 +81,10 @@ onBeforeUnmount(() => {
                    class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor cursor-pointer transition-all duration-200'>
         Features
       </router-link>
+      <router-link to="/generate"
+                   class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor cursor-pointer transition-all duration-200'>
+        Create Readme
+      </router-link>
       <router-link to="/faqs"
                    class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor cursor-pointer transition-all duration-200'>
         FAQ
@@ -118,7 +122,7 @@ onBeforeUnmount(() => {
               <Facebook class="!text-[2.4rem] z-10"/>
               <span class="z-10">Facebook Group</span>
             </a>
-            <a href="https://discord.gg/E99jWHVMca" target="_blank"
+            <a href="https://discord.gg/9xURSvbEpH" target="_blank"
                class='py-1 pl-1 pr-3.5 relative overflow-hidden group cursor-pointer font-medium text-[0.9rem] flex items-center gap-1 rounded-lg'>
                 <span
                     class="absolute inset-0 bg-gradient-to-r from-blue-100 dark:from-cyan-800/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 transform scale-x-0 group-hover:scale-x-100 origin-left"

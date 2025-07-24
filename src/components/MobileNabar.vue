@@ -111,6 +111,10 @@ onBeforeUnmount(() => {
                    class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor transition'>
         Features
       </router-link>
+      <router-link to="/generate"
+                   class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor transition'>
+        Create Readme
+      </router-link>
       <router-link to="/faqs"
                    class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor transition'>
         FAQ
@@ -131,7 +135,7 @@ onBeforeUnmount(() => {
             <Facebook class="!text-[2rem]"/>
             Facebook Group
           </a>
-          <a href="https://discord.gg/E99jWHVMca" target="_blank"
+          <a href="https://discord.gg/9xURSvbEpH" target="_blank"
              class='text-sm flex items-center mt-1 dark:text-darkText hover:text-brandColor transition'>
             <Discord class="!text-[2rem]"/>
             Discord Channel

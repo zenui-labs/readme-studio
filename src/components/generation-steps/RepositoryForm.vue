@@ -155,6 +155,7 @@ Now, generate the best possible README.md for the repository based on the above 
         <input
             type="text"
             v-model="input"
+            :maxlength="300"
             :placeholder="selectedType === 'profile' ? 'your-username' : 'https://github.com/username/repository'"
             :class="['block w-full pl-10 pr-3 py-4 dark:text-darkText border-2 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandColor focus:border-transparent transition-all duration-200',
                 error ? 'border-red-300 bg-red-50' : 'border-gray-200 dark:bg-darkCardBgColor dark:border-darkBorder bg-white']"

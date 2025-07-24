@@ -142,6 +142,7 @@ Now, generate the **best possible, developer-focused, production-ready GitHub Pr
         <input
             type="text"
             v-model="input"
+            :maxlength="150"
             placeholder="your-username"
             :class="['block w-full pl-10 pr-3 py-4 border-2 rounded-xl dark:text-darkText dark:bg-darkCardBgColor placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandColor focus:border-transparent transition-all duration-200',
                 error ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-white dark:border-darkBorder']"
