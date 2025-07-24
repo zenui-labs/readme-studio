@@ -224,7 +224,10 @@ const getIconClass = (type: string): string => {
       </div>
     </div>
 
-    <div class='max-w-[500px] dark:text-gray-400 mx-auto text-center pt-20 text-gray-500'>No <b class='text-black dark:text-darkText'>{{ searchQuery }}</b> found!</div>
+    <div v-if="!filteredChanges?.length"
+         class='max-w-[500px] dark:text-gray-400 mx-auto text-center pt-20 text-gray-500'>No <b
+        class='text-black dark:text-darkText'>{{ searchQuery }}</b> found!
+    </div>
 
   </div>
 </template>

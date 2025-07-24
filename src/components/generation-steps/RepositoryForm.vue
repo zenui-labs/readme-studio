@@ -22,119 +22,578 @@ const handleGenerating = async () => {
   const repoData = await fetchRepoInfo(owner, repo)
   const contents = await fetchRepoContents(owner, repo)
   const prompt = `
-You are an expert open-source technical writer and developer advocate tasked with generating a professional, comprehensive, and production-ready README.md for a GitHub repository.
+You are an elite technical documentation specialist and software architect with deep expertise in analyzing codebases and creating world-class README documentation.
+
+Your mission is to perform COMPREHENSIVE CODE ANALYSIS and generate a production-ready, professional README.md that perfectly matches the repository's purpose, complexity, and target audience.
 
 ---
 
-## Your mission
+## 🔍 DEEP CODE ANALYSIS REQUIREMENTS
 
-- Analyze the repository metadata, structure, and code contents thoroughly.
-- Extract meaningful insights such as project purpose, features, usage, configuration, APIs, tests, and contribution guidelines.
-- Dynamically decide **which sections to include** based on the repo's contents and complexity.
-- If the project is sufficiently complex or lengthy, include a **Table of Contents**; otherwise, omit it.
-- Use a clear, well-structured layout optimized for readability and easy navigation.
-- Add badges (stars, forks, license, etc.) using shields.io dynamically based on repo info.
-- Add screenshots or images if present in the repo or use placeholders with notes to update.
-- Insert TODO placeholders clearly where data or documentation is missing.
-- Provide code examples, install commands, usage instructions, and configuration details where detectable.
-- Use professional, concise language accessible to both new users and experienced developers.
-- Make the README copy-paste-ready with GitHub Flavored Markdown.
-- Include sections like Overview, Features, Installation, Usage, Configuration, API Reference, Roadmap, Contributing, Testing, FAQ, License, Contact, and Acknowledgements — but only if relevant.
-- At the end, add contact info, license details, and acknowledgements.
+### 1. Repository Classification
+Analyze the codebase and classify the project as:
+- **Application/Web App** (React, Vue, Angular, etc.)
+- **API/Backend Service** (Node.js, Python Flask/Django, etc.)
+- **Library/Package** (npm package, Python package, etc.)
+- **CLI Tool** (Command-line application)
+- **Mobile App** (React Native, Flutter, etc.)
+- **Desktop App** (Electron, Tauri, etc.)
+- **Data Science/ML Project** (Jupyter notebooks, models, etc.)
+- **Documentation Site** (Docusaurus, GitBook, etc.)
+- **DevOps/Infrastructure** (Docker, Kubernetes, Terraform, etc.)
+- **Game/Interactive** (Unity, web games, etc.)
+
+### 2. Technology Stack Detection
+Examine ALL files to identify:
+
+**Frontend Technologies:**
+- Frameworks: React, Vue, Angular, Svelte, Next.js, Nuxt.js, etc.
+- Styling: CSS, SCSS, Tailwind CSS, Styled Components, etc.
+- State Management: Redux, Vuex, Pinia, Zustand, etc.
+- Build Tools: Webpack, Vite, Parcel, Rollup, etc.
+
+**Backend Technologies:**
+- Runtime: Node.js, Python, Java, Go, Rust, PHP, etc.
+- Frameworks: Express, FastAPI, Django, Spring Boot, Gin, etc.
+- Databases: MongoDB, PostgreSQL, MySQL, Redis, SQLite, etc.
+- Authentication: JWT, OAuth, Passport.js, etc.
+
+**DevOps & Tools:**
+- Containerization: Docker, Kubernetes
+- CI/CD: GitHub Actions, Jenkins, GitLab CI
+- Cloud: AWS, GCP, Azure services
+- Testing: Jest, Pytest, Mocha, Cypress, etc.
+
+### 3. Project Structure Analysis
+Analyze directory structure to understand:
+- Entry points (main files)
+- Configuration files
+- Source code organization
+- Asset locations
+- Documentation structure
+- Test directories
+- Build/deployment configs
+
+### 4. Feature Extraction
+From code analysis, identify:
+- Core functionalities
+- API endpoints (if backend)
+- Components/modules (if frontend)
+- Available commands (if CLI)
+- Export functions (if library)
+- Configuration options
+- Environment variables
+- Dependencies and their purposes
+
+### 5. Installation & Setup Detection
+Determine from package managers and configs:
+- Package manager (npm, yarn, pnpm, pip, cargo, etc.)
+- Installation commands
+- Build processes
+- Development server setup
+- Environment requirements
+- Database setup needs
+- External service dependencies
 
 ---
 
-## Repository Info
+## 📋 README STRUCTURE TEMPLATES
 
-Use the following data to guide your content decisions:
+### For Web Applications (React/Vue/Angular/etc.)
+\`\`\`markdown
+# 🚀 [Project Name]
 
-Repository Metadata:
+<div align="center">
+
+![Logo](path-to-logo) <!-- TODO: Add project logo -->
+
+[![GitHub stars](https://img.shields.io/github/stars/OWNER/REPO?style=for-the-badge)](https://github.com/OWNER/REPO/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/OWNER/REPO?style=for-the-badge)](https://github.com/OWNER/REPO/network)
+[![GitHub issues](https://img.shields.io/github/issues/OWNER/REPO?style=for-the-badge)](https://github.com/OWNER/REPO/issues)
+[![GitHub license](https://img.shields.io/github/license/OWNER/REPO?style=for-the-badge)](LICENSE)
+
+**[Compelling project tagline based on analysis]**
+
+[Live Demo](https://demo-link.com) <!-- TODO: Add live demo link --> |
+[Documentation](https://docs-link.com) <!-- TODO: Add documentation link -->
+
+</div>
+
+## 📖 Overview
+
+[Generated based on code analysis - project purpose, target audience, key problems solved]
+
+## ✨ Features
+
+[Extracted from actual code features]
+- 🎯 Feature 1 (detected from components/routes)
+- 🔐 Feature 2 (detected from auth system)
+- 📱 Feature 3 (detected from responsive design)
+- ⚡ Feature 4 (detected from performance optimizations)
+
+## 🖥️ Screenshots
+
+![Screenshot 1](path-to-screenshot) <!-- TODO: Add actual screenshots -->
+![Screenshot 2](path-to-screenshot) <!-- TODO: Add mobile screenshots -->
+
+## 🛠️ Tech Stack
+
+**Frontend:**
+[Detected technologies with badges]
+
+**Backend:**
+[Detected technologies with badges]
+
+**Database:**
+[Detected databases with badges]
+
+**DevOps:**
+[Detected deployment tools with badges]
+
+## 🚀 Quick Start
+
+### Prerequisites
+[Based on package.json/requirements.txt analysis]
+- Node.js (version X.X.X)
+- [Database] (version X.X.X)
+- [Other requirements]
+
+### Installation
+
+1. **Clone the repository**
+   \`\`\`bash
+   git clone https://github.com/OWNER/REPO.git
+   cd REPO
+   \`\`\`
+
+2. **Install dependencies**
+   \`\`\`bash
+   # [Detected package manager]
+   [npm install / yarn install / pnpm install]
+   \`\`\`
+
+3. **Environment setup**
+   \`\`\`bash
+   cp .env.example .env
+   # Configure your environment variables:
+   # [List detected environment variables]
+   \`\`\`
+
+4. **Database setup** (if applicable)
+   \`\`\`bash
+   # [Database setup commands based on detected DB]
+   [migration commands if detected]
+   \`\`\`
+
+5. **Start development server**
+   \`\`\`bash
+   [npm run dev / yarn dev / detected start command]
+   \`\`\`
+
+6. **Open your browser**
+   Visit \`http://localhost:[detected port]\`
+
+## 📁 Project Structure
+
+\`\`\`
+[Generated based on actual repository structure]
+project-root/
+├── src/
+│   ├── components/     # React/Vue components
+│   ├── pages/         # Application pages
+│   ├── hooks/         # Custom hooks
+│   ├── utils/         # Utility functions
+│   └── styles/        # Styling files
+├── public/            # Static assets
+├── tests/             # Test files
+├── docs/              # Documentation
+└── [other detected directories]
+\`\`\`
+
+## ⚙️ Configuration
+
+### Environment Variables
+[Based on .env.example or detected env usage]
+
+| Variable | Description | Default | Required |
+|----------|-------------|---------|----------|
+| [VAR_NAME] | [Purpose] | [Default] | [Yes/No] |
+
+### Configuration Files
+[List detected config files and their purposes]
+
+## 🔧 Development
+
+### Available Scripts
+[Based on package.json scripts]
+
+| Command | Description |
+|---------|-------------|
+| \`[detected command]\` | [Purpose] |
+
+### Development Workflow
+[Based on detected development setup]
+
+## 🧪 Testing
+
+[Based on detected testing framework]
+\`\`\`bash
+# Run tests
+[detected test command]
+
+# Run tests with coverage
+[detected coverage command]
+
+# Run specific test
+[example based on test structure]
+\`\`\`
+
+## 🚀 Deployment
+
+### Production Build
+\`\`\`bash
+[detected build command]
+\`\`\`
+
+### Deployment Options
+[Based on detected deployment configs]
+- **Vercel/Netlify**: [Deploy button and instructions]
+- **Docker**: [If Dockerfile detected]
+- **Traditional Hosting**: [Build output information]
+
+## 📚 API Reference (if backend detected)
+
+[Generated based on detected routes/endpoints]
+
+### Authentication
+[If auth system detected]
+
+### Endpoints
+[Based on route analysis]
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+### Development Setup for Contributors
+[Specific setup for contributors]
+
+## 📄 License
+
+This project is licensed under the [LICENSE_NAME](LICENSE) - see the LICENSE file for details.
+
+## 🙏 Acknowledgments
+
+[Based on dependencies and credits found in code]
+- [Major dependencies and their purposes]
+- [Contributors if detected]
+- [Inspiration sources if mentioned in code]
+
+## 📞 Support & Contact
+
+- 📧 Email: [contact@example.com] <!-- TODO: Add contact email -->
+- 🐛 Issues: [GitHub Issues](https://github.com/OWNER/REPO/issues)
+- 💬 Discussions: [GitHub Discussions](https://github.com/OWNER/REPO/discussions)
+
+---
+
+<div align="center">
+
+**⭐ Star this repo if you find it helpful!**
+
+Made with ❤️ by [Author Name] <!-- TODO: Add author name -->
+
+</div>
+\`\`\`
+
+### For Libraries/Packages
+\`\`\`markdown
+# 📦 [Library Name]
+
+<div align="center">
+
+[![npm version](https://img.shields.io/npm/v/PACKAGE_NAME?style=for-the-badge)](https://npmjs.com/package/PACKAGE_NAME)
+[![npm downloads](https://img.shields.io/npm/dm/PACKAGE_NAME?style=for-the-badge)](https://npmjs.com/package/PACKAGE_NAME)
+[![Bundle Size](https://img.shields.io/bundlephobia/minzip/PACKAGE_NAME?style=for-the-badge)](https://bundlephobia.com/package/PACKAGE_NAME)
+[![GitHub license](https://img.shields.io/github/license/OWNER/REPO?style=for-the-badge)](LICENSE)
+
+**[Library purpose and benefits based on code analysis]**
+
+</div>
+
+## 🎯 Why Choose [Library Name]?
+
+[Based on code analysis - unique features, performance benefits, ease of use]
+
+## 🚀 Installation
+
+\`\`\`bash
+# npm
+npm install [package-name]
+
+# yarn
+yarn add [package-name]
+
+# pnpm
+pnpm add [package-name]
+\`\`\`
+
+## 📖 Quick Start
+
+\`\`\`javascript
+// Basic usage example based on main exports
+import { [detected-exports] } from '[package-name]'
+
+// Example usage based on code analysis
+[generated example based on actual API]
+\`\`\`
+
+## 📚 API Documentation
+
+[Generated based on exported functions, classes, types]
+
+### Core Functions
+
+#### \`[function-name]\`
+[Based on actual function analysis]
+
+**Parameters:**
+[Based on TypeScript/JSDoc analysis]
+
+**Returns:**
+[Based on return type analysis]
+
+**Example:**
+\`\`\`javascript
+[Real usage example based on code]
+\`\`\`
+
+### Configuration Options
+
+[Based on detected config interfaces or options]
+
+## 🔧 Advanced Usage
+
+### Custom Configuration
+[Based on detected customization options]
+
+### Plugins/Extensions
+[If plugin system detected]
+
+### TypeScript Support
+[If TypeScript definitions detected]
+
+## 🎨 Customization
+
+[Based on theming/styling options found in code]
+
+## ⚡ Performance
+
+[If performance optimizations detected in code]
+
+## 🧪 Testing Your Implementation
+
+\`\`\`javascript
+[Example test cases based on library usage]
+\`\`\`
+
+## 🔄 Migration Guide
+
+[If breaking changes or version differences detected]
+
+## 🤝 Contributing to [Library Name]
+
+### Development Setup
+[Based on detected development environment]
+
+### Building the Library
+\`\`\`bash
+[detected build commands]
+\`\`\`
+
+### Running Tests
+\`\`\`bash
+[detected test commands]
+\`\`\`
+
+## 📊 Bundle Analysis
+
+[If bundle analysis tools detected]
+
+## 🗺️ Roadmap
+
+[Based on TODO comments, issues, or roadmap files detected]
+
+## 📄 Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for version history.
+
+## 📜 License
+
+Licensed under [LICENSE] - see [LICENSE](LICENSE) file for details.
+
+---
+
+<div align="center">
+
+**Made with ❤️ for the developer community**
+
+[![GitHub stars](https://img.shields.io/github/stars/OWNER/REPO?style=social)](https://github.com/OWNER/REPO)
+
+</div>
+\`\`\`
+
+### For CLI Tools
+\`\`\`markdown
+# ⚡ [CLI Tool Name]
+
+<div align="center">
+
+[![npm version](https://img.shields.io/npm/v/CLI_NAME?style=for-the-badge)](https://npmjs.com/package/CLI_NAME)
+[![Downloads](https://img.shields.io/npm/dm/CLI_NAME?style=for-the-badge)](https://npmjs.com/package/CLI_NAME)
+
+**[Tool description based on CLI analysis]**
+
+</div>
+
+## 🚀 Installation
+
+### Global Installation
+\`\`\`bash
+npm install -g [cli-name]
+# or
+yarn global add [cli-name]
+\`\`\`
+
+### Local Installation
+\`\`\`bash
+npx [cli-name] [command]
+\`\`\`
+
+## 📖 Usage
+
+### Basic Commands
+[Based on detected CLI commands and arguments]
+
+\`\`\`bash
+# [Command description]
+[cli-name] [command] [options]
+\`\`\`
+
+### Available Commands
+
+[Generated based on CLI command analysis]
+
+| Command | Description | Options |
+|---------|-------------|---------|
+| \`[command]\` | [Purpose] | [Options] |
+
+### Examples
+
+[Real examples based on command structure]
+
+\`\`\`bash
+# Example 1: [Use case]
+[cli-name] [example-command]
+
+# Example 2: [Use case]
+[cli-name] [example-command] --option value
+\`\`\`
+
+## ⚙️ Configuration
+
+[Based on detected config files or CLI options]
+
+### Configuration File
+[If config file detected]
+
+### Environment Variables
+[Based on detected env usage]
+
+## 🔧 Advanced Usage
+
+[Based on advanced features detected in code]
+
+## 🤝 Contributing
+
+### Development Setup
+[Based on detected development environment]
+
+### Testing Commands
+\`\`\`bash
+[detected test commands for CLI]
+\`\`\`
+
+## 📄 License
+
+[License information]
+\`\`\`
+
+---
+
+## 🧠 ANALYSIS GUIDELINES
+
+### Code Deep Dive Instructions:
+1. **Parse package.json/requirements.txt** for dependencies and scripts
+2. **Analyze main entry points** to understand core functionality
+3. **Examine configuration files** (.env.example, config/, etc.)
+4. **Identify database schemas** and models
+5. **Extract API routes** and endpoints
+6. **Find component structure** and key features
+7. **Detect testing setup** and available test commands
+8. **Analyze build/deployment** configurations
+9. **Identify environment requirements** and setup needs
+10. **Extract documentation** from inline comments and JSDoc
+
+### Feature Detection Logic:
+- **Authentication**: Look for auth middleware, login components, JWT usage
+- **Database**: Identify ORM usage, migration files, model definitions
+- **API**: Find route definitions, controllers, middleware
+- **UI Components**: Analyze component files, styling approaches
+- **State Management**: Detect Redux, Vuex, Context usage
+- **Testing**: Find test files, testing configurations
+- **Performance**: Identify lazy loading, caching, optimization techniques
+
+### Installation Process Generation:
+- **Prerequisites**: Based on engines field, Python version, etc.
+- **Dependencies**: Analyze package managers and lockfiles
+- **Environment Setup**: Based on .env files and config requirements
+- **Database Setup**: If database detected, include migration steps
+- **Development Server**: Based on dev scripts and port configurations
+
+### Technology Badge Generation:
+- **Auto-detect tech stack** from dependencies and file types
+- **Use appropriate shields.io badges** with consistent styling
+- **Group technologies logically** (Frontend, Backend, Database, DevOps)
+- **Include version information** where relevant
+
+---
+
+## 🎯 OUTPUT REQUIREMENTS
+
+1. **Analyze the repository data THOROUGHLY** - understand every aspect
+2. **Generate README that matches project type** - use appropriate template
+3. **Include ONLY relevant sections** - don't add unnecessary parts
+4. **Extract REAL features** from code analysis, not generic placeholders
+5. **Provide ACCURATE installation steps** based on actual setup requirements
+6. **Use DETECTED technology stack** with proper badges
+7. **Include ACTUAL project structure** based on repository layout
+8. **Add TODO comments** only where information is genuinely missing
+9. **Make it PRODUCTION-READY** - no explanatory text, just pure markdown
+10. **Ensure PROFESSIONAL formatting** with consistent styling
+
+## Repository Analysis Data:
+
+**Repository Metadata:**
 ${JSON.stringify(repoData, null, 2)}
 
-Top-Level Repository File Tree and Contents:
+**Repository Contents & Structure:**
 ${JSON.stringify(contents, null, 2)}
 
 ---
 
-## README structure example (adapt dynamically):
-
-# Project Title ![Stars](https://img.shields.io/github/stars/OWNER/REPO) ![Forks](https://img.shields.io/github/forks/OWNER/REPO) ![License](https://img.shields.io/github/license/OWNER/REPO)
-
-> Short, punchy tagline or project description.
-
-${'{{TABLE_OF_CONTENTS}}'}  <!-- Include this only if README is long enough -->
-
-## Overview
-
-Describe the project purpose, goals, and target audience.
-
-## Screenshots
-
-Include screenshots or GIFs showcasing the project, or placeholders if none found.
-
-## Features
-
-List key features and unique selling points detected from the repo code.
-
-## Getting Started
-
-Prerequisites and quickstart instructions.
-
-## Installation
-
-Provide install commands and steps.
-
-## Usage
-
-Example usage commands and code snippets.
-
-## Configuration
-
-Document environment variables, config files, or options if present.
-
-## API Reference
-
-Detail public APIs, endpoints, or exports with examples.
-
-## Roadmap
-
-Planned future improvements if detectable.
-
-## Contributing
-
-Contribution guidelines and code of conduct.
-
-## Testing
-
-How to run tests and verify correctness.
-
-## FAQ
-
-Common questions and answers, if relevant.
-
-## License
-
-License name and badge, linked to LICENSE file.
-
-## Contact
-
-Author and maintainer contacts, social links.
-
-## Acknowledgements
-
-Credits, libraries, and inspirations.
-
----
-
-Remember:
-
-- Use markdown formatting, including headings, lists, code blocks, and badges.
-- Insert TODO placeholders where information is missing.
-- Adjust the structure dynamically to fit the repository's scale and content.
-- Output **only** the README markdown.
-
-Now, generate the best possible README.md for the repository based on the above instructions.
-`
+Now perform deep code analysis and generate the most comprehensive, accurate, and professional README.md possible for this repository.
+`;
   if (store.hasError) return
   const result = await generateReadmeWithClaude(prompt)
   store.setGeneratedReadme(result)

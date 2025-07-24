@@ -69,34 +69,89 @@ const toggle = (index: number) => {
         Studio</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-start">
-      <div
-          v-for="(faq, index) in faqs"
-          :key="faq.question"
-          class="bg-white dark:bg-darkCardBgColor dark:border-darkBorder border border-gray-200 rounded-xl p-5 transition-all"
-      >
-        <button
-            class="w-full text-left flex cursor-pointer justify-between items-center font-medium text-gray-800"
-            @click="toggle(index)"
-        >
-          <span class='dark:text-darkText'>{{ faq.question }}</span>
-          <svg
-              :class="['w-5 h-5 transform transition-transform dark:text-darkText duration-300', faq.open ? 'rotate-180' : 'rotate-0']"
-              fill="none" stroke="currentColor" viewBox="0 0 24 24"
-          >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M19 9l-7 7-7-7"/>
-          </svg>
-        </button>
-
+    <div class="flex flex-col md:flex-row gap-4">
+      <!-- Left Column -->
+      <div class="flex flex-col gap-4 md:w-[50%] w-full">
         <div
-            :class="['overflow-hidden transition-all duration-300 ease-in-out', faq.open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0']"
+            v-for="(faq, index) in faqs"
+            :key="faq.question"
+            v-show="index < 4"
+            class="bg-white dark:bg-darkCardBgColor dark:border-darkBorder border border-gray-200 rounded-xl p-5 transition-all"
         >
-          <p class="mt-3 text-gray-600 text-sm dark:text-darkSubtext text-left leading-relaxed">
-            {{ faq.answer }}
-          </p>
+          <button
+              class="w-full text-left flex cursor-pointer justify-between items-center font-medium text-gray-800"
+              @click="toggle(index)"
+          >
+            <span class="dark:text-darkText">{{ faq.question }}</span>
+            <svg
+                :class="['w-5 h-5 transform transition-transform dark:text-darkText duration-300', faq.open ? 'rotate-180' : 'rotate-0']"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+            >
+              <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+
+          <div
+              :class="[
+          'overflow-hidden transition-all duration-300 ease-in-out',
+          faq.open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        ]"
+          >
+            <p class="mt-3 text-gray-600 text-sm dark:text-darkSubtext text-left leading-relaxed">
+              {{ faq.answer }}
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column -->
+      <div class="flex flex-col gap-4 md:w-[50%] w-full">
+        <div
+            v-for="(faq, index) in faqs"
+            :key="faq.question"
+            v-show="index >= 4"
+            class="bg-white dark:bg-darkCardBgColor dark:border-darkBorder border border-gray-200 rounded-xl p-5 transition-all"
+        >
+          <button
+              class="w-full text-left flex cursor-pointer justify-between items-center font-medium text-gray-800"
+              @click="toggle(index)"
+          >
+            <span class="dark:text-darkText">{{ faq.question }}</span>
+            <svg
+                :class="['w-5 h-5 transform transition-transform dark:text-darkText duration-300', faq.open ? 'rotate-180' : 'rotate-0']"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+            >
+              <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </button>
+
+          <div
+              :class="[
+          'overflow-hidden transition-all duration-300 ease-in-out',
+          faq.open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+        ]"
+          >
+            <p class="mt-3 text-gray-600 text-sm dark:text-darkSubtext text-left leading-relaxed">
+              {{ faq.answer }}
+            </p>
+          </div>
         </div>
       </div>
     </div>
+
   </section>
 </template>

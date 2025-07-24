@@ -5,13 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc -b && vite build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.11",
+    "dompurify": "^3.2.6",
     "github-markdown-css": "^5.8.1",
     "lucide-vue-next": "^0.525.0",
+    "markdown-it-container": "^4.0.0",
+    "marked": "^16.1.1",
     "pinia": "^3.0.3",
     "tailwindcss": "^4.1.11",
     "vue": "^3.5.17",

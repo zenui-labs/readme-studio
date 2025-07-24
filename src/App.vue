@@ -1,4 +1,3 @@
 <template>
-    <router-view/>
-  <HomePage/>
+  <router-view/>
 </template>
