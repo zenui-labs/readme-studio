@@ -17,7 +17,7 @@ async function handleGenerating() {
   const prompt = `
 You are an elite GitHub profile consultant and technical writer who creates stunning, professional developer portfolios.
 
-Your task is to generate a **world-class, visually striking, and highly professional GitHub Profile README** in GitHub-flavored Markdown using the provided user data.
+You are **not allowed** to include anything about yourself or your involvement. Your output will be pasted into a GitHub README, and **must look like the user wrote it entirely by hand.** Any indication that this was AI-generated will be rejected.
 
 ---
 

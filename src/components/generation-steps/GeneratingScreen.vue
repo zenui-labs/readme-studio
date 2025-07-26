@@ -25,14 +25,12 @@ const steps = computed(() => {
   return store.selectedType === 'profile' ? profileSteps : repoSteps
 })
 
-// Determine which step is the data loading step
 const dataLoadingStepIndex = computed(() => {
-  return store.selectedType === 'profile' ? 1 : 1; // "Loading GitHub data..." or "Processing code files..."
+  return store.selectedType === 'profile' ? 1 : 1;
 })
 
 onMounted(() => {
   const interval = setInterval(() => {
-    // Stop progression if there's an error on the data loading step
     if (store.hasError && currentStep.value === dataLoadingStepIndex.value) {
       clearInterval(interval);
       return;
@@ -43,7 +41,7 @@ onMounted(() => {
     } else {
       clearInterval(interval);
     }
-  }, 2000);
+  }, 5000);
 });
 
 watch(() => currentStep.value, (newValue) => {
