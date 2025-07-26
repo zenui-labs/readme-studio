@@ -1,6 +1,63 @@
 <script setup lang="ts">
+import {onMounted, onUnmounted, ref} from 'vue'
 import AiIcon from "@/svg-icons/ai-icon.vue";
+
+const isDarkMode = ref(false)
+
+function detectThemeFromBodyClass() {
+  isDarkMode.value = document.body.classList.contains('dark')
+}
+
+function detectThemeFromLocalStorage() {
+  const theme = localStorage.getItem('theme')
+  if (theme === 'dark') {
+    isDarkMode.value = true
+  } else if (theme === 'light') {
+    isDarkMode.value = false
+  } else {
+    isDarkMode.value = window.matchMedia('(prefers-color-scheme: dark)').matches
+  }
+}
+
+let observer: MutationObserver | null = null
+
+function setupBodyClassObserver() {
+  observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+        detectThemeFromBodyClass()
+      }
+    })
+  })
+
+  observer.observe(document.body, {
+    attributes: true,
+    attributeFilter: ['class']
+  })
+}
+
+function handleStorageChange(event: StorageEvent) {
+  if (event.key === 'theme') {
+    detectThemeFromLocalStorage()
+  }
+}
+
+onMounted(() => {
+  detectThemeFromBodyClass()
+
+  setupBodyClassObserver()
+
+  window.addEventListener('storage', handleStorageChange)
+})
+
+onUnmounted(() => {
+  if (observer) {
+    observer.disconnect()
+  }
+  window.removeEventListener('storage', handleStorageChange)
+})
 </script>
+
 
 <template>
   <div class='max-w-4xl mx-auto my-[150px] md:my-0 px-6 md:px-0'>
@@ -21,11 +78,19 @@ import AiIcon from "@/svg-icons/ai-icon.vue";
         Create Readme
       </router-link>
 
-      <a href="https://www.producthunt.com/products/readme-studio?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-readme&#0045;studio"
+      <a v-if="isDarkMode"
+         href="https://www.producthunt.com/products/readme-studio?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-readme&#0045;studio"
+         target="_blank"><img
+          src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=996454&theme=dark&t=1753507824462"
+          alt="Readme&#0032;Studio - Your&#0032;AI&#0032;Readme&#0032;generator | Product Hunt"
+          class="dark:border dark:border-gray-700 rounded-lg w-[220px]"/></a>
+
+      <a v-else
+         href="https://www.producthunt.com/products/readme-studio?embed=true&utm_source=badge-featured&utm_medium=badge&utm_source=badge-readme&#0045;studio"
          target="_blank"><img
           src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=996454&theme=light&t=1753506088862"
-          alt="Readme&#0032;Studio - Your&#0032;AI&#0032;Readme&#0032;generator | Product Hunt"
-          style="width: 225px; height: 54px;" width="200" height="54"/></a>
+          alt="Readme&#0032;Studio - Your&#0032;AI&#0032;Readme&#0032;generator | Product Hunt" class="w-[228px]"/></a>
+
     </div>
   </div>
 </template>
