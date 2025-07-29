@@ -10,7 +10,7 @@ export const useStore = defineStore('useStore', () => {
     const repoContent = ref<any>('');
     const githubUserData = ref<any>({});
     const githubRepoData = ref<any>({});
-    const limitErrorModalOpen = ref<boolean>(true);
+    const limitErrorModalOpen = ref<boolean>(false);
 
     const hasError = ref<boolean>(false);
     const errorMessage = ref<string>('');
