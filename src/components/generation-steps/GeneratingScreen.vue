@@ -31,7 +31,10 @@ const dataLoadingStepIndex = computed(() => {
 
 onMounted(() => {
   const interval = setInterval(() => {
-    if (store.hasError && currentStep.value === dataLoadingStepIndex.value) {
+    if (
+        store.hasError && currentStep.value === dataLoadingStepIndex.value ||
+        store.limitErrorModalOpen
+    ) {
       clearInterval(interval);
       return;
     }
@@ -41,29 +44,29 @@ onMounted(() => {
     } else {
       clearInterval(interval);
     }
-  }, 5000);
+  }, 5500);
 });
 
 watch(() => currentStep.value, (newValue) => {
-  // Don't proceed if there's an error
-  if (store.hasError) {
+  if (store.hasError || store.limitErrorModalOpen) {
     return;
   }
 
   if (store.selectedType === 'profile') {
     if (newValue === 4) {
-      store.currentStep = 4
-      currentStep.value = 0
+      store.currentStep = 4;
+      currentStep.value = 0;
     }
   } else {
     if (newValue === 5) {
-      store.currentStep = 4
-      currentStep.value = 0
+      store.currentStep = 4;
+      currentStep.value = 0;
     }
   }
 }, {
   immediate: true,
-})
+});
+
 
 watch(() => store.hasError, (hasError) => {
   if (!hasError) {

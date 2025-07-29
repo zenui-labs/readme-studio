@@ -10,6 +10,7 @@ export const useStore = defineStore('useStore', () => {
     const repoContent = ref<any>('');
     const githubUserData = ref<any>({});
     const githubRepoData = ref<any>({});
+    const limitErrorModalOpen = ref<boolean>(true);
 
     const hasError = ref<boolean>(false);
     const errorMessage = ref<string>('');
@@ -46,6 +47,10 @@ export const useStore = defineStore('useStore', () => {
         errorMessage.value = '';
     }
 
+    const toggleLimitErrorModalOpen = (value: boolean) => {
+        limitErrorModalOpen.value = value;
+    }
+
     return {
         currentStep,
         selectedType,
@@ -64,5 +69,7 @@ export const useStore = defineStore('useStore', () => {
         errorMessage,
         setError,
         clearError,
+        toggleLimitErrorModalOpen,
+        limitErrorModalOpen,
     }
 })

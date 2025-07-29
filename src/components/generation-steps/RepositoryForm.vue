@@ -631,7 +631,7 @@ Now perform deep code analysis and generate the most comprehensive, accurate, an
         @click="handleGenerating"
         class="w-full bg-brandColor cursor-pointer gap-3 text-white py-4 px-6 rounded-xl font-medium text-lg shadow-lg hover:shadow-xl disabled:opacity-40 dark:disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center space-x-2"
     >
-      <AiIcon/>
+      <img src="/ai.svg" alt="ai-icon" class='w-[23px]'/>
       Generate Repository Readme
     </button>
   </div>

@@ -17,3 +17,28 @@
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+#coffee_badge{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #02b89f;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    gap: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.2s ease-in-out;
+}
+
+#coffee_badge:hover{
+    background-color: #008c78;
+}
+
+#coffee_badge img{
+    width: 30px;
+}

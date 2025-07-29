@@ -72,10 +72,10 @@ onUnmounted(() => {
     <div class='flex flex-col md:flex-row items-center mt-10 gap-5 w-max mx-auto'>
       <router-link
           to="/generate"
-          class="py-2.5 cursor-pointer bg-brandColor/80 hover:bg-brandColor transition-all duration-300 px-6 text-white rounded-lg text-[1.1rem] flex items-center gap-3 justify-center"
+          class="py-2.5 cursor-pointer bg-brandColor/80 hover:bg-brandColor transition-all duration-300 px-6 text-white rounded-lg text-[1.1rem] flex items-center gap-2 justify-center"
       >
-        <AiIcon/>
-        Create Readme
+        <img src="/ai.svg" alt="ai-icon" class='w-[20px]'/>
+        Generate Readme
       </router-link>
 
       <a v-if="isDarkMode"

@@ -113,7 +113,7 @@ onBeforeUnmount(() => {
       </router-link>
       <router-link to="/generate"
                    class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor transition'>
-        Create Readme
+        Generate Readme
       </router-link>
       <router-link to="/faqs"
                    class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor transition'>
