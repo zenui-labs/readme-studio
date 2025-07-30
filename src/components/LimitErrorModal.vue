@@ -18,7 +18,7 @@
         <div class="mt-12 flex justify-center gap-5">
           <button
               class="py-3 hover:bg-gray-50 dark:border-gray-700/80 dark:text-darkSubtext dark:hover:bg-black/10 cursor-pointer transition-all duration-300 px-10 text-gray-700 border border-gray-200 rounded-lg text-[1.1rem] flex items-center gap-2 justify-center"
-              @click="store.toggleLimitErrorModalOpen(false)"
+              @click="handleClose"
           >
             Close
           </button>
@@ -37,10 +37,19 @@
 
 <script setup>
 import {useStore} from "@stores/useStore.ts";
+import {useRouter} from "vue-router";
 
 const store = useStore()
+const router = useRouter()
 
 const emit = defineEmits(['update:modelValue'])
+
+const handleClose = () => {
+  store.toggleLimitErrorModalOpen(false)
+  store.currentStep = 1
+  router.push('/')
+}
+
 </script>
 
 <style scoped>
