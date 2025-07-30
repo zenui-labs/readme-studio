@@ -375,6 +375,12 @@ const downloadReadme = () => {
   border-color: #30363d;
 }
 
+.dark .markdown-body table tbody tr {
+  background-color: #141b27;
+  color: #e2e8f0;
+  border-color: #30363d;
+}
+
 .dark .markdown-container .markdown-body a {
   color: #58a6ff;
 }
