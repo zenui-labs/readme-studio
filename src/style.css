@@ -29,6 +29,7 @@
     padding: 10px 20px;
     font-size: 1rem;
     font-weight: 600;
+    z-index: 99999;
     color: #fff;
     gap: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
