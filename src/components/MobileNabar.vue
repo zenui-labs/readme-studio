@@ -2,19 +2,25 @@
 import Moon from "@/svg-icons/moon.vue";
 import {onBeforeUnmount, onMounted, ref} from "vue";
 import Sun from "@/svg-icons/sun.vue";
-import {ChevronDown, Linkedin, Menu, X} from "lucide-vue-next"
+import {ChevronDown, Linkedin, Menu, Pencil, X} from "lucide-vue-next"
 import Facebook from "@/svg-icons/facebook.vue";
 import Discord from "@/svg-icons/discord.vue";
 import {useStore} from "@stores/useStore";
+import AiIcon from "@/svg-icons/ai-icon.vue";
 
 const isActiveDropdown = ref(false);
 const isDarkMode = ref(false);
 const isSidebarOpen = ref(false);
+const isCreateDropdownOpen = ref(false);
 
 const store = useStore()
 
 const toggleDropdown = () => {
   isActiveDropdown.value = !isActiveDropdown.value;
+};
+
+const toggleCreateDropdown = () => {
+  isCreateDropdownOpen.value = !isCreateDropdownOpen.value;
 };
 
 const toggleSidebar = () => {
@@ -59,6 +65,7 @@ onMounted(() => {
         !event.target.closest('.dropdown')
     ) {
       isActiveDropdown.value = false;
+      isCreateDropdownOpen.value = false;
     }
   };
   document.addEventListener('click', handleClickOutside);
@@ -111,10 +118,26 @@ onBeforeUnmount(() => {
                    class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor transition'>
         Features
       </router-link>
-      <router-link to="/generate"
-                   class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor transition'>
-        Generate Readme
-      </router-link>
+
+      <div>
+        <p @click="toggleCreateDropdown" class='font-semibold dropdown_btn flex dark:text-darkText items-center gap-2'>
+          Generate Readme
+          <ChevronDown :size="22" :class="`${isCreateDropdownOpen ? 'rotate-180' : ''} transition-all duration-200`"/>
+        </p>
+        <div v-if="isCreateDropdownOpen" class='dropdown'>
+          <a href="https://www.linkedin.com/company/readme-studio" target="_blank"
+             class='text-sm flex items-center gap-2 mt-4 ml-3 dark:text-darkText hover:text-brandColor transition'>
+            <AiIcon/>
+            Generate Readme
+          </a>
+          <a href="https://www.linkedin.com/company/readme-studio" target="_blank"
+             class='text-sm flex items-center gap-2 mt-4 ml-3 dark:text-darkText hover:text-brandColor transition'>
+            <Pencil :size="17"/>
+            Build Readme
+          </a>
+        </div>
+      </div>
+
       <router-link to="/faqs"
                    class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor transition'>
         FAQ

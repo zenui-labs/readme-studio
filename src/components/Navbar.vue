@@ -2,18 +2,23 @@
 import Discord from "@/svg-icons/discord.vue";
 import Moon from "@/svg-icons/moon.vue";
 import Facebook from "@/svg-icons/facebook.vue";
-import {ChevronDown, Linkedin} from 'lucide-vue-next';
+import {ChevronDown, Linkedin, Pencil} from 'lucide-vue-next';
 import {onBeforeUnmount, onMounted, ref} from "vue";
 import Sun from "@/svg-icons/sun.vue";
 import {useStore} from "@stores/useStore";
+import AiIcon from "@/svg-icons/ai-icon.vue";
 
 const isActiveDropdown = ref(false);
 const isDarkMode = ref(false);
+const isCreateDropdownOpen = ref(false)
 
 const store = useStore()
 
 const toggleDropdown = () => {
   isActiveDropdown.value = !isActiveDropdown.value;
+};
+const toggleCreateDropdown = () => {
+  isCreateDropdownOpen.value = !isCreateDropdownOpen.value;
 };
 
 const applyDarkMode = (value: boolean) => {
@@ -54,6 +59,14 @@ onMounted(() => {
     ) {
       isActiveDropdown.value = false;
     }
+    if (
+        // @ts-ignore
+        !event.target.closest('.create_dropdown_btn') &&
+        // @ts-ignore
+        !event.target.closest('.create_dropdown')
+    ) {
+      isCreateDropdownOpen.value = false;
+    }
   };
   document.addEventListener('click', handleClickOutside);
 });
@@ -81,10 +94,40 @@ onBeforeUnmount(() => {
                    class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor cursor-pointer transition-all duration-200'>
         Features
       </router-link>
-      <router-link to="/generate"
-                   class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor cursor-pointer transition-all duration-200'>
-        Generate Readme
-      </router-link>
+
+      <div class='relative'>
+        <p @click="toggleCreateDropdown"
+           class='text-[1rem] create_dropdown_btn font-medium dark:text-darkText hover:text-brandColor flex items-center gap-2 cursor-pointer transition-all duration-200'>
+          Generate Readme
+          <ChevronDown :class="`${isCreateDropdownOpen ? 'rotate-180' : ''} transition-all duration-200`"/>
+        </p>
+
+        <transition
+            name="dropdown"
+            enter-active-class="transition ease-out duration-150"
+            enter-from-class="opacity-0 -translate-y-2"
+            enter-to-class="opacity-100 translate-y-0"
+            leave-active-class="transition ease-in duration-150"
+            leave-from-class="opacity-100 translate-y-0"
+            leave-to-class="opacity-0 -translate-y-2"
+        >
+          <div v-if="isCreateDropdownOpen"
+               class='absolute top-[110%] create_dropdown left-1/2 -translate-x-1/2 bg-white dark:text-darkText dark:bg-darkCardBgColor z-50 w-max p-1.5 rounded-lg shadow-lg'>
+            <a href="https://www.linkedin.com/company/readme-studio" target="_blank"
+               class="py-2.5 px-3.5 relative group overflow-hidden cursor-pointer font-medium text-[0.9rem] flex items-center gap-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800"
+            >
+              <AiIcon/>
+              <span class="z-10">Generate Readme</span>
+            </a>
+            <a href="https://web.facebook.com/share/g/1ARs1rHQat/" target="_blank"
+               class='py-2.5 px-3.5 relative group overflow-hidden cursor-pointer font-medium text-[0.9rem] flex items-center gap-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800'>
+              <Pencil :size="17"/>
+              <span class='z-10'>Build Readme</span>
+            </a>
+          </div>
+        </transition>
+      </div>
+
       <router-link to="/faqs"
                    class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor cursor-pointer transition-all duration-200'>
         FAQ
@@ -93,8 +136,7 @@ onBeforeUnmount(() => {
                    class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor cursor-pointer transition-all duration-200'>
         Changelog
       </router-link>
-      <!--      <p class='text-[1rem] font-medium hover:text-brandColor cursor-pointer transition-all duration-200'>Contact Us-->
-      <!--      </p>-->
+
       <div class='relative'>
         <p @click="toggleDropdown"
            class='text-[1rem] dropdown_btn font-medium dark:text-darkText hover:text-brandColor flex items-center gap-2 cursor-pointer transition-all duration-200'>
@@ -141,6 +183,7 @@ onBeforeUnmount(() => {
           </div>
         </transition>
       </div>
+
     </div>
 
     <div class='flex items-center cursor-pointer' @click="toggleDarkMode" title="Toggle Dark Mode">

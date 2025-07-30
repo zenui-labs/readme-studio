@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import Navbar from "@components/Navbar.vue";
 import MobileNabar from "@components/MobileNabar.vue";
+
+const props = defineProps({
+  isEditorPage: {
+    type: Boolean,
+    default: false,
+  }
+})
 </script>
 
 <template>
@@ -30,7 +37,7 @@ import MobileNabar from "@components/MobileNabar.vue";
         class="absolute inset-0 z-10 pointer-events-none dark:[background:radial-gradient(ellipse_70%_60%_at_50%_100%,rgba(0,173,149,0.08)_0%,transparent_100%)]"
     ></div>
 
-    <div class="z-10 w-full max-w-[1200px] mx-auto">
+    <div class="z-10 w-full" :class="!isEditorPage && 'max-w-[1200px] mx-auto'">
       <slot/>
     </div>
 
