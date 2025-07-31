@@ -3,16 +3,17 @@ import MarkdownIt from 'markdown-it'
 import markdownItAttrs from 'markdown-it-attrs'
 import markdownItContainer from 'markdown-it-container'
 import {useStore} from "@stores/useStore";
-import {Copy, Download, Loader2, X} from 'lucide-vue-next';
+import {ChevronDown, Copy, Download, Loader2, X, FilePenLine} from 'lucide-vue-next';
 import {useRouter} from "vue-router";
 import 'github-markdown-css';
-import {computed, ref} from 'vue';
+import {computed, onBeforeUnmount, onMounted, ref} from 'vue';
 
 const store = useStore()
 const router = useRouter()
 
 const isCopying = ref(false)
 const isDownloading = ref(false)
+const isDropdownOpen = ref(false)
 
 const md = new MarkdownIt({
   html: true,
@@ -63,6 +64,27 @@ const downloadReadme = () => {
     document.body.removeChild(link)
   }, 1000)
 }
+
+let handleClickOutside: (event: MouseEvent) => void
+
+onMounted(() => {
+  handleClickOutside = (event: MouseEvent) => {
+    if (
+        // @ts-ignore
+        !event.target.closest('.dropdown_btn') &&
+        // @ts-ignore
+        !event.target.closest('.dropdown')
+    ) {
+      isDropdownOpen.value = false
+    }
+  }
+  document.addEventListener('click', handleClickOutside)
+})
+
+onBeforeUnmount(() => {
+  document.removeEventListener('click', handleClickOutside)
+})
+
 </script>
 
 <template>
@@ -74,20 +96,50 @@ const downloadReadme = () => {
       <Transition name="slide-up" appear>
         <div class="w-[95%] md:w-[80%] mt-36">
           <div class='flex items-center justify-end gap-3 mb-3'>
-            <button
-                @click="copyReadme"
-                class='py-2.5 cursor-pointer text-[1rem] font-medium px-6 bg-brandColor text-white rounded-lg hover:bg-brandColor/90 transition-colors duration-300 flex items-center gap-2.5'>
-              <component :is="Copy" :size="19"/>
-              {{ isCopying ? 'Copied' : 'Copy' }}
-            </button>
 
             <button
-                @click="downloadReadme"
-                class='py-2.5 cursor-pointer text-[1rem] font-medium px-6 bg-brandColor text-white rounded-lg hover:bg-brandColor/90 transition-colors duration-300 flex items-center gap-2.5'>
-              <component :is="isDownloading ? Loader2 : Download" :size="19" class="animate-spin" v-if="isDownloading"/>
-              <component :is="isDownloading ? Loader2 : Download" :size="19" v-else/>
-              {{ isDownloading ? 'Downloading...' : 'Download' }}
+                @click="router.push('/editor')"
+                class='py-2.5 cursor-pointer text-[1rem] font-medium px-4 bg-brandColor text-white rounded-lg hover:bg-brandColor/90 transition-colors duration-300 flex items-center gap-2'>
+              <FilePenLine :size="19"/>
+              Open in Editor
             </button>
+
+            <div class='relative flex'>
+              <button
+                  @click="downloadReadme"
+                  class="py-2.5 cursor-pointer text-[1rem] font-medium px-4 bg-brandColor text-white rounded-l-lg transition-colors duration-300 flex items-center gap-2.5"
+              >
+                <component
+                    :is="isDownloading ? Loader2 : Download"
+                    :size="19"
+                    :class="{ 'animate-spin': isDownloading }"
+                />
+                {{ isDownloading ? 'Downloading...' : 'Download' }}
+              </button>
+
+              <span
+                  @click="isDropdownOpen = !isDropdownOpen"
+                  class='flex dropdown_btn items-center justify-center bg-[#007f6c] w-[45px] rounded-r-lg cursor-pointer text-white'
+              >
+        <ChevronDown
+            :class="isDropdownOpen ? 'rotate-[180deg]' : 'rotate-0'"
+            class="transition-all duration-300"
+        />
+      </span>
+
+              <div
+                  v-if="isDropdownOpen"
+                  class="bg-white dark:bg-gray-800 absolute top-[105%] p-1 shadow-[0px_0px_5px_0px_rgb(0,0,0,0.1)] dropdown rounded-lg w-full right-0"
+              >
+                <button
+                    @click="copyReadme"
+                    class="py-2.5 cursor-pointer text-[1rem] dark:text-darkText dark:hover:bg-darkCardBgColor font-medium px-6 hover:bg-gray-100 w-full rounded-lg text-gray-800 transition-colors duration-300 flex items-center gap-2.5"
+                >
+                  <Copy :size="17"/>
+                  {{ isCopying ? 'Copied' : 'Copy' }}
+                </button>
+              </div>
+            </div>
 
             <button
                 @click="handleModalClose"
