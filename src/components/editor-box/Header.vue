@@ -1,26 +1,18 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount } from 'vue'
-import {
-  Download,
-  Loader2,
-  Expand,
-  ChevronDown,
-  Copy
-} from 'lucide-vue-next'
+import {onBeforeUnmount, onMounted, ref} from 'vue'
+import {ChevronDown, Copy, Download, Expand, Loader2} from 'lucide-vue-next'
+import {useStore} from "@stores/useStore";
 
 const props = defineProps<{
   content: string
-}>()
-
-const emit = defineEmits<{
-  save: []
 }>()
 
 const isCopying = ref(false)
 const isDownloading = ref(false)
 const isDropdownOpen = ref(false)
 
-// Copy functionality
+const store = useStore()
+
 const copyReadme = async () => {
   try {
     await navigator.clipboard.writeText(props.content)
@@ -33,10 +25,9 @@ const copyReadme = async () => {
   }
 }
 
-// Download functionality
 const downloadReadme = () => {
   isDownloading.value = true
-  const blob = new Blob([props.content], { type: 'text/markdown;charset=utf-8' })
+  const blob = new Blob([props.content], {type: 'text/markdown;charset=utf-8'})
   const url = URL.createObjectURL(blob)
 
   const link = document.createElement('a')
@@ -52,13 +43,10 @@ const downloadReadme = () => {
   }, 1000)
 }
 
-// Fullscreen preview (placeholder for now)
 const openFullscreenPreview = () => {
-  // TODO: Implement fullscreen preview modal
-  console.log('Opening fullscreen preview...')
+  store.fullScreenModal = true
 }
 
-// Handle click outside dropdown
 let handleClickOutside: (event: MouseEvent) => void
 
 onMounted(() => {

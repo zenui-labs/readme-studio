@@ -26,6 +26,50 @@ interface Change {
 const changes = ref<Change[]>([
   {
     id: '1',
+    date: '2025-08-01',
+    title: 'Introducing the README Studio Editor',
+    description: 'Take full control over your README! With the new in-browser Editor, you can now create, customize, and perfect your README from scratch or after generating with AI.',
+    new: [
+      {
+        id: '2-1',
+        type: 'feature',
+        text: 'Built-in README Editor for full manual control'
+      },
+      {
+        id: '2-2',
+        type: 'feature',
+        text: 'Pre-built professional sections (Installation, Usage, Features, etc.)'
+      },
+      {
+        id: '2-3',
+        type: 'feature',
+        text: 'One-click section insertion at your current cursor position'
+      },
+      {
+        id: '2-4',
+        type: 'feature',
+        text: 'Live reordering of added sections with drag & drop'
+      },
+      {
+        id: '2-5',
+        type: 'feature',
+        text: 'Instant markdown code editor with syntax-aware updates'
+      },
+      {
+        id: '2-6',
+        type: 'feature',
+        text: 'Full-screen preview of your entire README'
+      },
+      {
+        id: '2-7',
+        type: 'feature',
+        text: 'One-click copy or download your generated README file'
+      },
+    ]
+  }
+  ,
+  {
+    id: '2',
     date: '2025-07-26',
     title: 'Beta Launch (v0.1.0)',
     description: 'We’re excited to announce the first beta release of Readme Studio — your new favorite tool for generating stunning GitHub READMEs using AI.',

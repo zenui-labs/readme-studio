@@ -39,13 +39,23 @@ onMounted(() => {
       return;
     }
 
+    const finalStepIndex = steps.value.length - 1;
+
+    if (
+        currentStep.value === finalStepIndex &&
+        store.isReadmeGenerating
+    ) {
+      return;
+    }
+
     if (currentStep.value < steps.value.length) {
       currentStep.value++;
     } else {
       clearInterval(interval);
     }
-  }, 5500);
+  }, 5000);
 });
+
 
 watch(() => currentStep.value, (newValue) => {
   if (store.hasError || store.limitErrorModalOpen) {

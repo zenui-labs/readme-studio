@@ -7,13 +7,21 @@ import Facebook from "@/svg-icons/facebook.vue";
 import Discord from "@/svg-icons/discord.vue";
 import {useStore} from "@stores/useStore";
 import AiIcon from "@/svg-icons/ai-icon.vue";
+import {useRouter} from "vue-router";
 
 const isActiveDropdown = ref(false);
 const isDarkMode = ref(false);
 const isSidebarOpen = ref(false);
 const isCreateDropdownOpen = ref(false);
+const isScrolled = ref(false);
+
+const onScroll = () => {
+  isScrolled.value = window.scrollY > 0;
+};
 
 const store = useStore()
+const pathname = window.location.pathname;
+const router = useRouter()
 
 const toggleDropdown = () => {
   isActiveDropdown.value = !isActiveDropdown.value;
@@ -44,6 +52,9 @@ const toggleDarkMode = () => {
 };
 
 onMounted(() => {
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'dark') {
     isDarkMode.value = true;
@@ -72,14 +83,15 @@ onMounted(() => {
 });
 
 onBeforeUnmount(() => {
-  document.removeEventListener('click', handleClickOutside);
+  document.removeEventListener('click', handleClickOutside)
+  window.removeEventListener('scroll', onScroll);
 });
 </script>
 
 <template>
   <nav
-      :class="store.generatedReadme ? 'z-10' : 'z-20'"
-      class='fixed top-5 left-1/2 -translate-x-1/2 backdrop-blur-2xl flex md:hidden items-center justify-between w-full max-w-[1200px] mx-auto py-2.5 rounded-full px-6'>
+      :class="[(store.generatedReadme && pathname !== '/editor') || store.fullScreenModal ? 'z-10' : 'z-20', isScrolled ? 'w-[90%]' : 'w-full']"
+      class='fixed top-5 left-1/2 -translate-x-1/2 backdrop-blur-3xl flex md:hidden items-center justify-between max-w-[1200px] mx-auto py-2.5 rounded-full transition-all duration-300 px-6'>
     <div class='flex items-start gap-2'>
       <router-link to="/">
         <img src="/logo.svg" alt="logo" class="w-[33px]"/>
@@ -125,16 +137,16 @@ onBeforeUnmount(() => {
           <ChevronDown :size="22" :class="`${isCreateDropdownOpen ? 'rotate-180' : ''} transition-all duration-200`"/>
         </p>
         <div v-if="isCreateDropdownOpen" class='dropdown'>
-          <a href="https://www.linkedin.com/company/readme-studio" target="_blank"
+          <p @click="router.push('/generate')"
              class='text-sm flex items-center gap-2 mt-4 ml-3 dark:text-darkText hover:text-brandColor transition'>
             <AiIcon/>
             Generate Readme
-          </a>
-          <a href="https://www.linkedin.com/company/readme-studio" target="_blank"
+          </p>
+          <p @click="router.push('/editor')"
              class='text-sm flex items-center gap-2 mt-4 ml-3 dark:text-darkText hover:text-brandColor transition'>
             <Pencil :size="17"/>
             Build Readme
-          </a>
+          </p>
         </div>
       </div>
 

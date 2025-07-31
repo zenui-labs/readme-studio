@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import {GoogleGenerativeAI} from "@google/generative-ai";
 import {useStore} from "@stores/useStore";
 
 const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GOOGLE_API_KEY);
@@ -6,17 +6,21 @@ const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GOOGLE_API_KEY);
 export const generateReadmeWithClaude = async (prompt: string) => {
     const store = useStore();
 
+    store.setIsReadmeGenerating(true);
 
     try {
-        const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+        const model = genAI.getGenerativeModel({model: "gemini-1.5-flash"});
         const result = await model.generateContent(prompt);
         return result.response.text().trim();
     } catch (error) {
-        console.error("Error generating github readme:", error);
-
         const message = error?.message?.toLowerCase() || "";
 
         if (
+            message.includes("resource_exhausted") ||
+            message.includes("overloaded")
+        ) {
+            store.toggleOverloadErrorModalOpen(true);
+        } else if (
             message.includes("quota") ||
             message.includes("limit") ||
             message.includes("exceeded")
@@ -25,6 +29,7 @@ export const generateReadmeWithClaude = async (prompt: string) => {
         } else {
             store.setError("Something went wrong. Please try again.");
         }
-        throw error;
+    } finally {
+        store.setIsReadmeGenerating(false);
     }
 };

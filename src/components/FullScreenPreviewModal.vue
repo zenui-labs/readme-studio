@@ -1,64 +1,103 @@
 <script setup lang="ts">
-const props = defineProps<{
-  markdown: string
-}>()
+import MarkdownIt from 'markdown-it'
+import markdownItAttrs from 'markdown-it-attrs'
+import markdownItContainer from 'markdown-it-container'
+import {useStore} from "@stores/useStore";
+import {X} from 'lucide-vue-next';
+import 'github-markdown-css';
+import {computed} from 'vue';
+
+const store = useStore()
+
+const md = new MarkdownIt({
+  html: true,
+  xhtmlOut: true,
+  breaks: true,
+  langPrefix: 'language-',
+  linkify: true,
+  typographer: true,
+})
+    .use(markdownItAttrs)
+    .use(markdownItContainer, 'center');
+
+const enhancedMarkdown = computed(() => {
+  if (!store.generatedReadme) return '';
+  return md.render(store.generatedReadme);
+});
+
+const handleModalClose = () => {
+  store.fullScreenModal = false
+}
+
 </script>
 
 <template>
-  <div class="flex-1 flex flex-col">
-    <div class="p-4 py-4.5 border-b border-gray-200 dark:border-darkBorder">
-      <h3 class="text-base font-semibold text-gray-800 dark:text-darkSubtext flex items-center gap-2">
-        Preview
-      </h3>
-    </div>
+  <Transition name="fade" appear>
+    <div
+        v-if="store.fullScreenModal"
+        class="fixed top-0 left-0 z-[50000000000000000000000000] w-full h-screen flex justify-center items-center flex-col backdrop-blur-3xl dark:backdrop-blur-2xl bg-black/10 dark:bg-transparent"
+    >
+      <Transition name="slide-up" appear>
+        <div class="w-[95%] md:w-[80%] mt-36">
+          <div class='flex items-center justify-end gap-3 mb-3'>
+            <button
+                @click="handleModalClose"
+                class='py-2.5 cursor-pointer text-[1rem] font-medium px-4 bg-white dark:bg-slate-800 dark:text-darkText text-black rounded-lg hover:text-brandColor transition-colors duration-300'>
+              <X/>
+            </button>
+          </div>
 
-    <div class="flex-1 overflow-y-auto p-4">
-      <div
-          class="markdown-container h-[500px] bg-white dark:bg-[#0f172a] overflow-y-auto w-full lg:h-full rounded-lg p-4 dark:prose-invert">
-        <div
-            class="markdown-body"
-            v-html="markdown"
-        ></div>
-
-        <div
-            v-if="!markdown"
-            class="flex items-center justify-center h-full text-gray-500 dark:text-gray-400 text-center"
-        >
-          <div>
-            <div class="text-4xl mb-4">📝</div>
-            <p class="text-lg font-medium mb-2">Start writing your README</p>
-            <p class="text-sm">Use the editor or add components from the library</p>
+          <div style="scrollbar-width: none"
+               class='bg-white dark:bg-slate-800 h-screen overflow-y-auto p-6 pb-[150px] rounded-t-xl'>
+            <div class="markdown-container dark:prose-invert">
+              <!-- Fix 3: Use v-html instead of VueMarkdown component -->
+              <div
+                  class="markdown-body"
+                  v-html="enhancedMarkdown"
+              ></div>
+            </div>
           </div>
         </div>
-      </div>
+      </Transition>
     </div>
-  </div>
+  </Transition>
 </template>
 
 <style scoped>
-.markdown-container::-webkit-scrollbar {
-  width: 8px;
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease;
 }
 
-.markdown-container::-webkit-scrollbar-track {
-  background: transparent;
+.fade-enter-from, .fade-leave-to {
+  opacity: 0;
 }
 
-.markdown-container::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
+.fade-enter-to, .fade-leave-from {
+  opacity: 1;
 }
 
-.markdown-container::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+.slide-up-enter-active, .slide-up-leave-active {
+  transition: transform 0.4s ease, opacity 0.4s ease;
 }
 
-.dark .markdown-container::-webkit-scrollbar-thumb {
-  background: #475569;
+.slide-up-enter-from {
+  transform: translateY(100%);
+  opacity: 0;
 }
 
-.dark .markdown-container::-webkit-scrollbar-thumb:hover {
-  background: #64748b;
+.slide-up-enter-to {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.slide-up-leave-from {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.slide-up-leave-to {
+  transform: translateY(100%);
+  opacity: 0;
 }
 </style>
 
@@ -277,19 +316,19 @@ const props = defineProps<{
   color: #cbd5e1;
 }
 
-.dark .markdown-container .markdown-body tr table th {
+.dark .markdown-container .markdown-body table th {
   background-color: #1e293b;
   color: #e2e8f0;
+  border-color: #30363d;
+}
+
+.dark .markdown-container .markdown-body table td {
   border-color: #30363d;
 }
 
 .dark .markdown-body table tbody tr {
   background-color: #141b27;
   color: #e2e8f0;
-  border-color: #30363d;
-}
-
-.dark .markdown-container .markdown-body table td {
   border-color: #30363d;
 }
 

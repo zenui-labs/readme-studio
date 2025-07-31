@@ -11,6 +11,9 @@ export const useStore = defineStore('useStore', () => {
     const githubUserData = ref<any>({});
     const githubRepoData = ref<any>({});
     const limitErrorModalOpen = ref<boolean>(false);
+    const fullScreenModal = ref<boolean>(false);
+    const isReadmeGenerating = ref<boolean>(false);
+    const overloadErrorModalOpen = ref(false);
 
     const hasError = ref<boolean>(false);
     const errorMessage = ref<string>('');
@@ -18,6 +21,15 @@ export const useStore = defineStore('useStore', () => {
     function setGeneratedReadme(text) {
         generatedReadme.value = text
     }
+
+    const toggleOverloadErrorModalOpen = (value: boolean) => {
+        overloadErrorModalOpen.value = value;
+    };
+
+
+    const setIsReadmeGenerating = (value: boolean) => {
+        isReadmeGenerating.value = value;
+    };
 
     const handleTypeSelection = (type: string) => {
         selectedType.value = type;
@@ -65,11 +77,16 @@ export const useStore = defineStore('useStore', () => {
         setGithubUserData,
         githubRepoData,
         setGithubRepoData,
+        fullScreenModal,
         hasError,
         errorMessage,
         setError,
         clearError,
         toggleLimitErrorModalOpen,
         limitErrorModalOpen,
+        isReadmeGenerating,
+        setIsReadmeGenerating,
+        overloadErrorModalOpen,
+        toggleOverloadErrorModalOpen,
     }
 })

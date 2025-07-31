@@ -7,12 +7,20 @@ import {onBeforeUnmount, onMounted, ref} from "vue";
 import Sun from "@/svg-icons/sun.vue";
 import {useStore} from "@stores/useStore";
 import AiIcon from "@/svg-icons/ai-icon.vue";
+import {useRouter} from "vue-router";
 
 const isActiveDropdown = ref(false);
 const isDarkMode = ref(false);
 const isCreateDropdownOpen = ref(false)
+const isScrolled = ref(false);
 
 const store = useStore()
+const pathname = window.location.pathname
+const router = useRouter()
+
+const onScroll = () => {
+  isScrolled.value = window.scrollY > 0;
+};
 
 const toggleDropdown = () => {
   isActiveDropdown.value = !isActiveDropdown.value;
@@ -50,6 +58,9 @@ onMounted(() => {
 let handleClickOutside: (event: MouseEvent) => void;
 
 onMounted(() => {
+  window.addEventListener('scroll', onScroll);
+  onScroll();
+
   handleClickOutside = (event: MouseEvent) => {
     if (
         // @ts-ignore
@@ -73,14 +84,15 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   document.removeEventListener('click', handleClickOutside);
+  window.removeEventListener('scroll', onScroll);
 });
 </script>
 
 
 <template>
   <nav
-      :class="store.generatedReadme ? 'z-10' : 'z-20'"
-      class='fixed top-5 left-1/2 -translate-x-1/2 backdrop-blur-2xl items-center justify-between w-full max-w-[1200px] mx-auto py-2.5 hidden md:flex rounded-full px-6'>
+      :class="[(store.generatedReadme && pathname !== '/editor') || store.fullScreenModal ? 'z-10' : 'z-20', isScrolled ? 'max-w-[1150px]' : 'max-w-[1200px]']"
+      class='fixed top-5 left-1/2 -translate-x-1/2 backdrop-blur-3xl items-center justify-between w-full mx-auto py-2.5 hidden md:flex rounded-full px-6 transition-all duration-300'>
     <div class='flex items-start gap-2'>
       <router-link to="/">
         <img src="/logo.svg" alt="logo" class="w-[40px]"/>
@@ -113,17 +125,17 @@ onBeforeUnmount(() => {
         >
           <div v-if="isCreateDropdownOpen"
                class='absolute top-[110%] create_dropdown left-1/2 -translate-x-1/2 bg-white dark:text-darkText dark:bg-darkCardBgColor z-50 w-max p-1.5 rounded-lg shadow-lg'>
-            <a href="https://www.linkedin.com/company/readme-studio" target="_blank"
+            <p @click="router.push('/generate')"
                class="py-2.5 px-3.5 relative group overflow-hidden cursor-pointer font-medium text-[0.9rem] flex items-center gap-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800"
             >
               <AiIcon/>
               <span class="z-10">Generate Readme</span>
-            </a>
-            <a href="https://web.facebook.com/share/g/1ARs1rHQat/" target="_blank"
+            </p>
+            <p @click="router.push('/editor')"
                class='py-2.5 px-3.5 relative group overflow-hidden cursor-pointer font-medium text-[0.9rem] flex items-center gap-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800'>
               <Pencil :size="17"/>
               <span class='z-10'>Build Readme</span>
-            </a>
+            </p>
           </div>
         </transition>
       </div>
