@@ -5,7 +5,7 @@ const props = defineProps<{
 </script>
 
 <template>
-  <div class="flex-1 flex flex-col">
+  <div class="flex-1 max-w-[750px] flex flex-col">
     <div class="p-4 py-4.5 border-b border-gray-200 dark:border-darkBorder">
       <h3 class="text-base font-semibold text-gray-800 dark:text-darkSubtext flex items-center gap-2">
         Preview

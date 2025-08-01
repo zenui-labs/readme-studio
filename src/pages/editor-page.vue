@@ -204,7 +204,6 @@ watch(() => store.fullScreenModal, () => {
       <div
           class="flex h-full flex-col lg:flex-row border lg:max-h-[800px] dark:bg-darkCardBgColor dark:border-darkBorder bg-gray-50 border-gray-200 rounded-lg overflow-hidden">
 
-        <!-- Sidebar -->
         <div class="w-full lg:w-80 lg:border-r dark:border-darkBorder border-gray-200 flex flex-col">
           <div class="px-4 py-[10px] border-b border-gray-200 dark:border-darkBorder">
             <div
@@ -237,7 +236,6 @@ watch(() => store.fullScreenModal, () => {
           />
         </div>
 
-        <!-- Editor -->
         <MarkdownEditor
             ref="editorRef"
             :content="editorContent"
@@ -245,7 +243,6 @@ watch(() => store.fullScreenModal, () => {
             @cursor-position="handleCursorPositionChange"
         />
 
-        <!-- Preview -->
         <MarkdownPreview
             :markdown="enhancedMarkdown"
         />
