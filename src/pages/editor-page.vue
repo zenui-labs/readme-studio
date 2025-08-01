@@ -141,7 +141,25 @@ const handleAddComponent = (component) => {
     ...component
   }
 
-  addedComponents.value.push(newComponent)
+  const cursorPos = currentCursorPosition.value
+  const textBeforeCursor = editorContent.value.substring(0, cursorPos)
+
+  let insertIndex = 0
+  let currentPos = 0
+
+  for (let i = 0; i < addedComponents.value.length; i++) {
+    const componentTemplate = addedComponents.value[i].template
+    const componentIndex = editorContent.value.indexOf(componentTemplate, currentPos)
+
+    if (componentIndex !== -1 && componentIndex < cursorPos) {
+      insertIndex = i + 1
+      currentPos = componentIndex + componentTemplate.length
+    } else {
+      break
+    }
+  }
+
+  addedComponents.value.splice(insertIndex, 0, newComponent)
 
   if (editorRef.value && editorRef.value.insertTextAtCursor) {
     editorRef.value.insertTextAtCursor(component.template)

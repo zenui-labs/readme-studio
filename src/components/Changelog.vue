@@ -4,7 +4,7 @@ import {Search} from 'lucide-vue-next';
 
 interface ChangeItem {
   id: string
-  type: 'feature' | 'improvement' | 'bug' | 'update'
+  type: 'new' | 'improvement' | 'bug' | 'update'
   text: string
 }
 
@@ -32,39 +32,63 @@ const changes = ref<Change[]>([
     new: [
       {
         id: '2-1',
-        type: 'feature',
+        type: 'new',
         text: 'Built-in README Editor for full manual control'
       },
       {
         id: '2-2',
-        type: 'feature',
+        type: 'new',
         text: 'Pre-built professional sections (Installation, Usage, Features, etc.)'
       },
       {
         id: '2-3',
-        type: 'feature',
+        type: 'new',
         text: 'One-click section insertion at your current cursor position'
       },
       {
         id: '2-4',
-        type: 'feature',
+        type: 'new',
         text: 'Live reordering of added sections with drag & drop'
       },
       {
         id: '2-5',
-        type: 'feature',
+        type: 'new',
         text: 'Instant markdown code editor with syntax-aware updates'
       },
       {
         id: '2-6',
-        type: 'feature',
+        type: 'new',
         text: 'Full-screen preview of your entire README'
       },
       {
         id: '2-7',
-        type: 'feature',
+        type: 'new',
         text: 'One-click copy or download your generated README file'
       },
+    ],
+    updates: [
+      {
+        id: '2-8',
+        type: 'update',
+        text: 'Improved hero text for clearer messaging'
+      },
+      {
+        id: '2-9',
+        type: 'update',
+        text: 'New “Open in editor” button added to README preview modal'
+      }
+    ],
+    fixed: [
+      {
+        id: '2-10',
+        type: 'bug',
+        text: 'Resolved mobile responsiveness issues in Editor layout'
+      },
+      {
+        id: '2-11',
+        type: 'bug',
+        text: 'Fixed social link mismatches in user profiles'
+      }
     ]
   }
   ,
@@ -76,22 +100,22 @@ const changes = ref<Change[]>([
     new: [
       {
         id: '1-1',
-        type: 'feature',
+        type: 'new',
         text: 'AI-powered README Generator'
       },
       {
         id: '1-1',
-        type: 'feature',
+        type: 'new',
         text: 'Support for Both Personal & Project READMEs'
       },
       {
         id: '1-1',
-        type: 'feature',
+        type: 'new',
         text: 'One-click Copy or Download'
       },
       {
         id: '1-1',
-        type: 'feature',
+        type: 'new',
         text: 'Modern, Fast UI'
       },
     ],
@@ -126,14 +150,14 @@ const formatDate = (dateString: string): string => {
 
 const getIconClass = (type: string): string => {
   switch (type) {
-    case 'feature':
-      return 'bg-blue-500'
+    case 'new':
+      return 'bg-green-500'
     case 'improvement':
       return 'bg-orange-500'
     case 'bug':
       return 'bg-red-500'
     case 'update':
-      return 'bg-green-500'
+      return 'bg-blue-500'
     default:
       return 'bg-gray-500'
   }
