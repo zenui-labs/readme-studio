@@ -4,7 +4,7 @@ import GeneratorPage from "@pages/generator-page.vue";
 import FeaturesPage from "@pages/features-page.vue";
 import FaqPage from "@pages/faq-page.vue";
 import ChangelogPage from "@pages/changelog-page.vue";
-import ReadmeEditPage from "@pages/readme-edit-page.vue";
+import EditorPage from "@pages/editor-page.vue";
 
 const routes = [
     {path: '/', component: HomePage},
@@ -12,7 +12,7 @@ const routes = [
     {path: '/features', component: FeaturesPage},
     {path: '/faqs', component: FaqPage},
     {path: '/changelog', component: ChangelogPage},
-    {path: '/editor', component: ReadmeEditPage},
+    {path: '/editor', component: EditorPage},
 ]
 
 export default createRouter({

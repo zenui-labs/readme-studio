@@ -145,7 +145,7 @@ onBeforeUnmount(() => {
           <p @click="router.push('/editor')"
              class='text-sm flex items-center gap-2 mt-4 ml-3 dark:text-darkText hover:text-brandColor transition'>
             <Pencil :size="17"/>
-            Build Readme
+            Create Readme
           </p>
         </div>
       </div>
@@ -165,7 +165,7 @@ onBeforeUnmount(() => {
           <ChevronDown :size="22" :class="`${isActiveDropdown ? 'rotate-180' : ''} transition-all duration-200`"/>
         </p>
         <div v-if="isActiveDropdown" class='dropdown'>
-          <a href="https://www.linkedin.com/company/readme-studio" target="_blank"
+          <a href="https://web.facebook.com/share/g/1ARs1rHQat/" target="_blank"
              class='text-sm flex items-center mt-2 dark:text-darkText hover:text-brandColor transition'>
             <Facebook class="!text-[2rem]"/>
             Facebook Group
@@ -175,7 +175,7 @@ onBeforeUnmount(() => {
             <Discord class="!text-[2rem]"/>
             Discord Channel
           </a>
-          <a href="https://web.facebook.com/share/g/1ARs1rHQat/" target="_blank"
+          <a href="https://www.linkedin.com/company/readme-studio" target="_blank"
              class='text-sm flex items-center gap-2 dark:text-darkText mt-2 ml-2 hover:text-brandColor transition'>
             <Linkedin strokeWidth="1" :size="17"/>
             LinkedIn Page

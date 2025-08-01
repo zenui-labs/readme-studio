@@ -134,7 +134,7 @@ onBeforeUnmount(() => {
             <p @click="router.push('/editor')"
                class='py-2.5 px-3.5 relative group overflow-hidden cursor-pointer font-medium text-[0.9rem] flex items-center gap-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800'>
               <Pencil :size="17"/>
-              <span class='z-10'>Build Readme</span>
+              <span class='z-10'>Create Readme</span>
             </p>
           </div>
         </transition>
@@ -167,7 +167,7 @@ onBeforeUnmount(() => {
         >
           <div v-if="isActiveDropdown"
                class='absolute top-[110%] dropdown left-1/2 -translate-x-1/2 bg-white dark:text-darkText dark:bg-darkCardBgColor z-50 w-max p-1.5 rounded-lg shadow-lg'>
-            <a href="https://www.linkedin.com/company/readme-studio" target="_blank"
+            <a href="https://web.facebook.com/share/g/1ARs1rHQat/" target="_blank"
                class="py-1 pr-3.5 relative overflow-hidden group cursor-pointer font-medium text-[0.9rem] flex items-center gap-1 rounded-lg"
             >
             <span
@@ -184,7 +184,7 @@ onBeforeUnmount(() => {
               <Discord class='!text-[2.3rem] z-10'/>
               <span class='z-10'>Discord Channel</span>
             </a>
-            <a href="https://web.facebook.com/share/g/1ARs1rHQat/" target="_blank"
+            <a href="https://www.linkedin.com/company/readme-studio" target="_blank"
                class='py-2.5 px-3.5 relative group overflow-hidden cursor-pointer font-medium text-[0.9rem] flex items-center gap-2.5 rounded-lg'>
               <Linkedin :strokeWidth="1.5" :size="20" class='mb-1 z-10'/>
               <span
