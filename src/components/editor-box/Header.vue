@@ -101,18 +101,28 @@ onBeforeUnmount(() => {
         />
       </span>
 
-      <div
-          v-if="isDropdownOpen"
-          class="bg-white dark:bg-gray-800 absolute top-[110%] p-1 shadow-[0px_0px_5px_0px_rgb(0,0,0,0.1)] editor_dropdown rounded-lg w-full right-0"
+      <transition
+          name="dropdown"
+          enter-active-class="transition ease-out duration-150"
+          enter-from-class="opacity-0 -translate-y-2"
+          enter-to-class="opacity-100 translate-y-0"
+          leave-active-class="transition ease-in duration-150"
+          leave-from-class="opacity-100 translate-y-0"
+          leave-to-class="opacity-0 -translate-y-2"
       >
-        <button
-            @click="copyReadme"
-            class="py-2.5 cursor-pointer text-[1rem] dark:text-darkText dark:hover:bg-darkCardBgColor font-medium px-6 hover:bg-gray-100 w-full rounded-lg text-gray-800 transition-colors duration-300 flex items-center gap-2.5"
+        <div
+            v-if="isDropdownOpen"
+            class="bg-white dark:bg-gray-800 absolute top-[110%] p-1 shadow-[0px_0px_5px_0px_rgb(0,0,0,0.1)] editor_dropdown rounded-lg w-[45%] md:w-full left-0"
         >
-          <Copy :size="17"/>
-          {{ isCopying ? 'Copied' : 'Copy' }}
-        </button>
-      </div>
+          <button
+              @click="copyReadme"
+              class="py-2.5 cursor-pointer text-[1rem] dark:text-darkText dark:hover:bg-darkCardBgColor font-medium px-6 hover:bg-gray-100 w-full rounded-lg text-gray-800 transition-colors duration-300 flex items-center gap-2.5"
+          >
+            <Copy :size="17"/>
+            {{ isCopying ? 'Copied' : 'Copy' }}
+          </button>
+        </div>
+      </transition>
     </div>
   </div>
 </template>

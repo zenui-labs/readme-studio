@@ -91,7 +91,7 @@ const handleTryAgain = () => {
 </script>
 
 <template>
-  <div class="space-y-4 inline-block mx-auto">
+  <div class="space-y-4 w-max mx-auto">
     <div v-for="(step, index) in steps" :key="step" class="flex items-center gap-4">
       <div :class="['flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500',
             store.hasError && index === dataLoadingStepIndex ? 'bg-red-500 text-white' :

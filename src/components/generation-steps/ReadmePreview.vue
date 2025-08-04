@@ -3,7 +3,7 @@ import MarkdownIt from 'markdown-it'
 import markdownItAttrs from 'markdown-it-attrs'
 import markdownItContainer from 'markdown-it-container'
 import {useStore} from "@stores/useStore";
-import {ChevronDown, Copy, Download, Loader2, X, FilePenLine} from 'lucide-vue-next';
+import {ChevronDown, Copy, Download, FilePenLine, Loader2, X} from 'lucide-vue-next';
 import {useRouter} from "vue-router";
 import 'github-markdown-css';
 import {computed, onBeforeUnmount, onMounted, ref} from 'vue';
@@ -127,18 +127,28 @@ onBeforeUnmount(() => {
         />
       </span>
 
-              <div
-                  v-if="isDropdownOpen"
-                  class="bg-white dark:bg-gray-800 absolute top-[105%] p-1 shadow-[0px_0px_5px_0px_rgb(0,0,0,0.1)] dropdown rounded-lg w-full right-0"
+              <transition
+                  name="dropdown"
+                  enter-active-class="transition ease-out duration-150"
+                  enter-from-class="opacity-0 -translate-y-2"
+                  enter-to-class="opacity-100 translate-y-0"
+                  leave-active-class="transition ease-in duration-150"
+                  leave-from-class="opacity-100 translate-y-0"
+                  leave-to-class="opacity-0 -translate-y-2"
               >
-                <button
-                    @click="copyReadme"
-                    class="py-2.5 cursor-pointer text-[1rem] dark:text-darkText dark:hover:bg-darkCardBgColor font-medium px-6 hover:bg-gray-100 w-full rounded-lg text-gray-800 transition-colors duration-300 flex items-center gap-2.5"
+                <div
+                    v-if="isDropdownOpen"
+                    class="bg-white dark:bg-gray-800 absolute top-[105%] p-1 shadow-[0px_0px_5px_0px_rgb(0,0,0,0.1)] dropdown rounded-lg w-full right-0"
                 >
-                  <Copy :size="17"/>
-                  {{ isCopying ? 'Copied' : 'Copy' }}
-                </button>
-              </div>
+                  <button
+                      @click="copyReadme"
+                      class="py-2.5 cursor-pointer text-[1rem] dark:text-darkText dark:hover:bg-darkCardBgColor font-medium px-6 hover:bg-gray-100 w-full rounded-lg text-gray-800 transition-colors duration-300 flex items-center gap-2.5"
+                  >
+                    <Copy :size="17"/>
+                    {{ isCopying ? 'Copied' : 'Copy' }}
+                  </button>
+                </div>
+              </transition>
             </div>
 
             <button

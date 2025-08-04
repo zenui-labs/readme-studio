@@ -90,14 +90,14 @@ onBeforeUnmount(() => {
 
 <template>
   <nav
-      :class="[(store.generatedReadme && pathname !== '/editor') || store.fullScreenModal ? 'z-10' : 'z-20', isScrolled ? 'w-[90%]' : 'w-full']"
-      class='fixed top-5 left-1/2 -translate-x-1/2 backdrop-blur-3xl flex md:hidden items-center justify-between max-w-[1200px] mx-auto py-2.5 rounded-full transition-all duration-300 px-6'>
+      :class="isScrolled ? 'w-[90%]' : 'w-full'"
+      class='fixed top-5 left-1/2 -translate-x-1/2 backdrop-blur-3xl flex md:hidden items-center justify-between max-w-[1200px] mx-auto py-2.5 rounded-full z-30 transition-all duration-300 px-6'>
     <div class='flex items-start gap-2'>
       <router-link to="/">
         <img src="/logo.svg" alt="logo" class="w-[33px]"/>
       </router-link>
       <span
-          class='bg-gray-50 rounded-full dark:border-darkBorder dark:text-darkSubtext dark:bg-darkCardBgColor border border-gray-100 px-2 py-0 text-[0.8rem] font-medium text-gray-700'>Beta</span>
+          class='bg-gray-50 rounded-full dark:border-darkBorder dark:text-darkSubtext dark:bg-darkCardBgColor border border-gray-100 px-2 py-0 text-[0.8rem] font-medium text-gray-700'>v1.0</span>
     </div>
 
     <div class='flex items-center gap-3'>
@@ -120,15 +120,20 @@ onBeforeUnmount(() => {
       leave-to-class="translate-x-full"
   >
     <aside v-if="isSidebarOpen"
-           class="fixed top-0 right-0 h-full w-[85%] max-w-xs z-50 bg-white dark:bg-darkCardBgColor shadow-xl px-8 py-6 flex flex-col gap-4">
+           class="fixed top-0 md:hidden right-0 h-full w-[85%] max-w-xs z-50 bg-white dark:bg-darkCardBgColor shadow-xl px-8 py-6 flex flex-col gap-8">
 
       <div class="flex justify-end items-center mb-3">
         <X @click="toggleSidebar" strokeWidth="1.5" :size="22" class="cursor-pointer dark:text-darkSubtext"/>
       </div>
 
-      <router-link to="/features"
+      <router-link to="/templates"
                    class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor transition'>
-        Features
+        Templates
+      </router-link>
+
+      <router-link to="/changelog"
+                   class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor transition'>
+        Changelog
       </router-link>
 
       <div>
@@ -149,15 +154,6 @@ onBeforeUnmount(() => {
           </p>
         </div>
       </div>
-
-      <router-link to="/faqs"
-                   class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor transition'>
-        FAQ
-      </router-link>
-      <router-link to="/changelog"
-                   class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor transition'>
-        Changelog
-      </router-link>
 
       <div>
         <p @click="toggleDropdown" class='font-semibold dropdown_btn mb-2 flex dark:text-darkText items-center gap-2'>

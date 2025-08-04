@@ -91,20 +91,24 @@ onBeforeUnmount(() => {
 
 <template>
   <nav
-      :class="[(store.generatedReadme && pathname !== '/editor') || store.fullScreenModal ? 'z-10' : 'z-20', isScrolled ? 'max-w-[1150px]' : 'max-w-[1200px]']"
-      class='fixed top-5 left-1/2 -translate-x-1/2 backdrop-blur-3xl items-center justify-between w-full mx-auto py-2.5 hidden md:flex rounded-full px-6 transition-all duration-300'>
+      :class="isScrolled ? 'max-w-[1150px]' : 'max-w-[1200px]'"
+      class='fixed top-5 left-1/2 -translate-x-1/2 backdrop-blur-3xl items-center justify-between w-full mx-auto py-2.5 hidden md:flex rounded-full px-6 z-30 transition-all duration-300'>
     <div class='flex items-start gap-2'>
       <router-link to="/">
         <img src="/logo.svg" alt="logo" class="w-[40px]"/>
       </router-link>
       <span
-          class='bg-gray-50 rounded-full dark:border-darkBorder dark:text-darkSubtext dark:bg-darkCardBgColor border border-gray-100 px-2 py-0 text-[0.8rem] font-medium text-gray-700'>Beta</span>
+          class='bg-gray-50 rounded-full dark:border-darkBorder dark:text-darkSubtext dark:bg-darkCardBgColor border border-gray-100 px-2 py-0 text-[0.8rem] font-medium text-gray-700'>v1.0</span>
     </div>
 
     <div class='flex items-center gap-10 text-gray-700'>
-      <router-link to="/features"
+      <router-link to="/templates"
                    class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor cursor-pointer transition-all duration-200'>
-        Features
+        Templates
+      </router-link>
+      <router-link to="changelog"
+                   class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor cursor-pointer transition-all duration-200'>
+        Changelog
       </router-link>
 
       <div class='relative'>
@@ -139,15 +143,6 @@ onBeforeUnmount(() => {
           </div>
         </transition>
       </div>
-
-      <router-link to="/faqs"
-                   class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor cursor-pointer transition-all duration-200'>
-        FAQ
-      </router-link>
-      <router-link to="changelog"
-                   class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor cursor-pointer transition-all duration-200'>
-        Changelog
-      </router-link>
 
       <div class='relative'>
         <p @click="toggleDropdown"

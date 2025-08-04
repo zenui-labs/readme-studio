@@ -1,30 +1,27 @@
 <template>
-  <div class="max-w-6xl mx-auto px-4 py-10">
-    <!-- Header -->
-    <div class="mb-8">
-      <h1 class="text-3xl font-bold">📁 All Templates</h1>
-      <p class="text-gray-600 mt-1">Browse and use any template by opening it in the editor</p>
+  <div class="pt-[150px] md:pt-[180px] px-4 min-h-screen">
+
+    <div class="text-center mb-12">
+      <h2 class="text-[2.3rem] md:text-[3rem] dark:text-darkText text-gray-800 font-bold">
+        Pre-Built Templates
+      </h2>
+      <p class="text-gray-500 dark:text-darkSubtext mt-2 text-[1rem]">
+        Everything you need to craft a standout GitHub profile or project README that gets noticed
+      </p>
     </div>
 
-    <!-- Search + Filter -->
-    <div class="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-center gap-4 mb-12">
       <input
           v-model="searchQuery"
           type="text"
           placeholder="Search templates..."
-          class="w-full sm:w-1/2 px-4 py-2 border rounded-md"
+          class="w-full lg:w-[50%] px-4 dark:border-darkBorder dark:text-darkText focus:!border-brandColor py-3 border border-gray-200 outline-none focus:ring-0 rounded-lg"
       />
 
-      <select v-model="selectedCategory" class="px-4 py-2 border rounded-md">
-        <option value="">All Categories</option>
-        <option
-            v-for="cat in uniqueCategories"
-            :key="cat"
-            :value="cat"
-        >
-          {{ cat }}
-        </option>
-      </select>
+      <CustomSelectBox
+          v-model="selectedCategory"
+          :options="uniqueCategories"
+      />
     </div>
 
     <!-- Grid -->
@@ -33,8 +30,12 @@
           v-for="template in filteredTemplates"
           :key="template.id"
           :template="template"
+          v-if="filteredTemplates?.length"
       />
     </div>
+
+    <p v-if="!filteredTemplates?.length" class="text-base text-center text-gray-700 dark:text-darkSubtext my-24">No
+      template found!</p>
   </div>
 </template>
 
@@ -42,6 +43,7 @@
 import {computed, ref} from 'vue'
 import TemplateCard from '@/components/templates/template-card.vue'
 import {readmeTemplates} from '@/data/template-data.js'
+import CustomSelectBox from "@components/CustomSelectBox.vue";
 
 const searchQuery = ref('')
 const selectedCategory = ref('')

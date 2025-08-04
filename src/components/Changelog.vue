@@ -165,7 +165,7 @@ const getIconClass = (type: string): string => {
 </script>
 
 <template>
-  <div class='my-[130px] md:my-[150px] max-w-[900px] px-6 md:px-0 mx-auto'>
+  <div class='pt-[150px] md:pt-[180px] pb-5 md:pb-10 max-w-[900px] px-6 md:px-0 mx-auto'>
     <div class="text-center">
       <h1 class="text-[2.5rem] dark:text-darkText text-gray-800 font-bold">
         Changes and updates
@@ -175,7 +175,7 @@ const getIconClass = (type: string): string => {
         amet magna sit amet risus accumsan sagittis et vitae.
       </p>
 
-      <div class="relative max-w-md mx-auto">
+      <div class="relative max-w-xl mx-auto">
         <div
             class="absolute inset-y-0 left-0 pl-3 flex items-center dark:text-darkSubtext text-gray-300 pointer-events-none">
           <Search/>
@@ -197,7 +197,7 @@ const getIconClass = (type: string): string => {
     <div
         v-for="change in filteredChanges"
         :key="change.id"
-        class='mt-16'
+        class='mt-24'
     >
       <div class="flex flex-col md:flex-row items-start justify-between gap-6 md:gap-12">
         <p class="text-brandColor font-medium w-full md:w-[20%] text-left md:text-right text-sm">
