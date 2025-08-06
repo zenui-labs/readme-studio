@@ -128,6 +128,8 @@ watch(addedComponents, () => {
 }, {deep: true})
 
 onMounted(() => {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+
   if (store.generatedReadme) {
     const parsedComponents = parseReadmeIntoComponents(store.generatedReadme)
     addedComponents.value = parsedComponents

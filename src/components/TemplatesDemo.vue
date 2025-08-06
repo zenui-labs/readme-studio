@@ -26,6 +26,7 @@ import TemplateCard from "@components/templates/template-card.vue";
     <div
         class="absolute bottom-0 flex items-end justify-center left-0 right-0 dark:via-darkBg/90 dark:to-darkBg via-white/90 bg-gradient-to-b from-transparent py-10 to-white h-[40%] z-20">
       <button
+          @click="$router.push('/templates')"
           class="py-2.5 cursor-pointer mb-8 bg-brandColor hover:bg-brandColor transition-all duration-300 px-6 text-white rounded-lg text-[1.1rem] flex items-center gap-3 group justify-center">
         More Templates
         <MoveRight class="group-hover:ml-1 transition-all duration-300"/>

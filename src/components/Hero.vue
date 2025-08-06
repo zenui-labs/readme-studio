@@ -54,7 +54,7 @@
               @click="handleCreateReadme"
               class="py-2.5 cursor-pointer border-brandColor border dark:bg-slate-900/20 bg-gray-50/40 hover:bg-brandColor/10 transition-all duration-300 px-6 text-brandColor rounded-lg text-[1.1rem] flex items-center gap-2 justify-center"
           >
-            <Pencil :size="18"/>
+            <FilePenLine :size="20"/>
             Create Readme
           </button>
           <router-link
@@ -72,7 +72,7 @@
 
 <script setup lang="ts">
 import {onMounted, onUnmounted, ref} from 'vue'
-import {Pencil} from "lucide-vue-next";
+import {FilePenLine} from "lucide-vue-next";
 import router from "@/router";
 import {useStore} from "@stores/useStore";
 
@@ -88,7 +88,7 @@ let textInterval = null
 function startTextAnimation() {
   textInterval = setInterval(() => {
     currentTextIndex.value = (currentTextIndex.value + 1) % animatedTexts.value.length
-  }, 4000)
+  }, 2500)
 }
 
 function detectThemeFromBodyClass() {
@@ -124,8 +124,8 @@ function setupBodyClassObserver() {
 }
 
 function handleCreateReadme() {
+  store.setGeneratedReadme('')
   router.push('/editor')
-  store.generatedReadme = ''
 }
 
 function handleStorageChange(event: StorageEvent) {

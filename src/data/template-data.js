@@ -2368,4 +2368,907 @@ This template is licensed under the {license_type} License - see the [LICENSE](L
   <p>⭐ If this template helped you, please give it a star!</p>
 </div>`
     },
+    {
+        id: 'python-package',
+        name: 'Python Package',
+        category: 'Package',
+        description: 'Professional template for Python packages with pip installation and documentation',
+        tags: ['python', 'package', 'pip', 'library', 'pypi'],
+        template: `# {PROJECT_NAME}
+
+{PROJECT_DESCRIPTION}
+
+[![PyPI version](https://badge.fury.io/py/{PROJECT_NAME}.svg)](https://badge.fury.io/py/{PROJECT_NAME})
+[![Python Support](https://img.shields.io/pypi/pyversions/{PROJECT_NAME}.svg)](https://pypi.org/project/{PROJECT_NAME}/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## Features
+
+- ✨ Feature 1
+- 🚀 Feature 2
+- 📦 Feature 3
+- 🔧 Feature 4
+
+## Installation
+
+\`\`\`bash
+pip install {PROJECT_NAME}
+\`\`\`
+
+## Quick Start
+
+\`\`\`python
+from {PROJECT_NAME} import main_function
+
+# Basic usage
+result = main_function("example")
+print(result)
+\`\`\`
+
+## Documentation
+
+### API Reference
+
+#### \`main_function(param)\`
+
+Description of the main function.
+
+**Parameters:**
+- \`param\` (str): Description of parameter
+
+**Returns:**
+- \`result\` (str): Description of return value
+
+**Example:**
+\`\`\`python
+result = main_function("hello")
+# Output: "Hello, world!"
+\`\`\`
+
+## Development
+
+### Setup
+
+\`\`\`bash
+git clone https://github.com/{USERNAME}/{PROJECT_NAME}.git
+cd {PROJECT_NAME}
+pip install -e ".[dev]"
+\`\`\`
+
+### Running Tests
+
+\`\`\`bash
+pytest
+\`\`\`
+
+### Code Formatting
+
+\`\`\`bash
+black .
+flake8 .
+\`\`\`
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (\`git checkout -b feature/amazing-feature\`)
+3. Commit your changes (\`git commit -m 'Add some amazing feature'\`)
+4. Push to the branch (\`git push origin feature/amazing-feature\`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md) for a list of changes.`
+    },
+    {
+        id: 'react-component-library',
+        name: 'React Component Library',
+        category: 'Library',
+        description: 'Template for React component libraries with Storybook and TypeScript support',
+        tags: ['react', 'components', 'typescript', 'storybook', 'ui'],
+        template: `# {PROJECT_NAME}
+
+{PROJECT_DESCRIPTION}
+
+[![npm version](https://badge.fury.io/js/{PROJECT_NAME}.svg)](https://badge.fury.io/js/{PROJECT_NAME})
+[![Build Status](https://github.com/{USERNAME}/{PROJECT_NAME}/workflows/CI/badge.svg)](https://github.com/{USERNAME}/{PROJECT_NAME}/actions)
+[![TypeScript](https://img.shields.io/badge/%3C%2F%3E-TypeScript-%230074c1.svg)](http://www.typescriptlang.org/)
+
+## 🚀 Features
+
+- 📱 Responsive components
+- 🎨 Customizable themes
+- ♿ Accessibility-first design
+- 📚 Comprehensive documentation
+- 🔧 TypeScript support
+- 📖 Storybook integration
+
+## 📦 Installation
+
+\`\`\`bash
+npm install {PROJECT_NAME}
+# or
+yarn add {PROJECT_NAME}
+\`\`\`
+
+## 🎯 Usage
+
+\`\`\`jsx
+import { Button, Card, Modal } from '{PROJECT_NAME}';
+
+function App() {
+  return (
+    <Card>
+      <Button variant="primary" onClick={() => console.log('Clicked!')}>
+        Click me!
+      </Button>
+    </Card>
+  );
+}
+\`\`\`
+
+## 📚 Components
+
+### Button
+
+\`\`\`jsx
+<Button 
+  variant="primary" 
+  size="large" 
+  disabled={false}
+  onClick={handleClick}
+>
+  Button Text
+</Button>
+\`\`\`
+
+**Props:**
+- \`variant\`: 'primary' | 'secondary' | 'danger'
+- \`size\`: 'small' | 'medium' | 'large'
+- \`disabled\`: boolean
+- \`onClick\`: (event) => void
+
+### Card
+
+\`\`\`jsx
+<Card shadow="medium" padding="large">
+  <Card.Header>Title</Card.Header>
+  <Card.Body>Content</Card.Body>
+</Card>
+\`\`\`
+
+## 🎨 Theming
+
+\`\`\`jsx
+import { ThemeProvider } from '{PROJECT_NAME}';
+
+const theme = {
+  colors: {
+    primary: '#007bff',
+    secondary: '#6c757d'
+  }
+};
+
+function App() {
+  return (
+    <ThemeProvider theme={theme}>
+      {/* Your components */}
+    </ThemeProvider>
+  );
+}
+\`\`\`
+
+## 📖 Storybook
+
+View all components in Storybook:
+
+\`\`\`bash
+npm run storybook
+\`\`\`
+
+Visit: [https://{USERNAME}.github.io/{PROJECT_NAME}](https://{USERNAME}.github.io/{PROJECT_NAME})
+
+## 🛠️ Development
+
+\`\`\`bash
+git clone https://github.com/{USERNAME}/{PROJECT_NAME}.git
+cd {PROJECT_NAME}
+npm install
+npm run dev
+\`\`\`
+
+### Scripts
+
+- \`npm run build\` - Build the library
+- \`npm run test\` - Run tests
+- \`npm run storybook\` - Start Storybook
+- \`npm run lint\` - Lint code
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
+
+## 📄 License
+
+MIT © [{AUTHOR_NAME}](https://github.com/{USERNAME})`
+    },
+    {
+        id: 'api-project',
+        name: 'REST API',
+        category: 'Backend',
+        description: 'Template for REST API projects with endpoint documentation and setup instructions',
+        tags: ['api', 'rest', 'backend', 'express', 'node'],
+        template: `# {PROJECT_NAME} API
+
+{PROJECT_DESCRIPTION}
+
+[![Build Status](https://github.com/{USERNAME}/{PROJECT_NAME}/workflows/CI/badge.svg)](https://github.com/{USERNAME}/{PROJECT_NAME}/actions)
+[![API Documentation](https://img.shields.io/badge/API-Documentation-blue)](https://{USERNAME}.github.io/{PROJECT_NAME})
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## 🚀 Quick Start
+
+### Prerequisites
+
+- Node.js 16+
+- MongoDB/PostgreSQL
+- Redis (optional)
+
+### Installation
+
+\`\`\`bash
+git clone https://github.com/{USERNAME}/{PROJECT_NAME}.git
+cd {PROJECT_NAME}
+npm install
+\`\`\`
+
+### Environment Setup
+
+\`\`\`bash
+cp .env.example .env
+# Edit .env with your configuration
+\`\`\`
+
+### Running the Server
+
+\`\`\`bash
+# Development
+npm run dev
+
+# Production
+npm start
+\`\`\`
+
+Server will be running at \`http://localhost:3000\`
+
+## 📋 API Endpoints
+
+### Authentication
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | \`/api/auth/register\` | Register a new user |
+| POST | \`/api/auth/login\` | Login user |
+| POST | \`/api/auth/refresh\` | Refresh access token |
+
+### Users
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| GET | \`/api/users\` | Get all users |
+| GET | \`/api/users/:id\` | Get user by ID |
+| PUT | \`/api/users/:id\` | Update user |
+| DELETE | \`/api/users/:id\` | Delete user |
+
+## 📖 API Documentation
+
+### Register User
+
+\`\`\`http
+POST /api/auth/register
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "securepassword",
+  "name": "John Doe"
+}
+\`\`\`
+
+**Response:**
+\`\`\`json
+{
+  "success": true,
+  "data": {
+    "user": {
+      "id": "123",
+      "email": "user@example.com",
+      "name": "John Doe"
+    },
+    "token": "jwt_token_here"
+  }
+}
+\`\`\`
+
+### Get Users
+
+\`\`\`http
+GET /api/users
+Authorization: Bearer {token}
+\`\`\`
+
+**Query Parameters:**
+- \`page\` (optional): Page number (default: 1)
+- \`limit\` (optional): Items per page (default: 10)
+- \`search\` (optional): Search term
+
+## 🔧 Configuration
+
+### Environment Variables
+
+\`\`\`env
+NODE_ENV=development
+PORT=3000
+DATABASE_URL=mongodb://localhost:27017/myapp
+JWT_SECRET=your_jwt_secret
+REDIS_URL=redis://localhost:6379
+\`\`\`
+
+### Database Schema
+
+\`\`\`sql
+-- Users table
+CREATE TABLE users (
+  id SERIAL PRIMARY KEY,
+  email VARCHAR(255) UNIQUE NOT NULL,
+  password_hash VARCHAR(255) NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+\`\`\`
+
+## 🧪 Testing
+
+\`\`\`bash
+# Run all tests
+npm test
+
+# Run with coverage
+npm run test:coverage
+
+# Run specific test file
+npm test -- auth.test.js
+\`\`\`
+
+## 🐳 Docker
+
+\`\`\`bash
+# Build and run with Docker Compose
+docker-compose up -d
+
+# Build production image
+docker build -t {PROJECT_NAME} .
+\`\`\`
+
+## 📊 Monitoring
+
+- Health check: \`GET /health\`
+- Metrics: \`GET /metrics\`
+- API docs: \`GET /api-docs\`
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests
+5. Submit a pull request
+
+## 📝 License
+
+This project is licensed under the MIT License.`
+    },
+    {
+        id: 'documentation-site',
+        name: 'Documentation Site',
+        category: 'Documentation',
+        description: 'Template for documentation websites built with static site generators',
+        tags: ['documentation', 'docs', 'website', 'gatsby', 'nextjs'],
+        template: `# {PROJECT_NAME} Documentation
+
+{PROJECT_DESCRIPTION}
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/{NETLIFY_ID}/deploy-status)](https://app.netlify.com/sites/{NETLIFY_SITE}/deploys)
+[![Built with Docusaurus](https://img.shields.io/badge/Built%20with-Docusaurus-blue)](https://docusaurus.io/)
+
+## 🌐 Live Site
+
+Visit the documentation at: [https://{PROJECT_NAME}.netlify.app](https://{PROJECT_NAME}.netlify.app)
+
+## 📖 What's Inside
+
+This documentation site includes:
+
+- 📚 **Getting Started Guide** - Quick setup and basic usage
+- 🔧 **API Reference** - Comprehensive API documentation  
+- 💡 **Examples** - Code examples and tutorials
+- 🎨 **Theming Guide** - Customization options
+- ❓ **FAQ** - Frequently asked questions
+
+## 🚀 Local Development
+
+### Prerequisites
+
+- Node.js 16+
+- npm or yarn
+
+### Installation
+
+\`\`\`bash
+git clone https://github.com/{USERNAME}/{PROJECT_NAME}.git
+cd {PROJECT_NAME}
+npm install
+\`\`\`
+
+### Start Development Server
+
+\`\`\`bash
+npm start
+\`\`\`
+
+This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+
+### Build for Production
+
+\`\`\`bash
+npm run build
+\`\`\`
+
+This command generates static content into the \`build\` directory and can be served using any static contents hosting service.
+
+## 📝 Content Structure
+
+\`\`\`
+docs/
+├── getting-started/
+│   ├── installation.md
+│   ├── quick-start.md
+│   └── configuration.md
+├── api/
+│   ├── authentication.md
+│   ├── endpoints.md
+│   └── examples.md
+├── guides/
+│   ├── best-practices.md
+│   ├── troubleshooting.md
+│   └── migration.md
+└── reference/
+    ├── cli.md
+    ├── config.md
+    └── changelog.md
+\`\`\`
+
+## ✍️ Contributing to Documentation
+
+We welcome contributions to improve our documentation!
+
+### Adding New Pages
+
+1. Create a new Markdown file in the appropriate directory
+2. Add frontmatter with title and position:
+
+\`\`\`markdown
+---
+title: Page Title
+sidebar_position: 2
+---
+
+# Page Title
+
+Your content here...
+\`\`\`
+
+3. Update \`sidebars.js\` if needed
+
+### Style Guide
+
+- Use clear, concise language
+- Include code examples where helpful
+- Add screenshots for UI elements
+- Follow the existing structure and formatting
+
+### Local Testing
+
+\`\`\`bash
+# Start local server
+npm start
+
+# Build and test
+npm run build
+npm run serve
+\`\`\`
+
+## 🎨 Customization
+
+### Theme Configuration
+
+Edit \`docusaurus.config.js\` to customize:
+
+- Site metadata
+- Navigation menu
+- Footer links
+- Color scheme
+- Logo and favicon
+
+### Custom CSS
+
+Add custom styles in \`src/css/custom.css\`:
+
+\`\`\`css
+:root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+}
+\`\`\`
+
+## 📦 Deployment
+
+### Netlify
+
+1. Connect your GitHub repository to Netlify
+2. Set build command: \`npm run build\`
+3. Set publish directory: \`build\`
+4. Deploy!
+
+### GitHub Pages
+
+\`\`\`bash
+npm run deploy
+\`\`\`
+
+### Vercel
+
+\`\`\`bash
+vercel --prod
+\`\`\`
+
+## 🔍 Search
+
+This site includes full-text search powered by Algolia DocSearch. Contact us if you'd like search enabled for your documentation.
+
+## 📄 License
+
+Documentation is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+Code examples are licensed under [MIT License](LICENSE)`
+    },
+    {
+        id: 'machine-learning',
+        name: 'Machine Learning Project',
+        category: 'AI/ML',
+        description: 'Template for machine learning projects with model documentation and training instructions',
+        tags: ['machine-learning', 'python', 'tensorflow', 'pytorch', 'ai'],
+        template: `# {PROJECT_NAME}
+
+{PROJECT_DESCRIPTION}
+
+[![Python](https://img.shields.io/badge/Python-3.8+-blue)](https://www.python.org/downloads/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.0+-orange)](https://tensorflow.org)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+## 🎯 Project Overview
+
+This project implements a {MODEL_TYPE} model to {PROBLEM_DESCRIPTION}.
+
+### Key Features
+
+- 🧠 **Model Architecture**: {ARCHITECTURE_DESCRIPTION}
+- 📊 **Dataset**: {DATASET_DESCRIPTION} 
+- 🎯 **Performance**: {PERFORMANCE_METRICS}
+- 🚀 **Deployment Ready**: Easy inference and API deployment
+
+## 📋 Requirements
+
+- Python 3.8+
+- CUDA-compatible GPU (recommended)
+- 8GB+ RAM
+- {SPECIFIC_REQUIREMENTS}
+
+## 🚀 Quick Start
+
+### Installation
+
+\`\`\`bash
+git clone https://github.com/{USERNAME}/{PROJECT_NAME}.git
+cd {PROJECT_NAME}
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\\Scripts\\activate
+
+# Install dependencies
+pip install -r requirements.txt
+\`\`\`
+
+### Download Pre-trained Model
+
+\`\`\`bash
+# Download model weights
+python scripts/download_model.py
+
+# Or use direct link
+wget https://github.com/{USERNAME}/{PROJECT_NAME}/releases/download/v1.0/model.h5
+\`\`\`
+
+### Quick Inference
+
+\`\`\`python
+from src.model import {MODEL_CLASS}
+from src.preprocessing import preprocess_input
+
+# Load model
+model = {MODEL_CLASS}.load_pretrained('models/best_model.h5')
+
+# Make prediction
+input_data = preprocess_input('path/to/your/data')
+prediction = model.predict(input_data)
+print(f"Prediction: {prediction}")
+\`\`\`
+
+## 📊 Dataset
+
+### Dataset Information
+
+- **Source**: {DATASET_SOURCE}
+- **Size**: {DATASET_SIZE}
+- **Classes**: {NUMBER_OF_CLASSES}
+- **Split**: Train (70%) / Val (15%) / Test (15%)
+
+### Data Structure
+
+\`\`\`
+data/
+├── train/
+│   ├── class1/
+│   ├── class2/
+│   └── class3/
+├── val/
+└── test/
+\`\`\`
+
+### Preprocessing
+
+\`\`\`python
+# Example preprocessing pipeline
+def preprocess_data(raw_data):
+    # Normalization
+    data = (raw_data - mean) / std
+    
+    # Augmentation (training only)
+    if training:
+        data = apply_augmentation(data)
+    
+    return data
+\`\`\`
+
+## 🏗️ Model Architecture
+
+### Network Structure
+
+\`\`\`
+Input ({INPUT_SHAPE})
+    ↓
+Conv2D (32 filters, 3x3)
+    ↓
+MaxPooling2D (2x2)
+    ↓
+Conv2D (64 filters, 3x3)
+    ↓
+GlobalAveragePooling2D
+    ↓
+Dense (128 units, ReLU)
+    ↓
+Dropout (0.5)
+    ↓
+Dense ({NUM_CLASSES}, Softmax)
+\`\`\`
+
+### Model Summary
+
+\`\`\`python
+# Load and inspect model
+model = {MODEL_CLASS}()
+model.summary()
+
+# Total params: X,XXX,XXX
+# Trainable params: X,XXX,XXX
+# Non-trainable params: 0
+\`\`\`
+
+## 🎓 Training
+
+### Training Script
+
+\`\`\`bash
+python train.py \\
+    --data_path data/ \\
+    --batch_size 32 \\
+    --epochs 100 \\
+    --learning_rate 0.001 \\
+    --save_dir models/
+\`\`\`
+
+### Hyperparameters
+
+\`\`\`yaml
+# config.yaml
+model:
+  architecture: {ARCHITECTURE}
+  input_shape: [224, 224, 3]
+  num_classes: 10
+
+training:
+  batch_size: 32
+  epochs: 100
+  learning_rate: 0.001
+  optimizer: adam
+  loss: categorical_crossentropy
+
+data:
+  augmentation: true
+  validation_split: 0.2
+\`\`\`
+
+### Training Monitoring
+
+\`\`\`python
+# Using TensorBoard
+tensorboard --logdir=logs/
+
+# Using Weights & Biases
+wandb login
+python train.py --wandb
+\`\`\`
+
+## 📈 Results
+
+### Performance Metrics
+
+| Metric | Score |
+|--------|-------|
+| Accuracy | {ACCURACY}% |
+| Precision | {PRECISION} |
+| Recall | {RECALL} |
+| F1-Score | {F1_SCORE} |
+
+### Training History
+
+![Training History](images/training_history.png)
+
+### Confusion Matrix
+
+![Confusion Matrix](images/confusion_matrix.png)
+
+## 🔮 Inference
+
+### Single Prediction
+
+\`\`\`python
+from src.inference import predict_single
+
+result = predict_single(
+    model_path='models/best_model.h5',
+    image_path='test_image.jpg'
+)
+print(f"Predicted class: {result['class']}")
+print(f"Confidence: {result['confidence']:.2f}")
+\`\`\`
+
+### Batch Prediction
+
+\`\`\`python
+from src.inference import predict_batch
+
+results = predict_batch(
+    model_path='models/best_model.h5',
+    image_dir='test_images/'
+)
+\`\`\`
+
+### REST API
+
+\`\`\`bash
+# Start API server
+python api/server.py
+
+# Make prediction
+curl -X POST -F "image=@test.jpg" http://localhost:5000/predict
+\`\`\`
+
+## 🐳 Deployment
+
+### Docker
+
+\`\`\`dockerfile
+FROM tensorflow/tensorflow:2.8.0-gpu
+
+WORKDIR /app
+COPY . /app
+
+RUN pip install -r requirements.txt
+
+EXPOSE 5000
+CMD ["python", "api/server.py"]
+\`\`\`
+
+\`\`\`bash
+docker build -t {PROJECT_NAME} .
+docker run -p 5000:5000 {PROJECT_NAME}
+\`\`\`
+
+### Cloud Deployment
+
+- **AWS SageMaker**: See [deployment/sagemaker/](deployment/sagemaker/)
+- **Google Cloud AI Platform**: See [deployment/gcp/](deployment/gcp/)
+- **Azure ML**: See [deployment/azure/](deployment/azure/)
+
+## 📁 Project Structure
+
+\`\`\`
+{PROJECT_NAME}/
+├── data/                 # Dataset
+├── models/              # Saved models
+├── src/                 # Source code
+│   ├── model.py        # Model architecture
+│   ├── train.py        # Training script
+│   ├── inference.py    # Inference utilities
+│   └── preprocessing.py # Data preprocessing
+├── api/                 # REST API
+├── notebooks/           # Jupyter notebooks
+├── deployment/          # Deployment configs
+├── tests/              # Unit tests
+└── requirements.txt    # Dependencies
+\`\`\`
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Add tests
+5. Submit a pull request
+
+### Development Setup
+
+\`\`\`bash
+# Install development dependencies
+pip install -r requirements-dev.txt
+
+# Run tests
+pytest tests/
+
+# Code formatting
+black src/
+flake8 src/
+\`\`\`
+
+## 📚 References
+
+- [{PAPER_TITLE}]({PAPER_URL})
+- [{DATASET_PAPER}]({DATASET_URL})
+- [TensorFlow Documentation](https://tensorflow.org/api_docs)
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Thanks to [{DATASET_AUTHOR}] for the dataset
+- Inspired by [{REFERENCE_WORK}]
+- Built with TensorFlow and Keras`
+    },
 ]

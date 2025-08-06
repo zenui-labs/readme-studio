@@ -35,14 +35,16 @@
       </button>
 
       <button
-          class="w-max border border-gray-200 text-gray-800 px-3 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-100 transition-colors cursor-pointer flex-shrink-0"
+          title="Template Preview"
+          class="w-max border border-gray-200 text-gray-800 px-3 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-100 transition-colors cursor-pointer dark:border-gray-700 dark:text-darkText dark:hover:bg-gray-800 flex-shrink-0"
           @click="showTemplatePreview"
       >
         <Eye :size="21"/>
       </button>
 
       <button
-          class="w-max border border-gray-200 text-gray-800 px-3 py-[11px] rounded-lg font-semibold text-sm hover:bg-gray-100 transition-colors cursor-pointer flex-shrink-0"
+          title="Copy Template Code"
+          class="w-max border border-gray-200 text-gray-800 px-3 py-[11px] rounded-lg font-semibold text-sm hover:bg-gray-100 transition-colors dark:border-gray-700 dark:text-darkText dark:hover:bg-gray-800 cursor-pointer flex-shrink-0"
           @click="copyTemplateCode"
       >
         <Check v-if="isCopying" :size="19"/>

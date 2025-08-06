@@ -25,6 +25,53 @@ interface Change {
 
 const changes = ref<Change[]>([
   {
+    id: '3',
+    date: '2025-08-06',
+    title: 'Version 1.0 — A New Era of README Creation',
+    description: 'This version brings a more streamlined experience by combining the Features and FAQ pages into a new modern landing page. We’ve added powerful template enhancements and more customization options for users.',
+    new: [
+      {
+        id: '3-1',
+        type: 'new',
+        text: 'Features & FAQ pages are now combined into a unified landing page'
+      },
+      {
+        id: '3-2',
+        type: 'new',
+        text: 'New pre-built README templates added'
+      },
+      {
+        id: '3-3',
+        type: 'new',
+        text: 'Pre-built templates now support direct editing in the README Editor'
+      },
+      {
+        id: '3-4',
+        type: 'new',
+        text: 'Users can preview or copy the template directly from the card'
+      },
+      {
+        id: '3-5',
+        type: 'new',
+        text: 'New “Typing Text” section added in the pre-built sections'
+      },
+    ],
+    updates: [
+      {
+        id: '3-6',
+        type: 'update',
+        text: 'Updated meta tags and Open Graph image for better SEO and sharing'
+      }
+    ],
+    fixed: [
+      {
+        id: '3-7',
+        type: 'bug',
+        text: 'Fixed various small UI/UX issues across README Studio'
+      }
+    ]
+  },
+  {
     id: '1',
     date: '2025-08-01',
     title: 'Introducing the README Studio Editor',
@@ -165,7 +212,7 @@ const getIconClass = (type: string): string => {
 </script>
 
 <template>
-  <div class='pt-[150px] md:pt-[180px] pb-5 md:pb-10 max-w-[900px] px-6 md:px-0 mx-auto'>
+  <div class='pt-[150px] md:pt-[150px] pb-5 md:pb-10 max-w-[900px] px-6 md:px-0 mx-auto'>
     <div class="text-center">
       <h1 class="text-[2.5rem] dark:text-darkText text-gray-800 font-bold">
         Changes and updates

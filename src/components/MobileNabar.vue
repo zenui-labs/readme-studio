@@ -2,7 +2,7 @@
 import Moon from "@/svg-icons/moon.vue";
 import {onBeforeUnmount, onMounted, ref} from "vue";
 import Sun from "@/svg-icons/sun.vue";
-import {ChevronDown, Linkedin, Menu, Pencil, X} from "lucide-vue-next"
+import {ChevronDown, FilePenLine, Linkedin, Menu, X} from "lucide-vue-next"
 import Facebook from "@/svg-icons/facebook.vue";
 import Discord from "@/svg-icons/discord.vue";
 import {useStore} from "@stores/useStore";
@@ -86,6 +86,12 @@ onBeforeUnmount(() => {
   document.removeEventListener('click', handleClickOutside)
   window.removeEventListener('scroll', onScroll);
 });
+
+function handleCreateReadme() {
+  store.setGeneratedReadme('')
+  router.push('/editor')
+}
+
 </script>
 
 <template>
@@ -147,9 +153,9 @@ onBeforeUnmount(() => {
             <AiIcon/>
             Generate Readme
           </p>
-          <p @click="router.push('/editor')"
+          <p @click="handleCreateReadme"
              class='text-sm flex items-center gap-2 mt-4 ml-3 dark:text-darkText hover:text-brandColor transition'>
-            <Pencil :size="17"/>
+            <FilePenLine :size="17"/>
             Create Readme
           </p>
         </div>

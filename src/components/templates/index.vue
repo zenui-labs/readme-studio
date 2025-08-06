@@ -1,5 +1,5 @@
 <template>
-  <div class="pt-[150px] md:pt-[180px] px-4 min-h-screen">
+  <div class="pt-[150px] md:pt-[150px] px-4 min-h-screen">
 
     <div class="text-center mb-12">
       <h2 class="text-[2.3rem] md:text-[3rem] dark:text-darkText text-gray-800 font-bold">

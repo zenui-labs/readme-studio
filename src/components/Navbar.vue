@@ -2,7 +2,7 @@
 import Discord from "@/svg-icons/discord.vue";
 import Moon from "@/svg-icons/moon.vue";
 import Facebook from "@/svg-icons/facebook.vue";
-import {ChevronDown, Linkedin, Pencil} from 'lucide-vue-next';
+import {ChevronDown, FilePenLine, Linkedin} from 'lucide-vue-next';
 import {onBeforeUnmount, onMounted, ref} from "vue";
 import Sun from "@/svg-icons/sun.vue";
 import {useStore} from "@stores/useStore";
@@ -86,6 +86,12 @@ onBeforeUnmount(() => {
   document.removeEventListener('click', handleClickOutside);
   window.removeEventListener('scroll', onScroll);
 });
+
+function handleCreateReadme() {
+  store.setGeneratedReadme('')
+  router.push('/editor')
+}
+
 </script>
 
 
@@ -132,12 +138,12 @@ onBeforeUnmount(() => {
             <p @click="router.push('/generate')"
                class="py-2.5 px-3.5 relative group overflow-hidden cursor-pointer font-medium text-[0.9rem] flex items-center gap-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800"
             >
-              <AiIcon/>
+              <AiIcon size="16"/>
               <span class="z-10">Generate Readme</span>
             </p>
-            <p @click="router.push('/editor')"
-               class='py-2.5 px-3.5 relative group overflow-hidden cursor-pointer font-medium text-[0.9rem] flex items-center gap-2.5 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800'>
-              <Pencil :size="17"/>
+            <p @click="handleCreateReadme"
+               class='py-2.5 px-3.5 relative group overflow-hidden cursor-pointer font-medium text-[0.9rem] flex items-center gap-2 rounded-lg hover:bg-gray-100 dark:hover:bg-slate-800'>
+              <FilePenLine :size="18"/>
               <span class='z-10'>Create Readme</span>
             </p>
           </div>
