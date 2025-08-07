@@ -197,7 +197,7 @@ watch(() => store.fullScreenModal, () => {
 
 <template>
   <RootLayout :is-editor-page="true">
-    <div class="w-full min-h-screen mt-[130px] max-w-[2000px] mx-auto lg:mt-[170px] mb-[80px] px-5 lg:px-12">
+    <div class="w-full min-h-screen pt-[130px] max-w-[2000px] mx-auto lg:pt-[170px] mb-[80px] px-5 lg:px-12">
 
       <EditorHeader
           :content="editorContent"

@@ -38,7 +38,7 @@ onMounted(() => {
 <template>
   <RootLayout>
     <div
-        class="mt-[150px] md:mt-[180px] pb-24 md:pb-0 min-h-[84vh] px-6 md:px-0 z-10 max-w-[900px] w-full md:min-w-[900px] mx-auto">
+        class="pt-[150px] md:pt-[200px] pb-24 md:pb-0 min-h-[95vh] px-6 md:px-0 z-10 max-w-[900px] w-full md:min-w-[900px] mx-auto">
 
       <div class="flex items-center flex-col md:flex-row gap-4 justify-center w-full mb-16">
         <div
