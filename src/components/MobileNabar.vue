@@ -177,7 +177,7 @@ function handleCreateReadme() {
             <Discord class="!text-[2rem]"/>
             Discord Channel
           </a>
-          <a href="https://www.linkedin.com/company/readme-studio" target="_blank"
+          <a href="https://www.linkedin.com/company/zenui-labs/" target="_blank"
              class='text-sm flex items-center gap-2 dark:text-darkText mt-2 ml-2 hover:text-brandColor transition'>
             <Linkedin strokeWidth="1" :size="17"/>
             LinkedIn Page

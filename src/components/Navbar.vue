@@ -185,7 +185,7 @@ function handleCreateReadme() {
               <Discord class='!text-[2.3rem] z-10'/>
               <span class='z-10'>Discord Channel</span>
             </a>
-            <a href="https://www.linkedin.com/company/readme-studio" target="_blank"
+            <a href="https://www.linkedin.com/company/zenui-labs/" target="_blank"
                class='py-2.5 px-3.5 relative group overflow-hidden cursor-pointer font-medium text-[0.9rem] flex items-center gap-2.5 rounded-lg'>
               <Linkedin :strokeWidth="1.5" :size="20" class='mb-1 z-10'/>
               <span
