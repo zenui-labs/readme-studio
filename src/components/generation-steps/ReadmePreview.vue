@@ -95,7 +95,7 @@ onBeforeUnmount(() => {
     >
       <Transition name="slide-up" appear>
         <div class="w-[95%] md:w-[80%] mt-36">
-          <div class='flex items-center justify-end gap-3 mb-3'>
+          <div class='flex flex-wrap items-center justify-end gap-3 mb-3'>
 
             <button
                 @click="router.push('/editor')"
