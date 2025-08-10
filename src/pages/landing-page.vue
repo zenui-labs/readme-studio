@@ -3,7 +3,7 @@ import RootLayout from "@/layouts/RootLayout.vue";
 import Hero from "@components/Hero.vue";
 import Features from "@components/Features.vue";
 import Faq from "@components/Faq.vue";
-import TemplatesDemo from "@components/TemplatesDemo.vue";
+import TemplatesShortcut from "@components/TemplatesShortcut.vue";
 </script>
 
 <template>
@@ -11,6 +11,6 @@ import TemplatesDemo from "@components/TemplatesDemo.vue";
   <RootLayout>
     <Features/>
     <Faq/>
-    <TemplatesDemo/>
+    <TemplatesShortcut/>
   </RootLayout>
 </template>

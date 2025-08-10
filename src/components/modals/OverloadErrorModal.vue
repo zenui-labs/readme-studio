@@ -1,3 +1,13 @@
+<script setup>
+import {useStore} from "@stores/useStore.js";
+
+const store = useStore();
+
+const handleClose = () => {
+  store.toggleOverloadErrorModalOpen(false);
+};
+</script>
+
 <template>
   <transition name="fade">
     <div
@@ -25,16 +35,6 @@
     </div>
   </transition>
 </template>
-
-<script setup>
-import {useStore} from "@stores/useStore";
-
-const store = useStore();
-
-const handleClose = () => {
-  store.toggleOverloadErrorModalOpen(false);
-};
-</script>
 
 <style scoped>
 .fade-enter-active,

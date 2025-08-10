@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import LimitErrorModal from "@components/LimitErrorModal.vue";
-import OverloadErrorModal from "@components/OverloadErrorModal.vue";
+import LimitErrorModal from "@components/modals/LimitErrorModal.vue";
+import OverloadErrorModal from "@components/modals/OverloadErrorModal.vue";
 import {watch} from "vue";
 import {useStore} from "@stores/useStore";
 

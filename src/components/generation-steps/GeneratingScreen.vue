@@ -2,24 +2,10 @@
 import {AlertCircle, CheckCircle, RefreshCw, RotateCcw} from 'lucide-vue-next'
 import {useStore} from "@stores/useStore";
 import {computed, onMounted, ref, watch} from "vue";
+import {profileSteps, repoSteps} from "@/constants/generation-process";
 
 const currentStep = ref(0);
 const store = useStore()
-
-const profileSteps = [
-  'Analyzing profile structure...',
-  'Loading GitHub data...',
-  'Creating README content...',
-  'Finalizing output...'
-]
-
-const repoSteps = [
-  'Analyzing repository structure...',
-  'Processing code files...',
-  'Generating documentation...',
-  'Creating README content...',
-  'Finalizing output...'
-]
 
 const steps = computed(() => {
   return store.selectedType === 'profile' ? profileSteps : repoSteps

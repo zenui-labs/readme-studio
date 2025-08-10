@@ -1,3 +1,33 @@
+<script setup>
+import {useStore} from "@stores/useStore.ts";
+import {useRouter} from "vue-router";
+import {PATHS} from "@/constants/paths.js";
+
+const store = useStore()
+const router = useRouter()
+
+const emit = defineEmits(['update:modelValue'])
+
+const handleClose = () => {
+  store.toggleLimitErrorModalOpen(false)
+  store.currentStep = 1
+  router.push(PATHS.HOME)
+}
+
+</script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+</style>
+
 <template>
   <transition name="fade">
     <div
@@ -23,7 +53,7 @@
             Close
           </button>
           <a
-              href="https://ko-fi.com/readmestudio"
+              href="https://ko-fi.com/zenuilabs"
               target="_blank"
               class="py-2.5 cursor-pointer bg-brandColor/80 hover:bg-brandColor transition-all duration-300 px-6 text-white rounded-lg text-[1.1rem] flex items-center gap-2 justify-center"
           >
@@ -34,31 +64,3 @@
     </div>
   </transition>
 </template>
-
-<script setup>
-import {useStore} from "@stores/useStore.ts";
-import {useRouter} from "vue-router";
-
-const store = useStore()
-const router = useRouter()
-
-const emit = defineEmits(['update:modelValue'])
-
-const handleClose = () => {
-  store.toggleLimitErrorModalOpen(false)
-  store.currentStep = 1
-  router.push('/')
-}
-
-</script>
-
-<style scoped>
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.3s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
-}
-</style>

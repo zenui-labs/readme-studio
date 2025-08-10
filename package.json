@@ -24,6 +24,7 @@
     "vue3-markdown-it": "^1.0.10"
   },
   "devDependencies": {
+    "@types/markdown-it-container": "^2.0.10",
     "@types/node": "^24.0.14",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vue/tsconfig": "^0.7.0",

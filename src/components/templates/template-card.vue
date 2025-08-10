@@ -1,3 +1,40 @@
+<script setup>
+import {ref} from 'vue'
+import {useRouter} from "vue-router"
+import {useStore} from "@stores/useStore.ts"
+import {Check, Copy, Eye, FilePenLine} from 'lucide-vue-next';
+import FullScreenPreviewModal from "@components/modals/FullScreenPreviewModal.vue";
+import {PATHS} from "@/constants/paths.js";
+
+const props = defineProps({
+  template: Object
+})
+
+const router = useRouter()
+const store = useStore()
+const isCopying = ref(false)
+
+const showTemplatePreview = () => {
+  store.setGeneratedReadme(props.template.template)
+  store.fullScreenModal = true
+}
+
+const copyTemplateCode = () => {
+  navigator.clipboard.writeText(props.template.template).then(() => {
+    isCopying.value = true
+    setTimeout(() => {
+      isCopying.value = false
+    }, 1000)
+  })
+}
+
+const openEditor = () => {
+  store.setGeneratedReadme(props.template.template)
+  router.push(PATHS.EDITOR)
+}
+
+</script>
+
 <template>
   <div
       class="bg-white rounded-xl p-6 text-left border dark:bg-darkCardBgColor dark:border-darkBorder border-gray-200 flex flex-col h-full">
@@ -58,39 +95,3 @@
   <FullScreenPreviewModal v-if="store.fullScreenModal"/>
 
 </template>
-
-<script setup>
-import {ref} from 'vue'
-import {useRouter} from "vue-router"
-import {useStore} from "@stores/useStore.ts"
-import {Check, Copy, Eye, FilePenLine} from 'lucide-vue-next';
-import FullScreenPreviewModal from "@components/FullScreenPreviewModal.vue";
-
-const props = defineProps({
-  template: Object
-})
-
-const router = useRouter()
-const store = useStore()
-const isCopying = ref(false)
-
-const showTemplatePreview = () => {
-  store.setGeneratedReadme(props.template.template)
-  store.fullScreenModal = true
-}
-
-const copyTemplateCode = () => {
-  navigator.clipboard.writeText(props.template.template).then(() => {
-    isCopying.value = true
-    setTimeout(() => {
-      isCopying.value = false
-    }, 1000)
-  })
-}
-
-const openEditor = () => {
-  store.setGeneratedReadme(props.template.template)
-  router.push('/editor')
-}
-
-</script>

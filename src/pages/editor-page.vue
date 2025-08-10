@@ -11,7 +11,7 @@ import ComponentManager from '@/components/editor-box/ComponentManager.vue'
 import MarkdownEditor from '@/components/editor-box/Editor.vue'
 import EditorHeader from '@/components/editor-box/Header.vue'
 import MarkdownPreview from '@/components/editor-box/Preview.vue'
-import FullScreenPreviewModal from "@components/FullScreenPreviewModal.vue";
+import FullScreenPreviewModal from "@components/modals/FullScreenPreviewModal.vue";
 import {Code, Download, FileText, Hash, Image, Link, Settings, Shield, Star, Table} from 'lucide-vue-next'
 
 const store = useStore()

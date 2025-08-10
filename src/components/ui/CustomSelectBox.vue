@@ -1,3 +1,34 @@
+<script setup>
+import {computed, onMounted, ref} from 'vue'
+import {ChevronDown} from 'lucide-vue-next';
+
+const props = defineProps({
+  modelValue: String,
+  options: Array
+})
+
+const emit = defineEmits(['update:modelValue'])
+
+const isOpen = ref(false)
+const toggleDropdown = () => isOpen.value = !isOpen.value
+const selectOption = (value) => {
+  emit('update:modelValue', value)
+  isOpen.value = false
+}
+
+const selectedLabel = computed(() => {
+  return props.modelValue || 'All Categories'
+})
+
+onMounted(() => {
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.custom-select-btn') && !event.target.closest('.custom-select-dropdown')) {
+      isOpen.value = false
+    }
+  })
+})
+</script>
+
 <template>
   <div class="relative w-full text-left sm:w-auto">
     <button
@@ -40,34 +71,3 @@
     </transition>
   </div>
 </template>
-
-<script setup>
-import {computed, onMounted, ref} from 'vue'
-import {ChevronDown} from 'lucide-vue-next';
-
-const props = defineProps({
-  modelValue: String,
-  options: Array
-})
-
-const emit = defineEmits(['update:modelValue'])
-
-const isOpen = ref(false)
-const toggleDropdown = () => isOpen.value = !isOpen.value
-const selectOption = (value) => {
-  emit('update:modelValue', value)
-  isOpen.value = false
-}
-
-const selectedLabel = computed(() => {
-  return props.modelValue || 'All Categories'
-})
-
-onMounted(() => {
-  document.addEventListener('click', (event) => {
-    if (!event.target.closest('.custom-select-btn') && !event.target.closest('.custom-select-dropdown')) {
-      isOpen.value = false
-    }
-  })
-})
-</script>

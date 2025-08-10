@@ -2,12 +2,13 @@
 import Moon from "@/svg-icons/moon.vue";
 import {onBeforeUnmount, onMounted, ref} from "vue";
 import Sun from "@/svg-icons/sun.vue";
-import {ChevronDown, FilePenLine, Linkedin, Menu, X} from "lucide-vue-next"
+import {ChevronDown, FilePenLine, Github, Linkedin, Menu, X} from "lucide-vue-next"
 import Facebook from "@/svg-icons/facebook.vue";
 import Discord from "@/svg-icons/discord.vue";
 import {useStore} from "@stores/useStore";
 import AiIcon from "@/svg-icons/ai-icon.vue";
 import {useRouter} from "vue-router";
+import {PATHS} from "@/constants/paths";
 
 const isActiveDropdown = ref(false);
 const isDarkMode = ref(false);
@@ -20,7 +21,6 @@ const onScroll = () => {
 };
 
 const store = useStore()
-const pathname = window.location.pathname;
 const router = useRouter()
 
 const toggleDropdown = () => {
@@ -89,7 +89,7 @@ onBeforeUnmount(() => {
 
 function handleCreateReadme() {
   store.setGeneratedReadme('')
-  router.push('/editor')
+  router.push(PATHS.EDITOR)
 }
 
 </script>
@@ -99,7 +99,7 @@ function handleCreateReadme() {
       :class="isScrolled ? 'w-[90%]' : 'w-full'"
       class='fixed top-5 left-1/2 -translate-x-1/2 backdrop-blur-3xl flex md:hidden items-center justify-between max-w-[1200px] mx-auto py-2.5 rounded-full z-30 transition-all duration-300 px-6'>
     <div class='flex items-start gap-2'>
-      <router-link to="/">
+      <router-link :to="PATHS.HOME">
         <img src="/logo.svg" alt="logo" class="w-[33px]"/>
       </router-link>
       <span
@@ -107,6 +107,11 @@ function handleCreateReadme() {
     </div>
 
     <div class='flex items-center gap-3'>
+
+      <a href="https://github.com/zenui-labs/readme-studio" target="_blank" rel="noreferrer">
+        <Github class="text-gray-700 hover:text-brandColor dark:text-gray-300 transition-colors duration-300"/>
+      </a>
+
       <div class='flex items-center cursor-pointer' @click="toggleDarkMode" title="Toggle Dark Mode">
         <component :is="isDarkMode ? Sun : Moon"
                    class="text-gray-700 dark:text-gray-300 transition-colors duration-300"/>
@@ -132,12 +137,12 @@ function handleCreateReadme() {
         <X @click="toggleSidebar" strokeWidth="1.5" :size="22" class="cursor-pointer dark:text-darkSubtext"/>
       </div>
 
-      <router-link to="/templates"
+      <router-link :to="PATHS.TEMPLATES"
                    class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor transition'>
         Templates
       </router-link>
 
-      <router-link to="/changelog"
+      <router-link :to="PATHS.CHANGELOG"
                    class='text-[1rem] dark:text-darkText font-medium hover:text-brandColor transition'>
         Changelog
       </router-link>
@@ -148,7 +153,7 @@ function handleCreateReadme() {
           <ChevronDown :size="22" :class="`${isCreateDropdownOpen ? 'rotate-180' : ''} transition-all duration-200`"/>
         </p>
         <div v-if="isCreateDropdownOpen" class='dropdown'>
-          <p @click="router.push('/generate')"
+          <p @click="router.push(PATHS.GENERATOR)"
              class='text-sm flex items-center gap-2 mt-4 ml-3 dark:text-darkText hover:text-brandColor transition'>
             <AiIcon/>
             Generate Readme

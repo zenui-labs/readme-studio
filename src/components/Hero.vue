@@ -1,3 +1,85 @@
+<script setup lang="ts">
+import {onMounted, onUnmounted, ref} from 'vue'
+import {FilePenLine} from "lucide-vue-next";
+import router from "@/router";
+import {useStore} from "@stores/useStore";
+import {PATHS} from "@/constants/paths";
+
+const isDarkMode = ref(false)
+const store = useStore()
+
+const animatedTexts = ref(['readme', 'projects', 'repos'])
+const currentTextIndex = ref(0)
+
+let textInterval = null
+
+function startTextAnimation() {
+  textInterval = setInterval(() => {
+    currentTextIndex.value = (currentTextIndex.value + 1) % animatedTexts.value.length
+  }, 2500)
+}
+
+function detectThemeFromBodyClass() {
+  isDarkMode.value = document.body.classList.contains('dark')
+}
+
+function detectThemeFromLocalStorage() {
+  const theme = localStorage.getItem('theme')
+  if (theme === 'dark') {
+    isDarkMode.value = true
+  } else if (theme === 'light') {
+    isDarkMode.value = false
+  } else {
+    isDarkMode.value = window.matchMedia('(prefers-color-scheme: dark)').matches
+  }
+}
+
+let observer: MutationObserver | null = null
+
+function setupBodyClassObserver() {
+  observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+        detectThemeFromBodyClass()
+      }
+    })
+  })
+
+  observer.observe(document.body, {
+    attributes: true,
+    attributeFilter: ['class']
+  })
+}
+
+function handleCreateReadme() {
+  store.setGeneratedReadme('')
+  router.push(PATHS.EDITOR)
+}
+
+function handleStorageChange(event: StorageEvent) {
+  if (event.key === 'theme') {
+    detectThemeFromLocalStorage()
+  }
+}
+
+onMounted(() => {
+  detectThemeFromBodyClass()
+  setupBodyClassObserver()
+  startTextAnimation()
+  window.addEventListener('storage', handleStorageChange)
+})
+
+onUnmounted(() => {
+  if (observer) {
+    observer.disconnect()
+  }
+  if (textInterval) {
+    clearInterval(textInterval)
+  }
+  window.removeEventListener('storage', handleStorageChange)
+})
+</script>
+
 <template>
   <div
       class="min-h-screen w-full pt-[100px] md:pt-0 dark:bg-darkBg relative bg-white text-center items-center justify-center flex flex-col">
@@ -58,7 +140,7 @@
             Create Readme
           </button>
           <router-link
-              to="/generate"
+              :to="PATHS.GENERATOR"
               class="py-2.5 cursor-pointer bg-brandColor/80 hover:bg-brandColor transition-all duration-300 px-6 text-white rounded-lg text-[1.1rem] flex items-center gap-2 justify-center"
           >
             <img src="/ai.svg" alt="ai-icon" class='w-[20px]'/>
@@ -69,88 +151,6 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import {onMounted, onUnmounted, ref} from 'vue'
-import {FilePenLine} from "lucide-vue-next";
-import router from "@/router";
-import {useStore} from "@stores/useStore";
-
-const isDarkMode = ref(false)
-const store = useStore()
-
-const animatedTexts = ref(['readme', 'projects', 'repos'])
-const currentTextIndex = ref(0)
-const currentTextClass = ref('text-brandColor')
-
-let textInterval = null
-
-function startTextAnimation() {
-  textInterval = setInterval(() => {
-    currentTextIndex.value = (currentTextIndex.value + 1) % animatedTexts.value.length
-  }, 2500)
-}
-
-function detectThemeFromBodyClass() {
-  isDarkMode.value = document.body.classList.contains('dark')
-}
-
-function detectThemeFromLocalStorage() {
-  const theme = localStorage.getItem('theme')
-  if (theme === 'dark') {
-    isDarkMode.value = true
-  } else if (theme === 'light') {
-    isDarkMode.value = false
-  } else {
-    isDarkMode.value = window.matchMedia('(prefers-color-scheme: dark)').matches
-  }
-}
-
-let observer: MutationObserver | null = null
-
-function setupBodyClassObserver() {
-  observer = new MutationObserver((mutations) => {
-    mutations.forEach((mutation) => {
-      if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
-        detectThemeFromBodyClass()
-      }
-    })
-  })
-
-  observer.observe(document.body, {
-    attributes: true,
-    attributeFilter: ['class']
-  })
-}
-
-function handleCreateReadme() {
-  store.setGeneratedReadme('')
-  router.push('/editor')
-}
-
-function handleStorageChange(event: StorageEvent) {
-  if (event.key === 'theme') {
-    detectThemeFromLocalStorage()
-  }
-}
-
-onMounted(() => {
-  detectThemeFromBodyClass()
-  setupBodyClassObserver()
-  startTextAnimation()
-  window.addEventListener('storage', handleStorageChange)
-})
-
-onUnmounted(() => {
-  if (observer) {
-    observer.disconnect()
-  }
-  if (textInterval) {
-    clearInterval(textInterval)
-  }
-  window.removeEventListener('storage', handleStorageChange)
-})
-</script>
 
 <style scoped>
 .text-change-enter-active,

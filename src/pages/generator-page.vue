@@ -7,27 +7,9 @@ import ReadmePreview from "@components/generation-steps/ReadmePreview.vue";
 import GeneratingScreen from "@components/generation-steps/GeneratingScreen.vue";
 import {onMounted} from "vue";
 import RootLayout from "@/layouts/RootLayout.vue";
+import {steps} from "@/constants";
 
 const store = useStore()
-
-const steps = [
-  {
-    label: 'Select Type',
-    slug: 'select_type',
-  },
-  {
-    label: 'Enter Info',
-    slug: 'enter_info',
-  },
-  {
-    label: 'Generate',
-    slug: 'generate',
-  },
-  {
-    label: 'Preview',
-    slug: 'preview',
-  }
-]
 
 onMounted(() => {
   store.currentStep = 1

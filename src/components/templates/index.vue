@@ -1,3 +1,27 @@
+<script setup>
+import {computed, ref} from 'vue'
+import TemplateCard from '@/components/templates/template-card.vue'
+import {readmeTemplates} from '@/data/template-data.ts'
+import CustomSelectBox from "@components/ui/CustomSelectBox.vue";
+
+const searchQuery = ref('')
+const selectedCategory = ref('')
+
+const uniqueCategories = [...new Set(readmeTemplates.map(t => t.category))]
+
+const filteredTemplates = computed(() => {
+  return readmeTemplates.filter(t => {
+    const matchesSearch = t.name.toLowerCase().includes(searchQuery.value?.toLowerCase()) ||
+        t.description.toLowerCase().includes(searchQuery.value?.toLowerCase()) ||
+        t.tags.some(tag => tag.toLowerCase().includes(searchQuery.value?.toLowerCase()))
+
+    const matchesCategory = selectedCategory.value === '' || t.category === selectedCategory.value
+
+    return matchesSearch && matchesCategory
+  })
+})
+</script>
+
 <template>
   <div class="pt-[150px] md:pt-[150px] px-4 min-h-screen">
 
@@ -38,27 +62,3 @@
       template found!</p>
   </div>
 </template>
-
-<script setup>
-import {computed, ref} from 'vue'
-import TemplateCard from '@/components/templates/template-card.vue'
-import {readmeTemplates} from '@/data/template-data.js'
-import CustomSelectBox from "@components/CustomSelectBox.vue";
-
-const searchQuery = ref('')
-const selectedCategory = ref('')
-
-const uniqueCategories = [...new Set(readmeTemplates.map(t => t.category))]
-
-const filteredTemplates = computed(() => {
-  return readmeTemplates.filter(t => {
-    const matchesSearch = t.name.toLowerCase().includes(searchQuery.value?.toLowerCase()) ||
-        t.description.toLowerCase().includes(searchQuery.value?.toLowerCase()) ||
-        t.tags.some(tag => tag.toLowerCase().includes(searchQuery.value?.toLowerCase()))
-
-    const matchesCategory = selectedCategory.value === '' || t.category === selectedCategory.value
-
-    return matchesSearch && matchesCategory
-  })
-})
-</script>
