@@ -22,7 +22,7 @@
           href="https://zenui.net"
           target="_blank"
           class="text-brandColor underline"
-      >@zenui</a
+      >@zenui-labs</a
       >
     </p>
   </section>
