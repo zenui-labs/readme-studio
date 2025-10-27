@@ -9,7 +9,7 @@ export const generateReadmeWithClaude = async (prompt: string) => {
     store.setIsReadmeGenerating(true);
 
     try {
-        const model = genAI.getGenerativeModel({model: "gemini-1.5-flash"});
+        const model = genAI.getGenerativeModel({model: "gemini-2.5-flash"});
         const result = await model.generateContent(prompt);
         return result.response.text().trim();
     } catch (error) {
