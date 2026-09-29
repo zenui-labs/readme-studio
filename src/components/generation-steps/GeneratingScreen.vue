@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {AlertCircle, CheckCircle, RefreshCw, RotateCcw} from 'lucide-vue-next'
 import {useStore} from "@stores/useStore";
-import {computed, onMounted, ref, watch} from "vue";
+import {computed, onBeforeUnmount, onMounted, ref, watch} from "vue";
 import {profileSteps, repoSteps} from "@/constants/generation-process";
 
 const currentStep = ref(0);
@@ -11,66 +11,38 @@ const steps = computed(() => {
   return store.selectedType === 'profile' ? profileSteps : repoSteps
 })
 
-const dataLoadingStepIndex = computed(() => {
-  return store.selectedType === 'profile' ? 1 : 1;
-})
+// A failure can happen while loading GitHub data or while the AI writes, so the
+// error is pinned to whichever step was running at that moment.
+const errorStepIndex = ref(-1)
+
+watch(() => store.hasError, (hasError) => {
+  errorStepIndex.value = hasError ? Math.min(currentStep.value, steps.value.length - 1) : -1
+}, {immediate: true})
+
+let interval: ReturnType<typeof setInterval> | undefined
 
 onMounted(() => {
-  const interval = setInterval(() => {
-    if (
-        store.hasError && currentStep.value === dataLoadingStepIndex.value ||
-        store.limitErrorModalOpen
-    ) {
-      clearInterval(interval);
-      return;
-    }
+  interval = setInterval(() => {
+    if (store.hasError || store.limitErrorModalOpen || store.overloadErrorModalOpen) return
 
-    const finalStepIndex = steps.value.length - 1;
+    const finalStepIndex = steps.value.length - 1
+    // Hold on the last step until the README is ready.
+    if (currentStep.value >= finalStepIndex && store.isGenerating) return
 
-    if (
-        currentStep.value === finalStepIndex &&
-        store.isReadmeGenerating
-    ) {
-      return;
-    }
-
-    if (currentStep.value < steps.value.length) {
-      currentStep.value++;
-    } else {
-      clearInterval(interval);
-    }
+    currentStep.value++
   }, 5000);
 });
 
+onBeforeUnmount(() => clearInterval(interval))
 
 watch(() => currentStep.value, (newValue) => {
-  if (store.hasError || store.limitErrorModalOpen) {
-    return;
+  if (newValue === steps.value.length) {
+    store.currentStep = 4;
   }
-
-  if (store.selectedType === 'profile') {
-    if (newValue === 4) {
-      store.currentStep = 4;
-      currentStep.value = 0;
-    }
-  } else {
-    if (newValue === 5) {
-      store.currentStep = 4;
-      currentStep.value = 0;
-    }
-  }
-}, {
-  immediate: true,
 });
 
-
-watch(() => store.hasError, (hasError) => {
-  if (!hasError) {
-    currentStep.value = 0;
-  }
-})
-
 const handleTryAgain = () => {
+  store.clearError()
   store.currentStep = 2
 }
 
@@ -80,12 +52,12 @@ const handleTryAgain = () => {
   <div class="space-y-4 w-max mx-auto">
     <div v-for="(step, index) in steps" :key="step" class="flex items-center gap-4">
       <div :class="['flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center transition-all duration-500',
-            store.hasError && index === dataLoadingStepIndex ? 'bg-red-500 text-white' :
+            index === errorStepIndex ? 'bg-red-500 text-white' :
             index < currentStep ? 'bg-brandColor text-white' :
             index === currentStep && !store.hasError ? 'bg-brandColor text-white' :
             'bg-gray-200 text-gray-400 dark:text-gray-700 dark:bg-gray-400']">
         <CheckCircle v-if="index < currentStep && !store.hasError" class="w-5 h-5"/>
-        <AlertCircle v-else-if="store.hasError && index === dataLoadingStepIndex" class="w-5 h-5"/>
+        <AlertCircle v-else-if="index === errorStepIndex" class="w-5 h-5"/>
         <RefreshCw v-else-if="index === currentStep && !store.hasError" class="w-5 h-5 animate-spin"/>
         <div v-else class="w-2 h-2 bg-current rounded-full"/>
       </div>
@@ -93,14 +65,14 @@ const handleTryAgain = () => {
         <div class='flex items-center gap-2'>
                   <span
                       :class="['text-lg transition-all flex duration-500',
-                    store.hasError && index === dataLoadingStepIndex ? 'text-red-600 text-left dark:text-red-400 font-medium' :
+                    index === errorStepIndex ? 'text-red-600 text-left dark:text-red-400 font-medium' :
                     index <= currentStep ? 'text-gray-800 dark:text-darkText font-medium' :
                     'text-gray-400 dark:text-gray-500']">
           {{ step }}
         </span>
           <button
               @click="handleTryAgain"
-              v-if="store.hasError && index === dataLoadingStepIndex"
+              v-if="index === errorStepIndex"
               class="py-1.5 cursor-pointer bg-red-100 border border-red-400 dark:border-red-900 hover:bg-red-200 dark:bg-red-800/30 dark:hover:bg-red-800/60 transition-all duration-300 px-3 dark:text-white text-red-600 rounded-lg text-[0.9rem] flex items-center gap-2 font-normal justify-center w-max"
           >
             <RotateCcw :size="18"/>
@@ -108,7 +80,7 @@ const handleTryAgain = () => {
           </button>
         </div>
         <!-- Show error message only on the data loading step -->
-        <span v-if="store.hasError && index === dataLoadingStepIndex"
+        <span v-if="index === errorStepIndex"
               class="text-sm text-red-500 text-left dark:text-red-400 mt-1">
           {{ store.errorMessage }}
         </span>

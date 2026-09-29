@@ -1,7 +1,7 @@
 {
   "name": "readme-studio",
   "private": true,
-  "version": "1.0",
+  "version": "1.1",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -14,8 +14,7 @@
     "dompurify": "^3.2.6",
     "github-markdown-css": "^5.8.1",
     "lucide-vue-next": "^0.525.0",
-    "markdown-it-attrs": "^4.3.1",
-    "markdown-it-container": "^4.0.0",
+    "markdown-it": "^12.3.2",
     "marked": "^16.1.1",
     "pinia": "^3.0.3",
     "tailwindcss": "^4.1.11",
@@ -24,7 +23,6 @@
     "vue3-markdown-it": "^1.0.10"
   },
   "devDependencies": {
-    "@types/markdown-it-container": "^2.0.10",
     "@types/node": "^24.0.14",
     "@vitejs/plugin-vue": "^6.0.0",
     "@vue/tsconfig": "^0.7.0",

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {computed, ref} from 'vue'
-import {GripVertical, Trash2} from 'lucide-vue-next'
+import {FileText, GripVertical, Trash2} from 'lucide-vue-next'
 import AiIcon from "@/svg-icons/ai-icon.vue";
 
 const props = defineProps<{
@@ -206,6 +206,8 @@ const showDropIndicator = computed(() => (index: number, position: 'before' | 'a
 
           <button
               @click.stop="removeComponent(index)"
+              :title="`Remove ${component.name}`"
+              :aria-label="`Remove ${component.name}`"
               class="flex-shrink-0 p-1.5 text-red-500 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-full transition-all duration-150 opacity-0 group-hover:opacity-100 focus:opacity-100"
               tabindex="-1"
           >
@@ -219,10 +221,10 @@ const showDropIndicator = computed(() => (index: number, position: 'before' | 'a
           class="text-center py-12 text-gray-500 dark:text-gray-400"
       >
         <div class="mb-4">
-          <component :is="'FileText'" :size="48" class="mx-auto text-gray-300 dark:text-gray-600"/>
+          <FileText :size="48" class="mx-auto text-gray-300 dark:text-gray-600"/>
         </div>
-        <p class="text-lg font-medium mb-2">No components added yet</p>
-        <p class="text-sm">Add components from the library to start building your README</p>
+        <p class="text-lg font-medium mb-2">No sections yet</p>
+        <p class="text-sm">Add elements from the library or write in the editor. Every heading becomes a section you can reorder here.</p>
       </div>
     </div>
   </div>

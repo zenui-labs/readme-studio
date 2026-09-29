@@ -11,7 +11,6 @@ import {useRouter} from "vue-router";
 import {PATHS} from "@/constants/paths";
 
 const isActiveDropdown = ref(false);
-const isDarkMode = ref(false);
 const isSidebarOpen = ref(false);
 const isCreateDropdownOpen = ref(false);
 const isScrolled = ref(false);
@@ -36,33 +35,9 @@ const toggleSidebar = () => {
 };
 
 
-const applyDarkMode = (value: boolean) => {
-  if (value) {
-    document.body.classList.add('dark');
-    localStorage.setItem('theme', 'dark');
-  } else {
-    document.body.classList.remove('dark');
-    localStorage.setItem('theme', 'light');
-  }
-};
-
-const toggleDarkMode = () => {
-  isDarkMode.value = !isDarkMode.value;
-  applyDarkMode(isDarkMode.value);
-};
-
 onMounted(() => {
   window.addEventListener('scroll', onScroll);
   onScroll();
-
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'dark') {
-    isDarkMode.value = true;
-    document.body.classList.add('dark');
-  } else {
-    isDarkMode.value = false;
-    document.body.classList.remove('dark');
-  }
 });
 
 let handleClickOutside: (event: MouseEvent) => void;
@@ -103,7 +78,7 @@ function handleCreateReadme() {
         <img src="/logo.svg" alt="logo" class="w-[33px]"/>
       </router-link>
       <span
-          class='bg-gray-50 rounded-full dark:border-darkBorder dark:text-darkSubtext dark:bg-darkCardBgColor border border-gray-100 px-2 py-0 text-[0.8rem] font-medium text-gray-700'>v1.0</span>
+          class='bg-gray-50 rounded-full dark:border-darkBorder dark:text-darkSubtext dark:bg-darkCardBgColor border border-gray-100 px-2 py-0 text-[0.8rem] font-medium text-gray-700'>v1.1</span>
     </div>
 
     <div class='flex items-center gap-3'>
@@ -112,8 +87,8 @@ function handleCreateReadme() {
         <Github class="text-gray-700 hover:text-brandColor dark:text-gray-300 transition-colors duration-300"/>
       </a>
 
-      <div class='flex items-center cursor-pointer' @click="toggleDarkMode" title="Toggle Dark Mode">
-        <component :is="isDarkMode ? Sun : Moon"
+      <div class='flex items-center cursor-pointer' @click="store.toggleDarkMode" title="Toggle Dark Mode">
+        <component :is="store.isDarkMode ? Sun : Moon"
                    class="text-gray-700 dark:text-gray-300 transition-colors duration-300"/>
       </div>
       <Menu :size="28" @click="toggleSidebar" class="cursor-pointer dark:text-darkText"/>

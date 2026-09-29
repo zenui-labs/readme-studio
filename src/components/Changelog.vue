@@ -52,11 +52,10 @@ const getIconClass = (type: string): string => {
   <div class='pt-[150px] md:pt-[150px] pb-5 md:pb-10 max-w-[900px] px-6 md:px-0 mx-auto'>
     <div class="text-center">
       <h1 class="text-[2.5rem] dark:text-darkText text-gray-800 font-bold">
-        Changes and updates
+        Changes and Updates
       </h1>
       <p class="text-gray-500 mt-2 dark:text-darkSubtext text-[1rem] max-w-[700px] mx-auto mb-7">
-        Lorem ipsum dolor consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et, nullam sit
-        amet magna sit amet risus accumsan sagittis et vitae.
+        Every new feature, improvement and bug fix in README Studio, newest first.
       </p>
 
       <div class="relative max-w-xl mx-auto">
@@ -68,7 +67,7 @@ const getIconClass = (type: string): string => {
             v-model="searchQuery"
             type="text"
             :maxlength="150"
-            placeholder="Bug fixed, stability, improvement..."
+            placeholder="Search updates, e.g. editor, templates, fixed..."
             class="w-full pl-12 pr-24 py-3 dark:text-darkSubtext dark:border-darkBorder border border-gray-200 rounded-lg focus:ring-2 focus:ring-brandColor focus:border-transparent outline-none"
         />
         <button
@@ -177,8 +176,8 @@ const getIconClass = (type: string): string => {
     </div>
 
     <div v-if="!filteredChanges?.length"
-         class='max-w-[500px] dark:text-gray-400 mx-auto text-center pt-20 text-gray-500'>No <b
-        class='text-black dark:text-darkText'>{{ searchQuery }}</b> found!
+         class='max-w-[500px] dark:text-gray-400 mx-auto text-center pt-20 text-gray-500'>No updates match <b
+        class='text-black dark:text-darkText'>"{{ searchQuery }}"</b>.
     </div>
 
   </div>

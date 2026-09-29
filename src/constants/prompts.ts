@@ -1,3 +1,5 @@
+import type {RepoAnalysis} from "@utils/projectAnalyzer";
+
 export function buildProfileReadmePrompt(userData: any) {
     return `
 You are an elite GitHub profile consultant and technical writer who creates stunning, professional developer portfolios.
@@ -305,13 +307,39 @@ Generate the **most impressive, comprehensive, and professional GitHub Profile R
 ---
 
 ## User Data:
+Profile details, aggregated stats, top languages and topics, and featured repositories collected from GitHub.
+Use featuredRepos for the projects section and topLanguages for the tech stack. Do not invent projects or skills that are not supported by this data.
+
 ${JSON.stringify(userData, null, 2)}`
 }
 
-export function buildRepositoryReadmePrompt(
-    repoData: any,
-    contents: any
-) {
+// Lays out the analyzed repository as a readable dossier: structured facts
+// first, then raw manifest excerpts for anything the facts miss.
+function formatRepoDossier(analysis: RepoAnalysis) {
+    const {keyFiles, structure, ...facts} = analysis
+    const files = Object.entries(keyFiles)
+        .map(([path, content]) => `### ${path}\n\`\`\`\n${content}\n\`\`\``)
+        .join('\n\n')
+
+    return `**Owner/Repo for badges and links:** ${analysis.fullName}
+**Detected project type (most specific first):** ${analysis.projectTypes.join(', ') || 'Unknown'}
+
+**Detected facts (JSON):**
+\`\`\`json
+${JSON.stringify(facts, null, 2)}
+\`\`\`
+
+**Project structure${analysis.analyzedPath ? ` (inside ${analysis.analyzedPath}/)` : ''}:**
+\`\`\`text
+${structure || '(file tree unavailable)'}
+\`\`\`
+
+**Key file contents (may be truncated):**
+
+${files || '(no manifest or config files found)'}`
+}
+
+export function buildRepositoryReadmePrompt(analysis: RepoAnalysis) {
     return `
 You are an elite technical documentation specialist and software architect with deep expertise in analyzing codebases and creating world-class README documentation.
 
@@ -875,11 +903,15 @@ npx [cli-name] [command]
 
 ## Repository Analysis Data:
 
-**Repository Metadata:**
-${JSON.stringify(repoData, null, 2)}
+${formatRepoDossier(analysis)}
 
-**Repository Contents & Structure:**
-${JSON.stringify(contents, null, 2)}
+### Ground Rules For This Repository
+- Treat the detected facts, structure and key files as the source of truth. Never invent features, commands, environment variables or technologies that are not supported by them.
+- Use the exact commands from \`commands\` and \`scripts\` for installation, development, build and test sections.
+- Replace every OWNER/REPO placeholder with ${analysis.fullName}.
+- Document every variable in \`envVars\` in a configuration table.
+- If an existing README.md is included, keep its accurate details but improve structure and presentation.
+- Omit sections that have no supporting data instead of filling them with placeholders.
 
 ---
 

@@ -44,7 +44,7 @@ const downloadReadme = () => {
 }
 
 const openFullscreenPreview = () => {
-  store.fullScreenModal = true
+  store.openPreview(props.content)
 }
 
 let handleClickOutside: (event: MouseEvent) => void

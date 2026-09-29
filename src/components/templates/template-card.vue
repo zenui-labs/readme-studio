@@ -3,7 +3,6 @@ import {ref} from 'vue'
 import {useRouter} from "vue-router"
 import {useStore} from "@stores/useStore.ts"
 import {Check, Copy, Eye, FilePenLine} from 'lucide-vue-next';
-import FullScreenPreviewModal from "@components/modals/FullScreenPreviewModal.vue";
 import {PATHS} from "@/constants/paths.js";
 
 const props = defineProps({
@@ -15,8 +14,7 @@ const store = useStore()
 const isCopying = ref(false)
 
 const showTemplatePreview = () => {
-  store.setGeneratedReadme(props.template.template)
-  store.fullScreenModal = true
+  store.openPreview(props.template.template)
 }
 
 const copyTemplateCode = () => {
@@ -91,7 +89,5 @@ const openEditor = () => {
     </div>
 
   </div>
-
-  <FullScreenPreviewModal v-if="store.fullScreenModal"/>
 
 </template>

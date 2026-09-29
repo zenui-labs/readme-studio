@@ -1,40 +1,33 @@
 <script setup lang="ts">
-import {AlertCircle, Github} from 'lucide-vue-next'
+import {AlertCircle, CheckCircle2, Github} from 'lucide-vue-next'
 import {useStore} from "@stores/useStore";
-import {onMounted, ref} from "vue";
-import {fetchRepoContents, fetchRepoInfo} from "@utils/githubApi";
+import {computed, ref} from "vue";
+import {fetchRepoDetails, parseRepoUrl} from "@utils/githubApi";
 import {generateReadmeWithClaude} from "@utils/groqApi";
 import {buildRepositoryReadmePrompt} from "@/constants/prompts";
 
-const selectedType = ref('')
 const input = ref('')
-const error = ref('')
 
 const store = useStore()
 
-const validateGithubUrl = (url: string) => {
-  return /^https:\/\/github\.com\/[a-zA-Z0-9._-]+\/[a-zA-Z0-9._-]+\/?$/.test(url.trim())
-}
+const repoRef = computed(() => parseRepoUrl(input.value))
+const error = computed(() => input.value.trim() && !repoRef.value
+    ? 'Paste a GitHub repository link, e.g. https://github.com/owner/repo or owner/repo'
+    : '')
 
 const handleGenerating = async () => {
-  const [owner, repo] = input.value.replace('https://github.com/', '').split('/')
+  if (!repoRef.value) return
   store.currentStep = 3
-  const repoData = await fetchRepoInfo(owner, repo)
-  const contents = await fetchRepoContents(owner, repo)
-  const prompt = buildRepositoryReadmePrompt(repoData, contents)
-
-  if (store.hasError) return
-  const result = await generateReadmeWithClaude(prompt)
-  store.setGeneratedReadme(result)
+  store.isGenerating = true
+  try {
+    const analysis = await fetchRepoDetails(repoRef.value)
+    if (!analysis || store.hasError) return
+    const result = await generateReadmeWithClaude(buildRepositoryReadmePrompt(analysis))
+    if (result) store.setGeneratedReadme(result)
+  } finally {
+    store.isGenerating = false
+  }
 }
-
-onMounted(() => {
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      handleGenerating()
-    }
-  })
-})
 
 </script>
 
@@ -52,7 +45,8 @@ onMounted(() => {
             type="text"
             v-model="input"
             :maxlength="300"
-            :placeholder="selectedType === 'profile' ? 'your-username' : 'https://github.com/username/repository'"
+            @keydown.enter="handleGenerating"
+            placeholder="https://github.com/username/repository"
             :class="['block w-full pl-10 pr-3 py-4 dark:text-darkText border-2 rounded-xl placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandColor focus:border-transparent transition-all duration-200',
                 error ? 'border-red-300 bg-red-50' : 'border-gray-200 dark:bg-darkCardBgColor dark:border-darkBorder bg-white']"
         />
@@ -61,10 +55,14 @@ onMounted(() => {
         <AlertCircle class="w-4 h-4 mr-1"/>
         {{ error }}
       </div>
+      <div v-else-if="repoRef" class="mt-2 flex items-center text-left text-brandColor text-sm">
+        <CheckCircle2 class="w-4 h-4 mr-1 flex-shrink-0"/>
+        {{ repoRef.owner }}/{{ repoRef.repo }}<template v-if="repoRef.branch"> · branch {{ repoRef.branch }}</template><template v-if="repoRef.path"> · folder {{ repoRef.path }}</template>
+      </div>
     </div>
 
     <button
-        :disabled="!validateGithubUrl(input)"
+        :disabled="!repoRef"
         @click="handleGenerating"
         class="w-full bg-brandColor cursor-pointer gap-3 text-white py-4 px-6 rounded-xl font-medium text-lg shadow-lg hover:shadow-xl disabled:opacity-40 dark:disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center space-x-2"
     >

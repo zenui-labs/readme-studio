@@ -1,33 +1,33 @@
 <script setup lang="ts">
 import {AlertCircle, Github} from 'lucide-vue-next'
 import {useStore} from "@stores/useStore";
-import {onMounted, ref} from "vue";
+import {computed, ref} from "vue";
 import {generateReadmeWithClaude} from "@utils/groqApi";
-import {fetchUserProfile} from "@utils/githubApi";
+import {fetchUserProfile, parseUsername} from "@utils/githubApi";
 import {buildProfileReadmePrompt} from "@/constants/prompts";
 
 const input = ref('')
-const error = ref('')
 
 const store = useStore()
 
+const username = computed(() => parseUsername(input.value))
+const error = computed(() => input.value.trim() && !username.value
+    ? 'Enter a GitHub username or profile link, e.g. octocat or https://github.com/octocat'
+    : '')
+
 async function handleGenerating() {
+  if (!username.value) return
   store.currentStep = 3
-  const userData = await fetchUserProfile(input.value)
-  const prompt = buildProfileReadmePrompt(userData)
-
-  if (store.hasError) return
-  const result = await generateReadmeWithClaude(prompt)
-  store.setGeneratedReadme(result)
+  store.isGenerating = true
+  try {
+    const userData = await fetchUserProfile(username.value)
+    if (!userData || store.hasError) return
+    const result = await generateReadmeWithClaude(buildProfileReadmePrompt(userData))
+    if (result) store.setGeneratedReadme(result)
+  } finally {
+    store.isGenerating = false
+  }
 }
-
-onMounted(() => {
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') {
-      handleGenerating()
-    }
-  })
-})
 
 </script>
 
@@ -45,7 +45,8 @@ onMounted(() => {
             type="text"
             v-model="input"
             :maxlength="150"
-            placeholder="your-username"
+            @keydown.enter="handleGenerating"
+            placeholder="your-username or https://github.com/your-username"
             :class="['block w-full pl-10 pr-3 py-4 border-2 rounded-xl dark:text-darkText dark:bg-darkCardBgColor placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brandColor focus:border-transparent transition-all duration-200',
                 error ? 'border-red-300 bg-red-50' : 'border-gray-200 bg-white dark:border-darkBorder']"
         />
@@ -57,7 +58,7 @@ onMounted(() => {
     </div>
 
     <button
-        :disabled="!input"
+        :disabled="!username"
         @click="handleGenerating"
         class="w-full bg-brandColor cursor-pointer text-white gap-3 py-4 px-6 rounded-xl font-medium text-lg shadow-lg hover:shadow-xl disabled:opacity-40 dark:disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-300 flex items-center justify-center space-x-2"
     >

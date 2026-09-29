@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {nextTick, ref, watch} from 'vue'
+import {ref} from 'vue'
 
 const props = defineProps<{
   content: string
@@ -10,132 +10,103 @@ const emit = defineEmits<{
   'cursor-position': [position: number]
 }>()
 
-const localContent = ref(props.content)
 const textareaRef = ref<HTMLTextAreaElement>()
-const cursorPosition = ref(0)
+// Until the user places the caret, inserted blocks go to the end, not the top.
+const hasCaret = ref(false)
 
-watch(() => props.content, (newContent) => {
-  if (newContent !== localContent.value) {
-    localContent.value = newContent
-  }
-})
-
-let debounceTimer: number | null = null
-
-const handleInput = () => {
+const handleInput = (event: Event) => {
+  emit('update:content', (event.target as HTMLTextAreaElement).value)
   updateCursorPosition()
-
-  if (debounceTimer) {
-    clearTimeout(debounceTimer)
-  }
-
-  debounceTimer = setTimeout(() => {
-    emit('update:content', localContent.value)
-  }, 200)
 }
 
 const updateCursorPosition = () => {
-  if (textareaRef.value) {
-    cursorPosition.value = textareaRef.value.selectionStart
-    emit('cursor-position', cursorPosition.value)
-  }
+  if (textareaRef.value) emit('cursor-position', textareaRef.value.selectionStart)
 }
 
 const handleSelectionChange = () => {
+  hasCaret.value = true
   updateCursorPosition()
 }
 
-const insertTextAtCursor = (text: string) => {
-  if (!textareaRef.value) return
-
+// Edits go through the browser's own editing command so Ctrl+Z / Ctrl+Y keep working.
+// The resulting input event syncs the new text to the parent.
+const replaceRange = (start: number, end: number, text: string, selectInserted = false) => {
   const textarea = textareaRef.value
-  const start = textarea.selectionStart
-  const end = textarea.selectionEnd
+  if (!textarea) return
 
-  const before = localContent.value.substring(0, start)
-  const after = localContent.value.substring(end)
-  localContent.value = before + text + after
+  textarea.focus()
+  textarea.setSelectionRange(start, end)
+  const inserted = text
+      ? document.execCommand('insertText', false, text)
+      : document.execCommand('delete')
+  if (!inserted) {
+    textarea.setRangeText(text, start, end, 'end')
+    textarea.dispatchEvent(new Event('input', {bubbles: true}))
+  }
+  if (selectInserted) textarea.setSelectionRange(start, start + text.length)
+  hasCaret.value = true
+  updateCursorPosition()
+}
 
-  nextTick(() => {
-    const newPosition = start + text.length
-    textarea.selectionStart = newPosition
-    textarea.selectionEnd = newPosition
-    textarea.focus()
-    updateCursorPosition()
-  })
+// Inserts a block (library element) on its own lines at the caret.
+const insertBlockAtCursor = (block: string) => {
+  const textarea = textareaRef.value
+  if (!textarea) return
 
-  handleInput()
+  const value = textarea.value
+  const start = hasCaret.value ? textarea.selectionStart : value.length
+  const end = hasCaret.value ? textarea.selectionEnd : value.length
+  const before = value.slice(0, start)
+  const after = value.slice(end)
+
+  const lead = !before || before.endsWith('\n\n') ? '' : before.endsWith('\n') ? '\n' : '\n\n'
+  const body = block.replace(/\s+$/, '')
+  const trail = !after ? '\n' : after.startsWith('\n\n') ? '' : after.startsWith('\n') ? '\n' : '\n\n'
+  replaceRange(start, end, lead + body + trail)
 }
 
 const handleKeydown = (event: KeyboardEvent) => {
+  const textarea = event.target as HTMLTextAreaElement
+  const {selectionStart: start, selectionEnd: end, value} = textarea
+
   if (event.key === 'Tab') {
     event.preventDefault()
+    const tab = '  '
 
-    const textarea = event.target as HTMLTextAreaElement
-    const start = textarea.selectionStart
-    const end = textarea.selectionEnd
-
-    const tabChar = '  '
-
-    if (start === end) {
-      insertTextAtCursor(tabChar)
-    } else {
-      const selectedText = localContent.value.substring(start, end)
-      const lines = selectedText.split('\n')
-
-      if (event.shiftKey) {
-        const unindentedLines = lines.map(line =>
-            line.startsWith(tabChar) ? line.substring(tabChar.length) : line
-        )
-        const newText = unindentedLines.join('\n')
-
-        localContent.value = localContent.value.substring(0, start) + newText + localContent.value.substring(end)
-
-        setTimeout(() => {
-          textarea.selectionStart = start
-          textarea.selectionEnd = start + newText.length
-        }, 0)
-      } else {
-        const indentedLines = lines.map(line => tabChar + line)
-        const newText = indentedLines.join('\n')
-
-        localContent.value = localContent.value.substring(0, start) + newText + localContent.value.substring(end)
-
-        setTimeout(() => {
-          textarea.selectionStart = start
-          textarea.selectionEnd = start + newText.length
-        }, 0)
-      }
+    if (start === end && !event.shiftKey) {
+      replaceRange(start, end, tab)
+      return
     }
 
-    handleInput()
-  } else if (event.key === 'Enter') {
-    const textarea = event.target as HTMLTextAreaElement
-    const start = textarea.selectionStart
-    const currentLine = localContent.value.substring(0, start).split('\n').pop() || ''
+    // Indent or unindent every selected line.
+    const lineStart = value.lastIndexOf('\n', start - 1) + 1
+    const lines = value.slice(lineStart, end).split('\n')
+    const changed = lines
+        .map(line => event.shiftKey ? line.replace(/^ {1,2}/, '') : tab + line)
+        .join('\n')
+    replaceRange(lineStart, end, changed, true)
+  } else if (event.key === 'Enter' && !event.shiftKey && start === end) {
+    const lineStart = value.lastIndexOf('\n', start - 1) + 1
+    const line = value.slice(lineStart, start)
+    const match = line.match(/^(\s*)([-*+]|\d+\.)\s(\[[ xX]\]\s)?/)
+    if (!match) return
 
-    const listMatch = currentLine.match(/^(\s*)([-*+]|\d+\.)\s/)
-    if (listMatch) {
-      event.preventDefault()
-      const indent = listMatch[1]
-      const bullet = listMatch[2]
-
-      let newBullet = bullet
-      if (bullet.match(/\d+\./)) {
-        const num = parseInt(bullet) + 1
-        newBullet = `${num}.`
-      }
-
-      const newLine = `\n${indent}${newBullet} `
-      insertTextAtCursor(newLine)
+    event.preventDefault()
+    // Enter on an empty list item ends the list.
+    if (line.length === match[0].length) {
+      replaceRange(lineStart, start, '')
+      return
     }
+
+    const [, indent, bullet, task] = match
+    const next = /\d+\./.test(bullet) ? `${parseInt(bullet) + 1}.` : bullet
+    replaceRange(start, end, `\n${indent}${next} ${task ? '[ ] ' : ''}`)
   }
 }
 
 defineExpose({
-  insertTextAtCursor,
+  insertBlockAtCursor,
   focus: () => textareaRef.value?.focus(),
-  getCursorPosition: () => cursorPosition.value
 })
 </script>
 
@@ -150,11 +121,12 @@ defineExpose({
     <div class="flex-1 p-4">
       <textarea
           ref="textareaRef"
-          v-model="localContent"
+          :value="props.content"
           @input="handleInput"
           @keydown="handleKeydown"
           @click="handleSelectionChange"
           @keyup="handleSelectionChange"
+          @select="handleSelectionChange"
           class="w-full lg:h-full p-4 h-[500px] bg-white dark:bg-slate-900 border border-gray-200 dark:border-darkBorder rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-brandColor focus:border-transparent font-mono text-sm text-gray-800 dark:text-gray-200 transition-all duration-200 leading-relaxed"
           placeholder="Write your markdown here or use the component library to get started...
 
@@ -201,7 +173,7 @@ textarea::placeholder {
   opacity: 1;
 }
 
-textarea:dark::placeholder {
+.dark textarea::placeholder {
   color: #6b7280;
 }
 </style>

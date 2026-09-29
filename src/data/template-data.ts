@@ -3271,4 +3271,1011 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - Inspired by [{REFERENCE_WORK}]
 - Built with TensorFlow and Keras`
     },
+    {
+        id: 'minimal-profile',
+        name: 'Minimal Profile',
+        category: 'Profile',
+        description: 'Clean, distraction-free profile README that highlights who you are in a few lines',
+        tags: ['profile', 'minimal', 'clean', 'personal'],
+        template: `### Hi, I'm {your_name} 👋
+
+{your_role} based in {your_location}. I build {what_you_build} and care about {what_you_care_about}.
+
+- 🔭 Working on [{current_project}]({current_project_url})
+- 🌱 Learning {learning_topic}
+- 💬 Ask me about {expertise_areas}
+- 📫 Reach me at [{email}](mailto:{email})
+
+**Stack:** \`{language_1}\` · \`{language_2}\` · \`{framework_1}\` · \`{framework_2}\` · \`{tool_1}\`
+
+<p>
+  <a href="https://github.com/{username}?tab=repositories"><img src="https://img.shields.io/badge/Repositories-181717?style=flat-square&logo=github&logoColor=white" alt="Repositories"/></a>
+  <a href="https://linkedin.com/in/{linkedin_username}"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+  <a href="{website_url}"><img src="https://img.shields.io/badge/Website-00AD95?style=flat-square&logo=googlechrome&logoColor=white" alt="Website"/></a>
+</p>`
+    },
+    {
+        id: 'terminal-profile',
+        name: 'Terminal Style Profile',
+        category: 'Profile',
+        description: 'Hacker-themed profile README that reads like a terminal session',
+        tags: ['profile', 'terminal', 'creative', 'developer'],
+        template: `<div align="center">
+
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=2500&pause=800&color=00AD95&center=true&vCenter=true&width=600&lines=%24+whoami;{your_name}+%E2%80%94+{your_role};%24+cat+interests.txt;open+source+%C2%B7+systems+%C2%B7+coffee)](https://git.io/typing-svg)
+
+</div>
+
+\`\`\`bash
+visitor@github:~$ whoami
+{your_name} — {your_role} @ {company}
+
+visitor@github:~$ cat about.txt
+📍 {your_location}
+🧠 Currently hacking on {current_project}
+🌱 Learning {learning_topic}
+☕ Powered by coffee and curiosity
+
+visitor@github:~$ ls ~/skills
+languages/   {language_1}  {language_2}  {language_3}
+frontend/    {frontend_1}  {frontend_2}
+backend/     {backend_1}  {backend_2}
+devops/      Docker  GitHub Actions  Linux
+
+visitor@github:~$ ./contact.sh
+→ email     {email}
+→ linkedin  linkedin.com/in/{linkedin_username}
+→ website   {website_url}
+\`\`\`
+
+<details>
+<summary><b>$ git log --stats</b></summary>
+
+<p align="center">
+  <img height="165" src="https://github-readme-stats.vercel.app/api?username={username}&show_icons=true&hide_border=true&bg_color=0d1117&title_color=00AD95&icon_color=00AD95&text_color=c9d1d9" alt="GitHub stats"/>
+  <img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username={username}&layout=compact&hide_border=true&bg_color=0d1117&title_color=00AD95&text_color=c9d1d9" alt="Top languages"/>
+</p>
+
+</details>
+
+\`\`\`bash
+visitor@github:~$ exit
+Thanks for stopping by! ⭐ a repo if you like what you see.
+\`\`\``
+    },
+    {
+        id: 'creative-animated-profile',
+        name: 'Animated Creative Profile',
+        category: 'Profile',
+        description: 'Eye-catching profile with wave banners, animated typing, skill icons, stats, trophies and a contribution snake',
+        tags: ['profile', 'creative', 'animated', 'stats', 'portfolio'],
+        template: `![header](https://capsule-render.vercel.app/api?type=waving&color=0:00AD95,100:2F81F7&height=230&section=header&text={your_name}&fontSize=64&fontColor=ffffff&animation=fadeIn&fontAlignY=36&desc={your_role}&descAlignY=56&descSize=20)
+
+<div align="center">
+
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Poppins&weight=600&size=24&pause=1000&color=00AD95&center=true&vCenter=true&width=620&lines=I+build+things+for+the+web+%F0%9F%9A%80;Open+source+contributor+%F0%9F%92%9A;Always+shipping%2C+always+learning)](https://git.io/typing-svg)
+
+![Profile views](https://komarev.com/ghpvc/?username={username}&color=00AD95&style=flat-square&label=Profile+views)
+[![Followers](https://img.shields.io/github/followers/{username}?style=flat-square&color=2F81F7&label=Followers)](https://github.com/{username}?tab=followers)
+
+</div>
+
+## 🧑‍💻 About Me
+
+<img align="right" width="300" src="https://github-readme-stats.vercel.app/api?username={username}&show_icons=true&hide_border=true&bg_color=00000000&title_color=00AD95&icon_color=00AD95" alt="stats"/>
+
+- 🚀 Building **{current_project}**
+- 🌱 Exploring **{learning_topic}**
+- 🤝 Open to collaborating on **{collaboration_interests}**
+- 🎯 2026 goal: **{yearly_goal}**
+- ⚡ Fun fact: **{fun_fact}**
+
+<br clear="both"/>
+
+## 🛠️ Tech Stack
+
+<p align="center">
+  <a href="https://skillicons.dev">
+    <img src="https://skillicons.dev/icons?i=ts,js,python,react,nextjs,vue,nodejs,tailwind,postgres,mongodb,docker,aws,git,figma&perline=7" alt="Skills"/>
+  </a>
+</p>
+
+## 📊 GitHub Analytics
+
+<p align="center">
+  <img src="https://streak-stats.demolab.com?user={username}&hide_border=true&background=00000000&ring=00AD95&fire=2F81F7&currStreakLabel=00AD95" alt="Streak"/>
+</p>
+
+<p align="center">
+  <img src="https://github-profile-trophy.vercel.app/?username={username}&theme=flat&no-frame=true&no-bg=true&margin-w=4&column=7" alt="Trophies"/>
+</p>
+
+[![Activity graph](https://github-readme-activity-graph.vercel.app/graph?username={username}&bg_color=00000000&color=00AD95&line=2F81F7&point=00AD95&area=true&hide_border=true)](https://github.com/{username})
+
+## 🐍 Contribution Snake
+
+<!-- Generate the SVGs with the Platane/snk GitHub Action (output branch). -->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/{username}/{username}/output/github-contribution-grid-snake-dark.svg"/>
+  <img alt="Contribution snake" src="https://raw.githubusercontent.com/{username}/{username}/output/github-contribution-grid-snake.svg"/>
+</picture>
+
+## 🤝 Let's Connect
+
+<p align="center">
+  <a href="https://linkedin.com/in/{linkedin_username}"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/></a>
+  <a href="https://x.com/{x_username}"><img src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white" alt="X"/></a>
+  <a href="mailto:{email}"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email"/></a>
+  <a href="{website_url}"><img src="https://img.shields.io/badge/Portfolio-00AD95?style=for-the-badge&logo=googlechrome&logoColor=white" alt="Portfolio"/></a>
+</p>
+
+![footer](https://capsule-render.vercel.app/api?type=waving&color=0:2F81F7,100:00AD95&height=120&section=footer)`
+    },
+    {
+        id: 'designer-portfolio',
+        name: 'Designer Portfolio',
+        category: 'Portfolio',
+        description: 'Visual portfolio README for designers and creative developers with a project gallery',
+        tags: ['portfolio', 'designer', 'ui', 'ux', 'gallery'],
+        template: `<div align="center">
+
+# ✦ {your_name} ✦
+
+**{your_role}** — crafting interfaces that feel as good as they look.
+
+[Portfolio]({website_url}) · [Dribbble](https://dribbble.com/{dribbble_username}) · [Behance](https://behance.net/{behance_username}) · [Email](mailto:{email})
+
+</div>
+
+---
+
+## 🎨 Selected Work
+
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="{project_1_url}"><img src="https://placehold.co/600x400/00AD95/ffffff?text={project_1_name}" alt="{project_1_name}"/></a>
+      <h3>{project_1_name}</h3>
+      <p>{project_1_description}</p>
+      <sub><b>Role:</b> Product design, prototyping · <b>Tools:</b> Figma, Framer</sub>
+    </td>
+    <td width="50%" valign="top">
+      <a href="{project_2_url}"><img src="https://placehold.co/600x400/2F81F7/ffffff?text={project_2_name}" alt="{project_2_name}"/></a>
+      <h3>{project_2_name}</h3>
+      <p>{project_2_description}</p>
+      <sub><b>Role:</b> Design system, front-end · <b>Tools:</b> Figma, React</sub>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="{project_3_url}"><img src="https://placehold.co/600x400/8250DF/ffffff?text={project_3_name}" alt="{project_3_name}"/></a>
+      <h3>{project_3_name}</h3>
+      <p>{project_3_description}</p>
+    </td>
+    <td width="50%" valign="top">
+      <a href="{project_4_url}"><img src="https://placehold.co/600x400/E5534B/ffffff?text={project_4_name}" alt="{project_4_name}"/></a>
+      <h3>{project_4_name}</h3>
+      <p>{project_4_description}</p>
+    </td>
+  </tr>
+</table>
+
+## 🧰 Toolbox
+
+| Design | Prototyping | Code | Motion |
+| :----: | :---------: | :--: | :----: |
+| Figma | Framer | HTML / CSS | After Effects |
+| Illustrator | ProtoPie | React | Lottie |
+| Photoshop | Principle | Tailwind CSS | Rive |
+
+## 💭 Design Principles
+
+> [!TIP]
+> Clarity over cleverness. Every pixel should earn its place.
+
+1. **Start with the problem**, not the pixels.
+2. **Design in systems**, ship in components.
+3. **Test early** with real people.
+
+<p align="center"><i>Currently open to freelance and full-time opportunities ✉️</i></p>`
+    },
+    {
+        id: 'hackathon-project',
+        name: 'Hackathon Project',
+        category: 'Project',
+        description: 'Fast, judge-friendly README for hackathon submissions with pitch, demo and team',
+        tags: ['hackathon', 'project', 'demo', 'team', 'pitch'],
+        template: `<div align="center">
+
+# 🏆 {project_name}
+
+**{one_line_pitch}**
+
+Built in {hours} hours at **{hackathon_name}** · 🥇 {prize_or_track}
+
+[🎥 Demo Video]({demo_video_url}) · [🚀 Live App]({live_url}) · [📊 Pitch Deck]({deck_url})
+
+</div>
+
+## 💡 Inspiration
+
+{why_you_built_it}
+
+## 🛠️ What It Does
+
+- ✅ {feature_1}
+- ✅ {feature_2}
+- ✅ {feature_3}
+
+## 🏗️ How We Built It
+
+| Layer | Tech |
+| ----- | ---- |
+| Frontend | {frontend_stack} |
+| Backend | {backend_stack} |
+| AI / Data | {ai_stack} |
+| Hosting | {hosting} |
+
+## 🧗 Challenges We Ran Into
+
+{challenges}
+
+## 🎉 Accomplishments We're Proud Of
+
+{accomplishments}
+
+## 📚 What We Learned
+
+{learnings}
+
+## 🔮 What's Next
+
+- [ ] {next_step_1}
+- [ ] {next_step_2}
+- [ ] {next_step_3}
+
+## ⚡ Run It Locally
+
+\`\`\`bash
+git clone https://github.com/{username}/{repo_name}.git
+cd {repo_name}
+npm install
+npm run dev
+\`\`\`
+
+> [!NOTE]
+> Copy \`.env.example\` to \`.env\` and add your API keys before running.
+
+## 👥 Team
+
+<table>
+  <tr>
+    <td align="center"><img src="https://github.com/{member_1}.png" width="80" alt=""/><br/><b>{member_1_name}</b><br/><sub>Full-stack</sub></td>
+    <td align="center"><img src="https://github.com/{member_2}.png" width="80" alt=""/><br/><b>{member_2_name}</b><br/><sub>Design</sub></td>
+    <td align="center"><img src="https://github.com/{member_3}.png" width="80" alt=""/><br/><b>{member_3_name}</b><br/><sub>ML</sub></td>
+  </tr>
+</table>`
+    },
+    {
+        id: 'awesome-list',
+        name: 'Awesome List',
+        category: 'List',
+        description: 'Curated awesome-style resource list with contents, categories and contribution rules',
+        tags: ['awesome', 'list', 'curated', 'resources', 'community'],
+        template: `<div align="center">
+
+# Awesome {topic} [![Awesome](https://awesome.re/badge.svg)](https://awesome.re)
+
+> A curated list of awesome {topic} libraries, tools and resources.
+
+</div>
+
+## Contents
+
+- [Libraries](#libraries)
+- [Tools](#tools)
+- [Learning Resources](#learning-resources)
+- [Community](#community)
+- [Contributing](#contributing)
+
+## Libraries
+
+- [{library_1}]({library_1_url}) - {library_1_description}
+- [{library_2}]({library_2_url}) - {library_2_description}
+- [{library_3}]({library_3_url}) - {library_3_description}
+
+## Tools
+
+| Tool | Description | Stars |
+| ---- | ----------- | :---: |
+| [{tool_1}]({tool_1_url}) | {tool_1_description} | ![stars](https://img.shields.io/github/stars/{tool_1_repo}?style=flat-square&label=) |
+| [{tool_2}]({tool_2_url}) | {tool_2_description} | ![stars](https://img.shields.io/github/stars/{tool_2_repo}?style=flat-square&label=) |
+
+## Learning Resources
+
+### Articles
+
+- [{article_title}]({article_url}) - {article_summary}
+
+### Videos
+
+- [{video_title}]({video_url}) - {video_summary}
+
+## Community
+
+- [{community_name}]({community_url}) - {community_description}
+
+## Contributing
+
+Contributions welcome! Please read the [contribution guidelines](CONTRIBUTING.md) first.
+
+> [!IMPORTANT]
+> Add one item per pull request, keep descriptions short and place it in the right category.
+
+## License
+
+[![CC0](https://licensebuttons.net/p/zero/1.0/88x31.png)](https://creativecommons.org/publicdomain/zero/1.0/)`
+    },
+    {
+        id: 'monorepo',
+        name: 'Monorepo',
+        category: 'Project',
+        description: 'README for multi-package monorepos with package matrix, workspace commands and architecture',
+        tags: ['monorepo', 'workspace', 'turborepo', 'pnpm', 'packages'],
+        template: `<div align="center">
+
+# 📦 {project_name}
+
+{project_description}
+
+[![CI](https://img.shields.io/github/actions/workflow/status/{username}/{repo_name}/ci.yml?style=flat-square&label=CI)](https://github.com/{username}/{repo_name}/actions)
+[![pnpm](https://img.shields.io/badge/maintained%20with-pnpm-F69220?style=flat-square&logo=pnpm&logoColor=white)](https://pnpm.io)
+[![Turborepo](https://img.shields.io/badge/built%20with-Turborepo-EF4444?style=flat-square&logo=turborepo&logoColor=white)](https://turbo.build)
+
+</div>
+
+## 🗂️ Packages
+
+| Package | Description | Version |
+| ------- | ----------- | ------- |
+| [\`@{scope}/core\`](packages/core) | Core logic and shared types | ![npm](https://img.shields.io/npm/v/@{scope}/core?style=flat-square&label=) |
+| [\`@{scope}/ui\`](packages/ui) | Shared React component library | ![npm](https://img.shields.io/npm/v/@{scope}/ui?style=flat-square&label=) |
+| [\`@{scope}/config\`](packages/config) | ESLint, TypeScript and Tailwind presets | private |
+| [\`web\`](apps/web) | Main web application | app |
+| [\`docs\`](apps/docs) | Documentation site | app |
+
+## 🏗️ Structure
+
+\`\`\`text
+.
+├── apps/
+│   ├── web/          # Next.js app
+│   └── docs/         # Documentation site
+├── packages/
+│   ├── core/         # Framework-agnostic logic
+│   ├── ui/           # Component library
+│   └── config/       # Shared configs
+├── turbo.json
+└── pnpm-workspace.yaml
+\`\`\`
+
+## 🚀 Getting Started
+
+\`\`\`bash
+pnpm install        # install all workspaces
+pnpm dev            # run every app in dev mode
+pnpm build          # build all packages with caching
+pnpm test           # run tests across the repo
+\`\`\`
+
+<details>
+<summary><b>Working with a single package</b></summary>
+
+\`\`\`bash
+pnpm --filter @{scope}/ui dev
+pnpm --filter web add zod
+\`\`\`
+
+</details>
+
+## 🔁 Releasing
+
+This repo uses [Changesets](https://github.com/changesets/changesets):
+
+\`\`\`bash
+pnpm changeset          # describe your change
+pnpm changeset version  # bump versions
+pnpm release            # publish to npm
+\`\`\`
+
+## 🤝 Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). Run \`pnpm lint && pnpm test\` before opening a PR.
+
+## 📄 License
+
+MIT © {your_name}`
+    },
+    {
+        id: 'discord-bot',
+        name: 'Discord Bot',
+        category: 'Bot',
+        description: 'README for Discord bots with invite button, command reference and self-hosting guide',
+        tags: ['discord', 'bot', 'discord.js', 'commands', 'community'],
+        template: `<div align="center">
+
+<img src="https://placehold.co/128x128/5865F2/ffffff?text=BOT" width="110" alt="{bot_name} avatar"/>
+
+# {bot_name}
+
+{bot_description}
+
+[![Invite](https://img.shields.io/badge/Invite%20{bot_name}-5865F2?style=for-the-badge&logo=discord&logoColor=white)]({invite_url})
+[![Support Server](https://img.shields.io/badge/Support%20Server-2C2F33?style=for-the-badge&logo=discord&logoColor=white)]({support_server_url})
+
+![Servers](https://img.shields.io/badge/servers-{server_count}-5865F2?style=flat-square)
+![discord.js](https://img.shields.io/badge/discord.js-v14-5865F2?style=flat-square&logo=discord&logoColor=white)
+
+</div>
+
+## ✨ Features
+
+- 🎵 **Music** — play from YouTube, Spotify and SoundCloud
+- 🛡️ **Moderation** — auto-mod, warnings, timeouts and logs
+- 🎉 **Fun** — games, memes and giveaways
+- ⚙️ **Configurable** — per-server settings with slash commands
+
+## 📜 Commands
+
+| Command | Description | Permission |
+| ------- | ----------- | ---------- |
+| \`/help\` | Show all commands | Everyone |
+| \`/play <song>\` | Play a song in your voice channel | Everyone |
+| \`/warn <user> <reason>\` | Warn a member | Moderate Members |
+| \`/config\` | Open the server settings panel | Manage Server |
+
+## 🏠 Self-Hosting
+
+> [!WARNING]
+> Never commit your bot token. Keep it in \`.env\` only.
+
+\`\`\`bash
+git clone https://github.com/{username}/{repo_name}.git
+cd {repo_name}
+npm install
+cp .env.example .env   # add DISCORD_TOKEN and CLIENT_ID
+npm run deploy-commands
+npm start
+\`\`\`
+
+<details>
+<summary><b>Environment variables</b></summary>
+
+| Variable | Description |
+| -------- | ----------- |
+| \`DISCORD_TOKEN\` | Bot token from the Discord Developer Portal |
+| \`CLIENT_ID\` | Application ID |
+| \`GUILD_ID\` | Optional test server for instant command updates |
+
+</details>
+
+## 📄 License
+
+MIT © {your_name}`
+    },
+    {
+        id: 'vscode-extension',
+        name: 'VS Code Extension',
+        category: 'Extension',
+        description: 'README for Visual Studio Code extensions with marketplace badges, GIF demo and settings table',
+        tags: ['vscode', 'extension', 'editor', 'marketplace', 'developer-tools'],
+        template: `<div align="center">
+
+<img src="https://placehold.co/128x128/007ACC/ffffff?text=EXT" width="100" alt="{extension_name} icon"/>
+
+# {extension_name}
+
+{extension_description}
+
+[![Version](https://img.shields.io/visual-studio-marketplace/v/{publisher}.{extension_id}?style=flat-square&label=Marketplace&color=007ACC)](https://marketplace.visualstudio.com/items?itemName={publisher}.{extension_id})
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/{publisher}.{extension_id}?style=flat-square&color=00AD95)](https://marketplace.visualstudio.com/items?itemName={publisher}.{extension_id})
+[![Rating](https://img.shields.io/visual-studio-marketplace/r/{publisher}.{extension_id}?style=flat-square)](https://marketplace.visualstudio.com/items?itemName={publisher}.{extension_id}&ssr=false#review-details)
+
+</div>
+
+![Demo](https://placehold.co/900x450/1e1e1e/ffffff?text=Demo+GIF)
+
+## ✨ Features
+
+- ⚡ {feature_1}
+- 🎨 {feature_2}
+- 🔍 {feature_3}
+
+## ⌨️ Commands & Shortcuts
+
+| Command | Shortcut |
+| ------- | -------- |
+| \`{extension_name}: Run\` | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>R</kbd> |
+| \`{extension_name}: Toggle\` | <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>T</kbd> |
+
+## ⚙️ Settings
+
+| Setting | Type | Default | Description |
+| ------- | ---- | ------- | ----------- |
+| \`{extension_id}.enable\` | boolean | \`true\` | Enable the extension |
+| \`{extension_id}.theme\` | string | \`"auto"\` | Color theme for decorations |
+
+## 📦 Installation
+
+1. Open **Extensions** (<kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd>)
+2. Search for **{extension_name}**
+3. Click **Install**
+
+Or run:
+
+\`\`\`bash
+code --install-extension {publisher}.{extension_id}
+\`\`\`
+
+## 🧪 Development
+
+\`\`\`bash
+npm install
+npm run watch   # then press F5 to launch the Extension Development Host
+\`\`\`
+
+## 📝 Release Notes
+
+See [CHANGELOG.md](CHANGELOG.md).`
+    },
+    {
+        id: 'rust-crate',
+        name: 'Rust Crate',
+        category: 'Package',
+        description: 'README for Rust crates with crates.io and docs.rs badges, feature flags and MSRV',
+        tags: ['rust', 'crate', 'cargo', 'library', 'docs.rs'],
+        template: `# {crate_name}
+
+[![Crates.io](https://img.shields.io/crates/v/{crate_name}?style=flat-square&logo=rust)](https://crates.io/crates/{crate_name})
+[![docs.rs](https://img.shields.io/docsrs/{crate_name}?style=flat-square&logo=docsdotrs)](https://docs.rs/{crate_name})
+[![CI](https://img.shields.io/github/actions/workflow/status/{username}/{crate_name}/ci.yml?style=flat-square)](https://github.com/{username}/{crate_name}/actions)
+[![MSRV](https://img.shields.io/badge/MSRV-1.75-orange?style=flat-square)](#minimum-supported-rust-version)
+[![License](https://img.shields.io/crates/l/{crate_name}?style=flat-square)](#license)
+
+{crate_description}
+
+## Installation
+
+\`\`\`toml
+[dependencies]
+{crate_name} = "0.1"
+\`\`\`
+
+Or with cargo:
+
+\`\`\`bash
+cargo add {crate_name}
+\`\`\`
+
+## Usage
+
+\`\`\`rust
+use {crate_name}::Client;
+
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let client = Client::new();
+    let result = client.run("hello")?;
+    println!("{result}");
+    Ok(())
+}
+\`\`\`
+
+## Feature Flags
+
+| Feature | Default | Description |
+| ------- | :-----: | ----------- |
+| \`std\` | ✅ | Standard library support |
+| \`serde\` | ❌ | Serialize and deserialize with Serde |
+| \`async\` | ❌ | Async API powered by Tokio |
+
+## Benchmarks
+
+\`\`\`text
+parse/small     time:   [412.31 ns 414.02 ns 415.88 ns]
+parse/large     time:   [38.104 µs 38.221 µs 38.349 µs]
+\`\`\`
+
+## Minimum Supported Rust Version
+
+This crate requires **Rust 1.75** or newer.
+
+## License
+
+Licensed under either of [Apache License 2.0](LICENSE-APACHE) or [MIT license](LICENSE-MIT) at your option.`
+    },
+    {
+        id: 'go-module',
+        name: 'Go Module',
+        category: 'Package',
+        description: 'README for Go modules and CLIs with pkg.go.dev badge, go install and examples',
+        tags: ['go', 'golang', 'module', 'cli', 'library'],
+        template: `# {module_name}
+
+[![Go Reference](https://pkg.go.dev/badge/github.com/{username}/{module_name}.svg)](https://pkg.go.dev/github.com/{username}/{module_name})
+[![Go Report Card](https://goreportcard.com/badge/github.com/{username}/{module_name})](https://goreportcard.com/report/github.com/{username}/{module_name})
+[![Release](https://img.shields.io/github/v/release/{username}/{module_name}?style=flat-square)](https://github.com/{username}/{module_name}/releases)
+![Go Version](https://img.shields.io/github/go-mod/go-version/{username}/{module_name}?style=flat-square)
+
+{module_description}
+
+## Install
+
+As a library:
+
+\`\`\`bash
+go get github.com/{username}/{module_name}
+\`\`\`
+
+As a CLI:
+
+\`\`\`bash
+go install github.com/{username}/{module_name}/cmd/{binary_name}@latest
+\`\`\`
+
+## Quick Start
+
+\`\`\`go
+package main
+
+import (
+	"fmt"
+	"log"
+
+	"github.com/{username}/{module_name}"
+)
+
+func main() {
+	client, err := {module_name}.New({module_name}.WithTimeout(5))
+	if err != nil {
+		log.Fatal(err)
+	}
+	fmt.Println(client.Hello("gopher"))
+}
+\`\`\`
+
+## CLI Usage
+
+\`\`\`text
+$ {binary_name} --help
+Usage:
+  {binary_name} [command]
+
+Available Commands:
+  run       Run the task
+  version   Print the version
+
+Flags:
+  -c, --config string   config file (default "$HOME/.{binary_name}.yaml")
+  -v, --verbose         verbose output
+\`\`\`
+
+## Development
+
+\`\`\`bash
+go test ./...
+go vet ./...
+golangci-lint run
+\`\`\`
+
+## License
+
+MIT © {your_name}`
+    },
+    {
+        id: 'self-hosted-app',
+        name: 'Self-Hosted App',
+        category: 'Application',
+        description: 'README for self-hostable apps with Docker Compose setup, screenshots and configuration',
+        tags: ['self-hosted', 'docker', 'homelab', 'application', 'open-source'],
+        template: `<div align="center">
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://placehold.co/420x110/0d1117/ffffff?text={app_name}">
+  <img alt="{app_name}" src="https://placehold.co/420x110/ffffff/0d1117?text={app_name}">
+</picture>
+
+**{app_tagline}**
+
+[![Docker Pulls](https://img.shields.io/docker/pulls/{docker_user}/{app_slug}?style=flat-square&logo=docker)](https://hub.docker.com/r/{docker_user}/{app_slug})
+[![Release](https://img.shields.io/github/v/release/{username}/{repo_name}?style=flat-square)](https://github.com/{username}/{repo_name}/releases)
+[![License](https://img.shields.io/github/license/{username}/{repo_name}?style=flat-square)](LICENSE)
+
+[Demo]({demo_url}) · [Docs]({docs_url}) · [Discord]({discord_url})
+
+</div>
+
+![Screenshot](https://placehold.co/1000x560/0d1117/00AD95?text=App+Screenshot)
+
+## ✨ Features
+
+- 🔒 **Private by default** — your data stays on your server
+- 🐳 **One-command deploy** with Docker Compose
+- 👥 **Multi-user** with roles and SSO
+- 📱 **Responsive** web UI and PWA support
+
+## 🐳 Quick Start (Docker Compose)
+
+\`\`\`yaml
+services:
+  {app_slug}:
+    image: {docker_user}/{app_slug}:latest
+    container_name: {app_slug}
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - APP_URL=http://localhost:8080
+      - DATABASE_URL=postgres://app:app@db:5432/app
+    depends_on:
+      - db
+  db:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      - POSTGRES_USER=app
+      - POSTGRES_PASSWORD=app
+    volumes:
+      - db-data:/var/lib/postgresql/data
+volumes:
+  db-data:
+\`\`\`
+
+\`\`\`bash
+docker compose up -d
+\`\`\`
+
+Open **http://localhost:8080** and create the first admin account.
+
+> [!CAUTION]
+> Change the default database password before exposing the app to the internet.
+
+## ⚙️ Configuration
+
+| Variable | Default | Description |
+| -------- | ------- | ----------- |
+| \`APP_URL\` | — | Public URL of your instance |
+| \`DATABASE_URL\` | — | PostgreSQL connection string |
+| \`SMTP_HOST\` | — | Mail server for notifications |
+| \`LOG_LEVEL\` | \`info\` | \`debug\`, \`info\`, \`warn\` or \`error\` |
+
+## 🔄 Updating
+
+\`\`\`bash
+docker compose pull && docker compose up -d
+\`\`\`
+
+## 🗺️ Roadmap
+
+- [x] Multi-user support
+- [x] Dark mode
+- [ ] Mobile apps
+- [ ] Plugin system
+
+## 📄 License
+
+AGPL-3.0 © {your_name}`
+    },
+    {
+        id: 'dotfiles',
+        name: 'Dotfiles',
+        category: 'Tool',
+        description: 'Showcase README for dotfiles with setup preview, install script and tool list',
+        tags: ['dotfiles', 'linux', 'macos', 'terminal', 'setup'],
+        template: `<div align="center">
+
+# ⚙️ dotfiles
+
+My personal setup for {os_name} — fast, minimal and keyboard-driven.
+
+![Setup screenshot](https://placehold.co/1000x560/1e1e2e/cdd6f4?text=Desktop+Screenshot)
+
+</div>
+
+## 🧩 What's Inside
+
+| Category | Tool |
+| -------- | ---- |
+| Shell | zsh + [starship](https://starship.rs) |
+| Terminal | [WezTerm](https://wezfurlong.org/wezterm/) |
+| Editor | [Neovim](https://neovim.io) with lazy.nvim |
+| Multiplexer | tmux |
+| Font | JetBrains Mono Nerd Font |
+| Theme | Catppuccin Mocha |
+
+## 🚀 Install
+
+> [!WARNING]
+> The install script symlinks files into your home directory. Back up your existing configs first.
+
+\`\`\`bash
+git clone https://github.com/{username}/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+./install.sh
+\`\`\`
+
+<details>
+<summary><b>Manual setup with GNU Stow</b></summary>
+
+\`\`\`bash
+cd ~/.dotfiles
+stow zsh nvim tmux git
+\`\`\`
+
+</details>
+
+## ⌨️ Handy Keybindings
+
+| Keys | Action |
+| ---- | ------ |
+| <kbd>Ctrl</kbd> + <kbd>a</kbd> <kbd>\\|</kbd> | Split tmux pane vertically |
+| <kbd>Space</kbd> <kbd>f</kbd> <kbd>f</kbd> | Find files in Neovim |
+| <kbd>Ctrl</kbd> + <kbd>r</kbd> | Fuzzy search shell history |
+
+## 📂 Structure
+
+\`\`\`text
+.
+├── zsh/      # .zshrc, aliases, functions
+├── nvim/     # Neovim config
+├── tmux/     # .tmux.conf
+├── git/      # .gitconfig, global ignore
+└── install.sh
+\`\`\`
+
+## 🙏 Inspiration
+
+Thanks to the [dotfiles community](https://dotfiles.github.io) for endless ideas.`
+    },
+    {
+        id: 'research-paper',
+        name: 'Research Paper Code',
+        category: 'Research',
+        description: 'Academic README for paper code releases with abstract, results table and BibTeX citation',
+        tags: ['research', 'paper', 'academic', 'machine-learning', 'citation'],
+        template: `<div align="center">
+
+# {paper_title}
+
+**{author_1}**<sup>1</sup> · **{author_2}**<sup>1,2</sup> · **{author_3}**<sup>2</sup>
+
+<sup>1</sup>{institution_1} · <sup>2</sup>{institution_2}
+
+**{venue} {year}**
+
+[![Paper](https://img.shields.io/badge/Paper-arXiv-B31B1B?style=flat-square&logo=arxiv)]({arxiv_url})
+[![Project Page](https://img.shields.io/badge/Project-Page-00AD95?style=flat-square)]({project_page_url})
+[![Hugging Face](https://img.shields.io/badge/%F0%9F%A4%97-Models-FFD21E?style=flat-square)]({hf_url})
+
+![Teaser](https://placehold.co/1000x380/ffffff/1f2328?text=Teaser+Figure)
+
+</div>
+
+## 📄 Abstract
+
+{abstract}
+
+## 📰 News
+
+- **{date_1}** — Paper accepted at {venue} {year} 🎉
+- **{date_2}** — Code and pretrained models released
+
+## 🔧 Setup
+
+\`\`\`bash
+conda create -n {env_name} python=3.11 -y
+conda activate {env_name}
+pip install -r requirements.txt
+\`\`\`
+
+## 🚀 Training & Evaluation
+
+\`\`\`bash
+python train.py --config configs/base.yaml
+python eval.py --checkpoint checkpoints/best.pt
+\`\`\`
+
+## 📊 Results
+
+| Method | Dataset A ↑ | Dataset B ↑ | Params |
+| ------ | :---------: | :---------: | :----: |
+| Baseline | 71.2 | 64.8 | 86M |
+| Prior SOTA | 76.9 | 69.3 | 120M |
+| **Ours** | **79.4** | **72.1** | 92M |
+
+## 📚 Citation
+
+If you find this work useful, please cite:
+
+\`\`\`bibtex
+@inproceedings{{citation_key},
+  title     = {{paper_title}},
+  author    = {{author_1} and {author_2} and {author_3}},
+  booktitle = {{venue}},
+  year      = {{year}}
+}
+\`\`\`
+
+## 🙏 Acknowledgements
+
+This project builds on [{base_repo}]({base_repo_url}). We thank {acknowledged_people} for helpful discussions.`
+    },
+    {
+        id: 'github-action',
+        name: 'GitHub Action',
+        category: 'Tool',
+        description: 'README for reusable GitHub Actions with usage workflow, inputs and outputs tables',
+        tags: ['github-actions', 'ci', 'automation', 'workflow', 'devops'],
+        template: `# {action_name}
+
+[![Test](https://img.shields.io/github/actions/workflow/status/{username}/{repo_name}/test.yml?style=flat-square&label=tests)](https://github.com/{username}/{repo_name}/actions)
+[![Release](https://img.shields.io/github/v/release/{username}/{repo_name}?style=flat-square)](https://github.com/{username}/{repo_name}/releases)
+[![Marketplace](https://img.shields.io/badge/Marketplace-{action_slug}-2088FF?style=flat-square&logo=githubactions&logoColor=white)](https://github.com/marketplace/actions/{action_slug})
+
+{action_description}
+
+## 🚀 Usage
+
+\`\`\`yaml
+name: CI
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: {username}/{repo_name}@v1
+        with:
+          token: \${{ secrets.GITHUB_TOKEN }}
+          mode: strict
+\`\`\`
+
+## 📥 Inputs
+
+| Name | Required | Default | Description |
+| ---- | :------: | ------- | ----------- |
+| \`token\` | ✅ | — | GitHub token used for API calls |
+| \`mode\` | ❌ | \`normal\` | \`normal\` or \`strict\` |
+| \`path\` | ❌ | \`.\` | Directory to scan |
+
+## 📤 Outputs
+
+| Name | Description |
+| ---- | ----------- |
+| \`result\` | Summary of the run |
+| \`report-url\` | Link to the generated report |
+
+## 🔐 Permissions
+
+\`\`\`yaml
+permissions:
+  contents: read
+  pull-requests: write
+\`\`\`
+
+> [!TIP]
+> Pin the action to a full commit SHA for maximum supply-chain safety.
+
+## 🛠️ Development
+
+\`\`\`bash
+npm install
+npm run build   # bundles to dist/ with ncc
+npm test
+\`\`\`
+
+## 📄 License
+
+MIT © {your_name}`
+    },
 ]

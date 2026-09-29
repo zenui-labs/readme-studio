@@ -27,9 +27,12 @@ export interface FaqItem {
     open: boolean
 }
 
+export type ReadmeSectionCategory = 'Sections' | 'Elements' | 'Creative';
+
 export interface ReadmeSectionType {
     id: string;
     name: string;
+    category: ReadmeSectionCategory;
     icon: FunctionalComponent;
     template: string;
 }

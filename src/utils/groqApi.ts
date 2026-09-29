@@ -11,7 +11,10 @@ export const generateReadmeWithClaude = async (prompt: string) => {
     try {
         const model = genAI.getGenerativeModel({model: "gemini-2.5-flash"});
         const result = await model.generateContent(prompt);
-        return result.response.text().trim();
+        const text = result.response.text().trim();
+        // An empty answer is a failure, not a README.
+        if (!text) throw new Error('Empty response');
+        return text;
     } catch (error) {
         const message = error?.message?.toLowerCase() || "";
 

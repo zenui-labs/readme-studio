@@ -1,25 +1,57 @@
 import {defineStore} from 'pinia'
-import {ref} from "vue";
+import {ref, watch} from "vue";
+
+const DRAFT_KEY = 'readme-draft'
 
 export const useStore = defineStore('useStore', () => {
     const currentStep = ref<number>(1);
     const selectedType = ref<string>('profile');
     const isGenerating = ref<boolean>(false);
     const generatedContent = ref<string>('');
-    const generatedReadme = ref('')
-    const repoContent = ref<any>('');
+    // The README being edited. Saved locally so a refresh never loses work.
+    const generatedReadme = ref<string>(localStorage.getItem(DRAFT_KEY) ?? '')
     const githubUserData = ref<any>({});
     const githubRepoData = ref<any>({});
     const limitErrorModalOpen = ref<boolean>(false);
     const fullScreenModal = ref<boolean>(false);
+    // Fullscreen preview shows its own copy, so previewing a template never replaces the draft.
+    const previewMarkdown = ref<string>('');
     const isReadmeGenerating = ref<boolean>(false);
     const overloadErrorModalOpen = ref(false);
+    const isDarkMode = ref<boolean>(localStorage.getItem('theme') === 'dark');
+
+    watch(isDarkMode, (value) => {
+        document.body.classList.toggle('dark', value);
+        localStorage.setItem('theme', value ? 'dark' : 'light');
+    }, {immediate: true});
+
+    const toggleDarkMode = () => {
+        isDarkMode.value = !isDarkMode.value;
+    };
 
     const hasError = ref<boolean>(false);
     const errorMessage = ref<string>('');
 
-    function setGeneratedReadme(text) {
+    watch(generatedReadme, (value) => {
+        try {
+            if (value) localStorage.setItem(DRAFT_KEY, value)
+            else localStorage.removeItem(DRAFT_KEY)
+        } catch {
+            // Storage full or blocked: the draft still lives in memory.
+        }
+    });
+
+    function setGeneratedReadme(text: string) {
         generatedReadme.value = text
+    }
+
+    function openPreview(markdown: string) {
+        previewMarkdown.value = markdown
+        fullScreenModal.value = true
+    }
+
+    function closePreview() {
+        fullScreenModal.value = false
     }
 
     const toggleOverloadErrorModalOpen = (value: boolean) => {
@@ -36,10 +68,6 @@ export const useStore = defineStore('useStore', () => {
         hasError.value = false;
         errorMessage.value = '';
     };
-
-    const setRepoContent = (content: any) => {
-        repoContent.value = content;
-    }
 
     const setGithubUserData = (data: any) => {
         githubUserData.value = data;
@@ -71,13 +99,14 @@ export const useStore = defineStore('useStore', () => {
         setGeneratedReadme,
         generatedReadme,
         handleTypeSelection,
-        repoContent,
-        setRepoContent,
         githubUserData,
         setGithubUserData,
         githubRepoData,
         setGithubRepoData,
         fullScreenModal,
+        previewMarkdown,
+        openPreview,
+        closePreview,
         hasError,
         errorMessage,
         setError,
@@ -88,5 +117,7 @@ export const useStore = defineStore('useStore', () => {
         setIsReadmeGenerating,
         overloadErrorModalOpen,
         toggleOverloadErrorModalOpen,
+        isDarkMode,
+        toggleDarkMode,
     }
 })

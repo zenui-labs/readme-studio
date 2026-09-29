@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Instrument+Serif:ital@1&display=swap');
 
 @import "tailwindcss";
 
@@ -14,9 +14,22 @@
     --color-darkCardBgColor: #1a1b1f;
     --color-darkSubtext: #c4c8cd;
     --color-darkBorder: #2c2f36;
+    --font-display: 'Bricolage Grotesque', 'Roboto', sans-serif;
+    --font-accent: 'Instrument Serif', Georgia, serif;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
+
+/* The page follows the app theme, never the browser theme. */
+body {
+    background-color: #ffffff;
+    color-scheme: light;
+}
+
+body.dark {
+    background-color: var(--color-darkBg);
+    color-scheme: dark;
+}
 
 #coffee_badge {
     position: fixed;
